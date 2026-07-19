@@ -5,9 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // If hosting on a GitHub project page (e.g. https://<username>.github.io/<repo-name>),
-  // uncomment the next line and change '/portfolio' to your repository name:
-  // basePath: "/portfolio",
+  basePath: "/Portfolio", // <-- Uncomment this and make sure "Portfolio" matches your GitHub repo name casing exactly
 };
 
 export default nextConfig;
