@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-retro), monospace;
+  
+  --color-background: #FAF6EE;
+  --color-surface: #FFFDF9;
+  --color-card: #FFFFFF;
+  --color-primary: #FF5964;
+  --color-secondary: #FFDE47;
+  --color-muted: #555555;
+  --color-accent-blue: #3A86C8;
+  --color-accent-green: #3BCEAC;
+}
+
+:root {
+  --background: #FAF6EE;
+  --foreground: #1A1A1A;
+  --surface: #FFFDF9;
+  --card: #FFFFFF;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  image-rendering: pixelated;
+}
+
+/* Custom Scrollbar - Retro Pixel Theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF6EE;
+  border-left: 3px solid #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFDE47;
+  border: 3px solid #000000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF5964;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── RETRO GAME LAYOUT UTILITIES ── */
+
+.pixel-grid {
+  background-image: 
+    radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Chunky Retro Cards */
+.retro-card {
+  background: #FFFFFF;
+  border: 3.5px solid #000000;
+  box-shadow: 4px 4px 0px 0px #000000;
+  border-radius: 4px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.retro-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #000000;
+}
+.retro-card-interactive:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
+/* Chunky Retro Buttons */
+.retro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #000000;
+  background: #FFDE47;
+  color: #000000;
+  box-shadow: 3px 3px 0px 0px #000000;
+  font-family: var(--font-retro), monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  user-select: none;
+}
+.retro-btn:hover {
+  background: #FFF066;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+.retro-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #000000;
+}
+
+.retro-btn-red {
+  background: #FF5964;
+  color: #FFFFFF;
+}
+.retro-btn-red:hover {
+  background: #FF757E;
+}
+
+.retro-btn-green {
+  background: #3BCEAC;
+  color: #000000;
+}
+.retro-btn-green:hover {
+  background: #52DEC0;
+}
+
+.retro-btn-outline {
+  background: #FFFFFF;
+  color: #000000;
+}
+.retro-btn-outline:hover {
+  background: #F3ECE0;
+}
+
+/* Pixel corners border trick */
+.pixel-corners {
+  position: relative;
+  border: 3px solid #000000;
+}
+
+/* Typography styles */
+.font-retro {
+  font-family: var(--font-retro), monospace;
+  image-rendering: pixelated;
+}
+
+/* Hide scrollbar for horizontal containers */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── ANIMATIONS ── */
+
+/* Floating Cloud Drift */
+@keyframes floatCloudLeft {
+  0% { transform: translateX(105vw); }
+  100% { transform: translateX(-20vw); }
+}
+.animate-cloud-slow {
+  animation: floatCloudLeft 65s linear infinite;
+}
+.animate-cloud-fast {
+  animation: floatCloudLeft 45s linear infinite;
+}
+
+/* Breathing animation for characters */
+@keyframes retroBreathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.animate-retro-idle {
+  animation: retroBreathe 2s ease-in-out infinite;
+}
+
+/* Heart container pulsing */
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+.animate-heart-pulse {
+  animation: heartPulse 1.2s ease-in-out infinite;
+}
+
+/* Sparkle twinkle */
+@keyframes pixelSparkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 0.85; transform: scale(1.1); }
+}
+.animate-sparkle {
+  animation: pixelSparkle 3s ease-in-out infinite;
+}
+
+/* Retro wildlife horizontal drift */
+@keyframes floatWildlifeLeft {
+  0% { transform: translate(105vw, 0px) scaleX(1); }
+  50% { transform: translate(50vw, -15px) scaleX(1); }
+  51% { transform: translate(49vw, -15px) scaleX(-1); }
+  100% { transform: translate(-20vw, 10px) scaleX(-1); }
+}
+.animate-wildlife-slow {
+  animation: floatWildlifeLeft 58s linear infinite;
+}
+
+@keyframes floatButterfly {
+  0% { transform: translate(-20vw, 0px); }
+  50% { transform: translate(50vw, 30px); }
+  100% { transform: translate(110vw, -10px); }
+}
+.animate-butterfly-slow {
+  animation: floatButterfly 46s linear infinite;
+}
+
+/* ── DECORATED START SCREEN STYLES ── */
+
+/* CRT Scanline Scan Filter */
+.crt-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.06) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* CRT Screen Flicker */
+@keyframes crtFlicker {
+  0%, 100% { opacity: 0.985; }
+  50% { opacity: 0.995; }
+}
+.crt-flicker {
+  animation: crtFlicker 0.15s infinite;
+}
+
+/* Vignette Shadow Overlay */
+.retro-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 65%, rgba(0, 0, 0, 0.12) 100%);
+  z-index: 998;
+  pointer-events: none;
+}
+
+/* Vegetation Sway */
+@keyframes sway {
+  0%, 100% { transform: skewX(0deg); }
+  50% { transform: skewX(4deg); }
+}
+.animate-sway {
+  transform-origin: bottom center;
+  animation: sway 3s ease-in-out infinite;
+}
+
+/* Falling Tetris Blocks */
+@keyframes tetrisFall {
+  0% { transform: translateY(-60px) rotate(0deg); }
+  100% { transform: translateY(105vh) rotate(360deg); }
+}
+.animate-tetris {
+  animation: tetrisFall 24s linear infinite;
+}
+
+/* Floating Creative Objects */
+@keyframes creativeFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+.animate-creative-float {
+  animation: creativeFloat 4.2s ease-in-out infinite;
+}
