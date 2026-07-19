@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useGameSystem } from "@/context/GameContext";
+import { getAssetPath } from "@/lib/utils";
 
 const projects = [
   {
@@ -123,7 +124,7 @@ export default function FeaturedProjects() {
                   {/* Cartridge Label Image Container */}
                   <div className="relative aspect-[3/2.1] w-full overflow-hidden border-2 border-black bg-neutral-900 mb-4 rounded-sm">
                     <Image
-                      src={project.image}
+                      src={getAssetPath(project.image)}
                       alt={project.title}
                       fill
                       sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Award } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, getAssetPath } from "@/lib/utils";
 import { useGameSystem } from "@/context/GameContext";
 
 interface OrbitTool {
@@ -490,7 +490,7 @@ export default function Hero() {
                     tool.customIcon
                   ) : (
                     <Image
-                      src={tool.iconPath}
+                      src={getAssetPath(tool.iconPath)}
                       alt={tool.name}
                       width={20}
                       height={20}

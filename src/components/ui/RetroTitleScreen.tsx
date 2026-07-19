@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useGameSystem } from "@/context/GameContext";
+import { getAssetPath } from "@/lib/utils";
 
 // ── RETRO GAME PROCEDURAL SVG COMPONENT DECORATIONS ──
 
@@ -597,7 +598,7 @@ export default function RetroTitleScreen() {
                   className="pointer-events-none"
                 >
                   <img
-                    src={icon.src}
+                    src={getAssetPath(icon.src)}
                     alt={icon.name}
                     className="w-full h-full object-contain"
                   />

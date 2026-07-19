@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getAssetPath } from "@/lib/utils";
 
 export interface GameNotification {
   id: string;
@@ -52,17 +53,17 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
     const initAudio = () => {
       if (!clickAudioRef.current) {
-        clickAudioRef.current = new Audio("/sounds/click.mp3");
+        clickAudioRef.current = new Audio(getAssetPath("/sounds/click.mp3"));
         clickAudioRef.current.volume = 0.2;
         clickAudioRef.current.preload = "auto";
       }
       if (!startAudioRef.current) {
-        startAudioRef.current = new Audio("/sounds/start.mp3");
+        startAudioRef.current = new Audio(getAssetPath("/sounds/start.mp3"));
         startAudioRef.current.volume = 0.2;
         startAudioRef.current.preload = "auto";
       }
       if (!achievementAudioRef.current) {
-        achievementAudioRef.current = new Audio("/sounds/achievement.mp3");
+        achievementAudioRef.current = new Audio(getAssetPath("/sounds/achievement.mp3"));
         achievementAudioRef.current.volume = 0.2;
         achievementAudioRef.current.preload = "auto";
       }

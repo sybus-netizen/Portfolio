@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Button } from "@/components/ui/Button";
+import { getAssetPath } from "@/lib/utils";
 
 const categories = ["All", "Brand Identity", "Social & Marketing", "Video & Motion"];
 
@@ -163,7 +164,7 @@ export default function ProjectsPage() {
                     {/* Cartridge Label Image Container */}
                     <div className="relative aspect-[3/2.1] w-full overflow-hidden border-2 border-black bg-neutral-900 mb-4 rounded-sm">
                       <Image
-                        src={project.image}
+                        src={getAssetPath(project.image)}
                         alt={project.title}
                         fill
                         sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
