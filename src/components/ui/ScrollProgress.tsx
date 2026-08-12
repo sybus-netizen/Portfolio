@@ -93,7 +93,7 @@ export function ScrollProgress() {
                 <motion.div
                   animate={{
                     scale: isActive ? 1.15 : 1,
-                    backgroundColor: isActive ? "#FFDE47" : "#FFFFFF",
+                    backgroundColor: isActive ? "#FFDE47" : "#131C2E",
                   }}
                   transition={{ duration: 0.15 }}
                   className="w-3.5 h-3.5 border-2 border-black rotate-45 hover:bg-[#FF5964] transition-colors"
@@ -105,7 +105,7 @@ export function ScrollProgress() {
                     opacity: isActive ? 1 : 0,
                     transform: isActive ? "translateX(0px) rotate(-45deg)" : "translateX(-5px) rotate(-45deg)",
                   }}
-                  className="absolute left-7 text-[8px] font-retro tracking-wider text-black font-bold uppercase transition-all duration-200 whitespace-nowrap bg-white border-2 border-black px-2 py-1 shadow-[2px_2px_0px_#000] rotate-45"
+                  className="absolute left-7 text-[8px] font-retro tracking-wider text-foreground font-bold uppercase transition-all duration-200 whitespace-nowrap bg-card border-2 border-black px-2 py-1 shadow-[2px_2px_0px_#000] rotate-45"
                 >
                   {sec.index} {sec.label}
                 </span>

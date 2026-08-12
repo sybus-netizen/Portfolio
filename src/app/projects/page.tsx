@@ -49,8 +49,8 @@ export default function ProjectsPage() {
               onClick={() => setActiveCategory(category)}
               className={`relative px-4 py-2 border-2 border-black font-retro text-[8px] sm:text-[9px] uppercase tracking-wider transition-all duration-100 cursor-pointer rounded-sm ${
                 activeCategory === category
-                  ? "bg-[#FFDE47] text-foreground shadow-[2px_2px_0px_#000] translate-y-[-1px]"
-                  : "bg-white text-foreground/60 shadow-[1.5px_1.5px_0px_#000] active:translate-y-0.5 active:shadow-none hover:text-foreground"
+                  ? "bg-[#FFDE47] text-black shadow-[2px_2px_0px_#000] translate-y-[-1px]"
+                  : "bg-card text-slate-300 shadow-[1.5px_1.5px_0px_#000] active:translate-y-0.5 active:shadow-none hover:text-white hover:bg-slate-850"
               }`}
             >
               {category}

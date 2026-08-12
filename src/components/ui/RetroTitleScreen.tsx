@@ -776,10 +776,10 @@ export default function RetroTitleScreen() {
                     initial={{ opacity: 0, scale: 0.8, y: 15 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.8, y: 15 }}
-                    className="absolute bottom-16 left-6 p-3 retro-card border-3 border-black bg-white shadow-[3px_3px_0px_#000] min-w-[170px] text-left relative z-[60]"
+                    className="absolute bottom-16 left-6 p-3 retro-card border-3 border-black bg-card shadow-[3px_3px_0px_#000] min-w-[170px] text-left relative z-[60]"
                   >
                     <div className="absolute bottom-[-10px] left-4 border-t-8 border-t-black border-x-8 border-x-transparent" />
-                    <div className="absolute bottom-[-6px] left-[17px] border-t-6 border-t-white border-x-6 border-x-transparent" />
+                    <div className="absolute bottom-[-6px] left-[17px] border-t-6 border-t-card border-x-6 border-x-transparent" />
                     
                     <span className="font-retro text-[8px] leading-relaxed text-foreground">
                       💬 "Go ahead... press START."

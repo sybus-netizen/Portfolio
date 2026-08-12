@@ -173,13 +173,13 @@ export default function GameCompanion() {
               initial={{ opacity: 0, scale: 0.85, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.85, y: 15 }}
-              className="absolute bottom-16 left-4 p-3.5 retro-card border-3 border-black bg-white shadow-[3px_3px_0px_#000] min-w-[170px] text-left z-50 pointer-events-none"
+              className="absolute bottom-16 left-4 p-3.5 retro-card border-3 border-black bg-card shadow-[3px_3px_0px_#000] min-w-[170px] text-left z-50 pointer-events-none"
             >
               {/* Bubble Arrow */}
               <div className="absolute bottom-[-10px] left-4 border-t-8 border-t-black border-x-8 border-x-transparent" />
-              <div className="absolute bottom-[-6px] left-[17px] border-t-6 border-t-white border-x-6 border-x-transparent" />
+              <div className="absolute bottom-[-6px] left-[17px] border-t-6 border-t-card border-x-6 border-x-transparent" />
               
-              <span className="font-retro text-[8px] leading-relaxed text-black">
+              <span className="font-retro text-[8px] leading-relaxed text-foreground">
                 💬 "{message}"
               </span>
             </motion.div>
