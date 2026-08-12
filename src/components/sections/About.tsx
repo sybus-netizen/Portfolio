@@ -67,7 +67,7 @@ export default function About() {
   const { unlockQuest } = useGameSystem();
 
   return (
-    <section id="about" className="py-20 border-t-3 border-black bg-[#FAF6EE] relative overflow-hidden">
+    <section id="about" className="py-20 border-t-3 border-black bg-background relative overflow-hidden">
       <motion.div
         onViewportEnter={() => unlockQuest("about", "About")}
         viewport={{ once: true, amount: 0.1 }}
@@ -79,10 +79,10 @@ export default function About() {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF5964] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">
             SPECIFICATION
           </div>
-          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-black uppercase leading-none">
+          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
             What I Create
           </h2>
-          <p className="text-xs sm:text-sm text-[#555555] font-sans leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
             From branding systems to motion graphics, I create visual experiences that help businesses communicate, grow and stand out.
           </p>
         </div>
@@ -103,16 +103,16 @@ export default function About() {
                   className={`retro-card p-4 flex items-center justify-between cursor-pointer select-none text-left border-3 transition-all duration-100 ${
                     isSelected 
                       ? "bg-[#FFDE47] border-black translate-x-1 shadow-[2px_2px_0px_#000]" 
-                      : "bg-[#FFFFFF] border-black/80 hover:bg-[#FFFDF9]"
+                      : "bg-card border-black/80 hover:bg-[#FFFDF9]"
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
                     <span className="text-lg">{cat.statusEmoji}</span>
-                    <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-black">
+                    <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-foreground">
                       {cat.title}
                     </span>
                   </div>
-                  <span className="font-retro text-[8px] text-black/40">
+                  <span className="font-retro text-[8px] text-foreground/40">
                     {isSelected ? "◀ ACTIVE" : "SELECT"}
                   </span>
                 </div>
@@ -123,10 +123,10 @@ export default function About() {
           {/* RIGHT PANEL: SELECTED DETAIL (STATS SCREEN) */}
           <div className="lg:col-span-7">
             {selectedIdx !== -1 && (
-              <div className="retro-card p-6 sm:p-8 bg-[#FFFFFF] border-4 border-black lg:h-full h-auto flex flex-col justify-between shadow-[6px_6px_0px_#000] relative">
+              <div className="retro-card p-6 sm:p-8 bg-card border-4 border-black lg:h-full h-auto flex flex-col justify-between shadow-[6px_6px_0px_#000] relative">
                 
                 {/* Corner tech specs */}
-                <div className="absolute top-4 right-6 font-retro text-[8px] text-black/30">
+                <div className="absolute top-4 right-6 font-retro text-[8px] text-foreground/30">
                   LOG_ID: {categories[selectedIdx].id.toUpperCase()}
                 </div>
 
@@ -135,23 +135,23 @@ export default function About() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{categories[selectedIdx].statusEmoji}</span>
-                      <h3 className="font-retro text-base sm:text-lg font-bold text-black uppercase leading-none">
+                      <h3 className="font-retro text-base sm:text-lg font-bold text-foreground uppercase leading-none">
                         {categories[selectedIdx].title}
                       </h3>
                     </div>
-                    <p className="text-xs sm:text-sm text-[#555555] font-sans leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
                       {categories[selectedIdx].description}
                     </p>
                   </div>
 
                   {/* Deliverables / Inventory */}
                   <div className="space-y-3">
-                    <div className="font-retro text-[8px] text-black/50 uppercase leading-none">INVENTORY DELIVERABLES</div>
+                    <div className="font-retro text-[8px] text-foreground/50 uppercase leading-none">INVENTORY DELIVERABLES</div>
                     <div className="flex flex-wrap gap-2">
                       {categories[selectedIdx].deliverables.map((del, i) => (
                         <span
                           key={i}
-                          className="px-3 py-1.5 bg-[#FAF6EE] border-2 border-black text-black font-sans text-xs rounded-sm shadow-[1.5px_1.5px_0px_#000]"
+                          className="px-3 py-1.5 bg-background border-2 border-black text-foreground font-sans text-xs rounded-sm shadow-[1.5px_1.5px_0px_#000]"
                         >
                           🧰 {del}
                         </span>
@@ -161,12 +161,12 @@ export default function About() {
 
                   {/* Primary Tools */}
                   <div className="space-y-3">
-                    <div className="font-retro text-[8px] text-black/50 uppercase leading-none">EQUIPPED TOOLS</div>
+                    <div className="font-retro text-[8px] text-foreground/50 uppercase leading-none">EQUIPPED TOOLS</div>
                     <div className="flex flex-wrap gap-2">
                       {categories[selectedIdx].tools.map((tool, i) => (
                         <span
                           key={i}
-                          className="px-3 py-1.5 bg-white border-2 border-black text-black font-retro text-[9px] rounded-sm shadow-[1.5px_1.5px_0px_#000] flex items-center gap-1.5"
+                          className="px-3 py-1.5 bg-card border-2 border-black text-foreground font-retro text-[9px] rounded-sm shadow-[1.5px_1.5px_0px_#000] flex items-center gap-1.5"
                         >
                           <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: tool.brandColor }} />
                           {tool.name}
@@ -178,7 +178,7 @@ export default function About() {
 
                 {/* Status bar */}
                 <div className="mt-8 pt-4 border-t-2 border-dashed border-black/20 flex justify-between items-center text-left">
-                  <div className="font-retro text-[8px] text-black/40">QUEST LEVEL: 04</div>
+                  <div className="font-retro text-[8px] text-foreground/40">QUEST LEVEL: 04</div>
                   <div className="font-retro text-[9px] text-[#3BCEAC] font-bold">READY TO DEPLOY ➔</div>
                 </div>
 
@@ -199,16 +199,16 @@ export default function About() {
                   className={`retro-card p-4 flex items-center justify-between cursor-pointer select-none text-left border-3 transition-all duration-100 ${
                     isSelected 
                       ? "bg-[#FFDE47] border-black translate-x-1 shadow-[2px_2px_0px_#000]" 
-                      : "bg-[#FFFFFF] border-black/80 hover:bg-[#FFFDF9]"
+                      : "bg-card border-black/80 hover:bg-[#FFFDF9]"
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
                     <span className="text-lg">{cat.statusEmoji}</span>
-                    <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-black">
+                    <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-foreground">
                       {cat.title}
                     </span>
                   </div>
-                  <span className="font-retro text-[8px] text-black/40">
+                  <span className="font-retro text-[8px] text-foreground/40">
                     {isSelected ? "▲ CLOSE" : "▼ SELECT"}
                   </span>
                 </div>
@@ -223,28 +223,28 @@ export default function About() {
                       transition={{ duration: 0.2, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="retro-card p-5 sm:p-6 bg-[#FFFFFF] border-3 border-black shadow-[4px_4px_0px_#000] relative">
+                      <div className="retro-card p-5 sm:p-6 bg-card border-3 border-black shadow-[4px_4px_0px_#000] relative">
                         {/* Corner tech specs */}
-                        <div className="absolute top-3 right-4 font-retro text-[7px] text-black/30">
+                        <div className="absolute top-3 right-4 font-retro text-[7px] text-foreground/30">
                           LOG_ID: {cat.id.toUpperCase()}
                         </div>
 
                         <div className="space-y-5">
                           {/* Description */}
                           <div className="space-y-1 mt-2">
-                            <p className="text-xs text-[#555555] font-sans leading-relaxed">
+                            <p className="text-xs text-slate-300 font-sans leading-relaxed">
                               {cat.description}
                             </p>
                           </div>
 
                           {/* Deliverables / Inventory */}
                           <div className="space-y-2">
-                            <div className="font-retro text-[7px] text-black/50 uppercase leading-none">INVENTORY DELIVERABLES</div>
+                            <div className="font-retro text-[7px] text-foreground/50 uppercase leading-none">INVENTORY DELIVERABLES</div>
                             <div className="flex flex-wrap gap-1.5">
                               {cat.deliverables.map((del, i) => (
                                 <span
                                   key={i}
-                                  className="px-2.5 py-1 bg-[#FAF6EE] border-2 border-black text-black font-sans text-[11px] rounded-sm shadow-[1px_1px_0px_#000]"
+                                  className="px-2.5 py-1 bg-background border-2 border-black text-foreground font-sans text-[11px] rounded-sm shadow-[1px_1px_0px_#000]"
                                 >
                                   🧰 {del}
                                 </span>
@@ -254,12 +254,12 @@ export default function About() {
 
                           {/* Primary Tools */}
                           <div className="space-y-2">
-                            <div className="font-retro text-[7px] text-black/50 uppercase leading-none">EQUIPPED TOOLS</div>
+                            <div className="font-retro text-[7px] text-foreground/50 uppercase leading-none">EQUIPPED TOOLS</div>
                             <div className="flex flex-wrap gap-1.5">
                               {cat.tools.map((tool, i) => (
                                 <span
                                   key={i}
-                                  className="px-2.5 py-1 bg-white border-2 border-black text-black font-retro text-[8px] rounded-sm shadow-[1px_1px_0px_#000] flex items-center gap-1"
+                                  className="px-2.5 py-1 bg-card border-2 border-black text-foreground font-retro text-[8px] rounded-sm shadow-[1px_1px_0px_#000] flex items-center gap-1"
                                 >
                                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: tool.brandColor }} />
                                   {tool.name}
@@ -271,7 +271,7 @@ export default function About() {
 
                         {/* Status bar */}
                         <div className="mt-6 pt-3 border-t-2 border-dashed border-black/20 flex justify-between items-center text-left">
-                          <div className="font-retro text-[7px] text-black/40">QUEST LEVEL: 04</div>
+                          <div className="font-retro text-[7px] text-foreground/40">QUEST LEVEL: 04</div>
                           <div className="font-retro text-[8px] text-[#3BCEAC] font-bold">READY TO DEPLOY ➔</div>
                         </div>
 

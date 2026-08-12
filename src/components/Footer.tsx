@@ -13,11 +13,11 @@ export default function Footer() {
   };
   
   return (
-    <footer className="pt-10 pb-8 border-t-3 border-black bg-[#FAF6EE] relative z-20 overflow-hidden mt-auto select-none">
+    <footer className="pt-10 pb-8 border-t-3 border-black bg-background relative z-20 overflow-hidden mt-auto select-none">
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
         
         {/* TOP ROW */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full border-b-2 border-black/10 pb-6 mb-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 w-full border-b-2 border-slate-800 pb-6 mb-6">
           
           {/* Brand Signature */}
           <div className="text-center md:text-left space-y-1">

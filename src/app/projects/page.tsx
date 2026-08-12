@@ -18,7 +18,7 @@ export default function ProjectsPage() {
     : projectsData.filter(project => project.category === activeCategory);
 
   return (
-    <div className="min-h-screen py-24 bg-[#FAF6EE] relative select-none">
+    <div className="min-h-screen py-24 bg-background relative select-none">
 
       <div className="max-w-6xl mx-auto px-6 md:px-12 space-y-12 sm:space-y-16 relative z-10">
         
@@ -30,12 +30,12 @@ export default function ProjectsPage() {
             </span>
           </FadeIn>
           <FadeIn direction="up" delay={0.1}>
-            <h1 className="font-retro text-2xl sm:text-3.5xl font-bold tracking-tight text-black uppercase leading-none">
+            <h1 className="font-retro text-2xl sm:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
               Portfolio Projects
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
-            <p className="text-xs sm:text-sm text-[#555555] font-sans">
+            <p className="text-xs sm:text-sm text-slate-400 font-sans">
               Dive deep into my full creative catalog. Filter by specialization to view specific design concepts, video edits, and motion design renders.
             </p>
           </FadeIn>
@@ -49,8 +49,8 @@ export default function ProjectsPage() {
               onClick={() => setActiveCategory(category)}
               className={`relative px-4 py-2 border-2 border-black font-retro text-[8px] sm:text-[9px] uppercase tracking-wider transition-all duration-100 cursor-pointer rounded-sm ${
                 activeCategory === category
-                  ? "bg-[#FFDE47] text-black shadow-[2px_2px_0px_#000] translate-y-[-1px]"
-                  : "bg-white text-black/60 shadow-[1.5px_1.5px_0px_#000] active:translate-y-0.5 active:shadow-none hover:text-black"
+                  ? "bg-[#FFDE47] text-foreground shadow-[2px_2px_0px_#000] translate-y-[-1px]"
+                  : "bg-white text-foreground/60 shadow-[1.5px_1.5px_0px_#000] active:translate-y-0.5 active:shadow-none hover:text-foreground"
               }`}
             >
               {category}
@@ -75,11 +75,11 @@ export default function ProjectsPage() {
                 className="h-full flex flex-col"
               >
                 <Link href={`/projects/${project.id}`} className="block h-full cursor-pointer select-none">
-                  <div className="retro-card p-4 bg-[#FFFFFF] border-3 border-black h-full flex flex-col justify-between shadow-[4px_4px_0px_#000] group relative overflow-hidden">
+                  <div className="retro-card p-4 bg-card border-3 border-black h-full flex flex-col justify-between shadow-[4px_4px_0px_#000] group relative overflow-hidden">
                     
                     {/* Cartridge Header Ridge */}
                     <div className="flex justify-between items-center border-b-2 border-black pb-3 mb-4 select-none">
-                      <span className="font-retro text-[7px] text-black/40">MODEL: S-SLOT_{project.year}</span>
+                      <span className="font-retro text-[7px] text-foreground/40">MODEL: S-SLOT_{project.year}</span>
                       <div className="flex gap-1">
                         <span className="w-2.5 h-2.5 border border-black bg-black/10 rounded-full" />
                         <span className="w-2.5 h-2.5 border border-black bg-black/10 rounded-full" />
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
                       
                       {/* Hover Overlay */}
                       <div className="absolute inset-0 bg-black/75 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center pointer-events-none z-10 p-4">
-                        <div className="px-3.5 py-2 bg-[#FFDE47] border-2 border-black text-black font-retro text-[9px] uppercase shadow-[2.5px_2.5px_0px_#000] scale-90 group-hover:scale-100 transition-transform duration-200">
+                        <div className="px-3.5 py-2 bg-[#FFDE47] border-2 border-black text-foreground font-retro text-[9px] uppercase shadow-[2.5px_2.5px_0px_#000] scale-90 group-hover:scale-100 transition-transform duration-200">
                           Insert Cartridge ▶
                         </div>
                       </div>
@@ -111,14 +111,14 @@ export default function ProjectsPage() {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between text-[8px] font-retro uppercase text-[#FF5964] font-bold">
                           <span>{project.category}</span>
-                          <span className="text-black/30 font-mono">[{project.year}]</span>
+                          <span className="text-foreground/30 font-mono">[{project.year}]</span>
                         </div>
 
-                        <h3 className="font-retro text-[10px] sm:text-xs font-bold text-black uppercase group-hover:text-[#FF5964] transition-colors leading-tight">
+                        <h3 className="font-retro text-[10px] sm:text-xs font-bold text-foreground uppercase group-hover:text-[#FF5964] transition-colors leading-tight">
                           {project.title}
                         </h3>
                         
-                        <p className="text-xs text-[#555555] font-sans font-light leading-relaxed line-clamp-2 md:line-clamp-3">
+                        <p className="text-xs text-slate-400 font-sans font-light leading-relaxed line-clamp-2 md:line-clamp-3">
                           {project.description}
                         </p>
                       </div>
@@ -129,7 +129,7 @@ export default function ProjectsPage() {
                           {project.tags.slice(0, 2).map((tag) => (
                             <span
                               key={tag}
-                              className="text-[9px] font-sans text-black/60 bg-[#FAF6EE] border border-black/20 px-2 py-0.5 rounded-sm"
+                              className="text-[9px] font-sans text-foreground/60 bg-background border border-black/20 px-2 py-0.5 rounded-sm"
                             >
                               #{tag}
                             </span>

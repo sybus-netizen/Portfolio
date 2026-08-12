@@ -71,7 +71,7 @@ export default function Skills() {
   const { unlockQuest } = useGameSystem();
 
   return (
-    <section id="skills" className="py-20 border-t-3 border-black bg-[#FAF6EE] relative overflow-hidden">
+    <section id="skills" className="py-20 border-t-3 border-black bg-background relative overflow-hidden">
       <motion.div
         onViewportEnter={() => unlockQuest("skills", "Skills")}
         viewport={{ once: true, amount: 0.1 }}
@@ -80,13 +80,13 @@ export default function Skills() {
         
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#3BCEAC] border-2 border-black text-black font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#3BCEAC] border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">
             POWER STATUS
           </div>
-          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-black uppercase leading-none">
+          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
             Creative Toolkit
           </h2>
-          <p className="text-xs sm:text-sm text-[#555555] font-sans leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
             Equipped with industry-standard software tools and frameworks calibrated to professional levels.
           </p>
         </div>
@@ -96,13 +96,13 @@ export default function Skills() {
           {categories.map((cat, idx) => (
             <div 
               key={idx}
-              className="retro-card p-6 bg-[#FFFFFF] border-3 border-black shadow-[4px_4px_0px_#000] flex flex-col justify-between"
+              className="retro-card p-6 bg-card border-3 border-black shadow-[4px_4px_0px_#000] flex flex-col justify-between"
             >
               <div className="space-y-6">
                 {/* Category Header */}
-                <div className="flex items-center gap-3 border-b-2 border-black/10 pb-4">
+                <div className="flex items-center gap-3 border-b-2 border-slate-800 pb-4">
                   <span className="text-2xl select-none">{cat.iconEmoji}</span>
-                  <h3 className="font-retro text-[10px] sm:text-xs font-bold text-black uppercase tracking-wider">
+                  <h3 className="font-retro text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-wider">
                     {cat.title}
                   </h3>
                 </div>
@@ -112,7 +112,7 @@ export default function Skills() {
                   {cat.tools.map((tool, tIdx) => (
                     <div key={tIdx} className="space-y-1 text-left">
                       <div className="flex items-center justify-between">
-                        <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-black flex items-center gap-2">
+                        <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-foreground flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: tool.brandColor }} />
                           {tool.name}
                         </span>
@@ -127,8 +127,8 @@ export default function Skills() {
               </div>
 
               {/* Status bar */}
-              <div className="mt-8 pt-4 border-t border-dashed border-black/10 text-left">
-                <span className="font-retro text-[8px] text-black/30">SKILL_SYS_LVL: STABLE</span>
+              <div className="mt-8 pt-4 border-t border-dashed border-slate-800 text-left">
+                <span className="font-retro text-[8px] text-foreground/30">SKILL_SYS_LVL: STABLE</span>
               </div>
             </div>
           ))}

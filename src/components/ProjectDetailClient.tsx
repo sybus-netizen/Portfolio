@@ -33,7 +33,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
     : "bg-[#3A86C8]";
 
   return (
-    <div className="min-h-screen py-24 bg-[#FAF6EE] relative select-none">
+    <div className="min-h-screen py-24 bg-background relative select-none">
       <div className="max-w-4xl mx-auto px-6 md:px-12 space-y-8 relative z-10">
         
         {/* Back Link */}
@@ -41,7 +41,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
           <Link 
             href="/projects" 
             onClick={playClick}
-            className="inline-flex items-center gap-2 font-retro text-[8px] sm:text-[9px] uppercase tracking-wider text-black/60 hover:text-black transition-colors"
+            className="inline-flex items-center gap-2 font-retro text-[8px] sm:text-[9px] uppercase tracking-wider text-slate-400 hover:text-foreground transition-colors"
           >
             <ArrowLeft className="w-3 h-3" />
             Back to Catalog
@@ -49,13 +49,13 @@ export default function ProjectDetailClient({ project }: ClientProps) {
         </div>
 
         {/* main retro cartridge container */}
-        <div className={`retro-card p-6 sm:p-8 bg-white border-4 border-black shadow-[8px_8px_0px_#000] relative overflow-hidden text-left border-t-[16px] ${accentColor}`}>
+        <div className={`retro-card p-6 sm:p-8 bg-card border-4 border-black shadow-[8px_8px_0px_#000] relative overflow-hidden text-left border-t-[16px] ${accentColor}`}>
           
           {/* Cartridge Header Ridge details */}
           <div className="flex justify-between items-center border-b-2 border-black pb-4 mb-6 select-none">
             <div className="flex flex-col">
-              <span className="font-retro text-[8px] text-black/40">SYSTEM: PORTFOLIO_OS</span>
-              <span className="font-retro text-[7px] text-black/30">ID: {project.id.toUpperCase()}</span>
+              <span className="font-retro text-[8px] text-slate-500">SYSTEM: PORTFOLIO_OS</span>
+              <span className="font-retro text-[7px] text-slate-600">ID: {project.id.toUpperCase()}</span>
             </div>
             <div className="flex gap-2">
               <span className="w-3 h-3 border border-black bg-black/10 rounded-full" />
@@ -68,34 +68,34 @@ export default function ProjectDetailClient({ project }: ClientProps) {
             {/* Left Info Column */}
             <div className="md:col-span-5 space-y-6 flex flex-col justify-between">
               <div className="space-y-4">
-                <div className={`inline-flex items-center gap-2 px-2.5 py-1 ${accentBg} border-2 border-black text-black font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000]`}>
+                <div className={`inline-flex items-center gap-2 px-2.5 py-1 ${accentBg} border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000]`}>
                   {project.category}
                 </div>
-                <h1 className="font-retro text-lg sm:text-xl font-bold uppercase tracking-tight text-black leading-tight">
+                <h1 className="font-retro text-lg sm:text-xl font-bold uppercase tracking-tight text-foreground leading-tight">
                   {project.title}
                 </h1>
-                <p className="text-xs sm:text-sm text-[#555555] font-sans font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 font-sans font-light leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
               {/* Specs Table */}
-              <div className="border-2 border-black bg-[#FAF6EE] p-4 space-y-3 font-sans rounded-sm">
+              <div className="border-2 border-black bg-background p-4 space-y-3 font-sans rounded-sm">
                 <div className="flex items-center justify-between text-xs border-b border-black/10 pb-1.5">
-                  <span className="font-retro text-[7px] text-black/40 flex items-center gap-1.5 uppercase">
-                    <ShieldCheck className="w-3 h-3 text-black/40" /> Role
+                  <span className="font-retro text-[7px] text-slate-500 flex items-center gap-1.5 uppercase">
+                    <ShieldCheck className="w-3 h-3 text-slate-500" /> Role
                   </span>
-                  <span className="font-bold text-black">{project.role}</span>
+                  <span className="font-bold text-foreground">{project.role}</span>
                 </div>
                 <div className="flex items-center justify-between text-xs border-b border-black/10 pb-1.5">
-                  <span className="font-retro text-[7px] text-black/40 flex items-center gap-1.5 uppercase">
-                    <Calendar className="w-3 h-3 text-black/40" /> Release
+                  <span className="font-retro text-[7px] text-slate-500 flex items-center gap-1.5 uppercase">
+                    <Calendar className="w-3 h-3 text-slate-500" /> Release
                   </span>
-                  <span className="font-bold text-black">{project.year}</span>
+                  <span className="font-bold text-foreground">{project.year}</span>
                 </div>
                 <div className="flex flex-col gap-1 text-xs pt-0.5">
-                  <span className="font-retro text-[7px] text-black/40 flex items-center gap-1.5 uppercase">
-                    <Tag className="w-3 h-3 text-black/40" /> Tools
+                  <span className="font-retro text-[7px] text-slate-500 flex items-center gap-1.5 uppercase">
+                    <Tag className="w-3 h-3 text-slate-500" /> Tools
                   </span>
                   <div className="flex flex-wrap gap-1.5 mt-1">
                     {project.technologies.map((tech) => (
@@ -114,7 +114,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
               {/* Video Player Embed */}
               {currentVideoUrl ? (
                 <div className="space-y-4">
-                  <span className="font-retro text-[8px] text-black/40 uppercase block select-none">
+                  <span className="font-retro text-[8px] text-slate-500 uppercase block select-none">
                     Video Output [Loaded]
                   </span>
                   <div className={
@@ -134,7 +134,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
                   {/* VHS Cassette Playlist Shelf */}
                   {project.videos && project.videos.length > 0 && (
                     <div className="space-y-3 pt-4 border-t-2 border-black/10">
-                      <span className="font-retro text-[8px] text-black/40 uppercase block select-none">
+                      <span className="font-retro text-[8px] text-slate-500 uppercase block select-none">
                         VHS Cassette Rack (Select Tape to Play)
                       </span>
                       <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
@@ -149,7 +149,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
                               }}
                               className={`relative border-2 border-black p-2 font-retro text-[8px] uppercase flex flex-col items-center justify-center transition-all ${
                                 isActive
-                                  ? `${accentBg} text-black shadow-none translate-y-0.5`
+                                  ? `${accentBg} text-foreground shadow-none translate-y-0.5`
                                   : "bg-[#1E1E1E] text-white shadow-[2px_2px_0px_#000] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] active:translate-y-0.5 active:shadow-none"
                               } rounded-sm`}
                             >
@@ -167,7 +167,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
                 </div>
               ) : project.gallery && project.gallery.length > 0 ? (
                 <div className="space-y-4">
-                  <span className="font-retro text-[8px] text-black/40 uppercase block select-none">
+                  <span className="font-retro text-[8px] text-slate-500 uppercase block select-none">
                     Image Gallery [{project.gallery.length} frames] (Click to Expand)
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -218,7 +218,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
 
           {/* Subtext info */}
           <div className="border-t-2 border-black pt-4 mt-8 flex justify-between items-center select-none text-[8px]">
-            <span className="font-retro text-black/40">HOST_IP: LOCALHOST</span>
+            <span className="font-retro text-slate-500">HOST_IP: LOCALHOST</span>
             <span className="font-retro text-[#FF5964] font-bold">CARTRIDGE LOADED OK ▶</span>
           </div>
 

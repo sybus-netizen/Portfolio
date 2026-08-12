@@ -553,7 +553,7 @@ export default function RetroTitleScreen() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 0.65, ease: "easeInOut" }}
-            className="fixed inset-0 z-[9998] bg-[#FAF6EE] flex flex-col justify-between p-6 select-none cursor-pointer"
+            className="fixed inset-0 z-[9998] bg-background flex flex-col justify-between p-6 select-none cursor-pointer"
             onClick={handleStart}
           >
             {/* CRT Screen Scanline & Vignette filters */}
@@ -627,7 +627,7 @@ export default function RetroTitleScreen() {
             </div>
 
             {/* HEADER HUD METADATA */}
-            <div className="flex justify-between items-center text-[7px] font-retro text-black/35 select-none relative z-10">
+            <div className="flex justify-between items-center text-[7px] font-retro text-foreground/35 select-none relative z-10">
               <div className="flex items-center gap-2">
                 <span>SYSTEM: 8-BIT_CPU</span>
                 <Equalizer />
@@ -639,7 +639,7 @@ export default function RetroTitleScreen() {
             <div className="flex flex-col items-center justify-center flex-grow text-center space-y-12 relative z-10">
               
               <div className="space-y-4">
-                <h1 className="font-retro text-2.5xl sm:text-4.5xl font-bold tracking-tight text-black uppercase leading-none select-none drop-shadow-[3px_3px_0px_#FFDE47]">
+                <h1 className="font-retro text-2.5xl sm:text-4.5xl font-bold tracking-tight text-foreground uppercase leading-none select-none drop-shadow-[3px_3px_0px_#FFDE47]">
                   SHUBHAM SHUKLA
                 </h1>
                 <h2 className="font-retro text-xs sm:text-sm tracking-[0.25em] text-[#FF5964] font-bold uppercase select-none">
@@ -667,7 +667,7 @@ export default function RetroTitleScreen() {
                     ? { type: "spring", stiffness: 220, damping: 10 }
                     : { duration: 1.0, repeat: Infinity, ease: "easeInOut" }
                 }
-                className="font-retro text-xs sm:text-sm text-black tracking-wider py-3.5 px-6 border-3 border-black bg-[#FFDE47] shadow-[3px_3px_0px_#000] cursor-pointer select-none relative overflow-hidden rounded-sm z-10"
+                className="font-retro text-xs sm:text-sm text-foreground tracking-wider py-3.5 px-6 border-3 border-black bg-[#FFDE47] shadow-[3px_3px_0px_#000] cursor-pointer select-none relative overflow-hidden rounded-sm z-10"
               >
                 {/* Diagonal sheen sweep */}
                 <motion.div
@@ -699,7 +699,7 @@ export default function RetroTitleScreen() {
             </div>
 
             {/* PLATFORM GROUND SCENERY (Mario Style) */}
-            <div className="absolute bottom-0 left-0 right-0 h-14 border-t-4 border-black bg-[#FAF6EE] z-10 flex items-center px-8 justify-between select-none pointer-events-none">
+            <div className="absolute bottom-0 left-0 right-0 h-14 border-t-4 border-black bg-background z-10 flex items-center px-8 justify-between select-none pointer-events-none">
               
               {/* Bottom Ground check pattern */}
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.035)_50%,transparent_50%)] bg-[length:16px_100%] pointer-events-none" />
@@ -746,7 +746,7 @@ export default function RetroTitleScreen() {
             </div>
 
             {/* FOOTER STATS */}
-            <div className="flex justify-between items-end text-[8px] font-retro text-black/40 select-none relative z-20 pb-4">
+            <div className="flex justify-between items-end text-[8px] font-retro text-foreground/40 select-none relative z-20 pb-4">
               <span>v1.0</span>
               <span>© 2026 Shubham Shukla</span>
             </div>
@@ -781,7 +781,7 @@ export default function RetroTitleScreen() {
                     <div className="absolute bottom-[-10px] left-4 border-t-8 border-t-black border-x-8 border-x-transparent" />
                     <div className="absolute bottom-[-6px] left-[17px] border-t-6 border-t-white border-x-6 border-x-transparent" />
                     
-                    <span className="font-retro text-[8px] leading-relaxed text-black">
+                    <span className="font-retro text-[8px] leading-relaxed text-foreground">
                       💬 "Go ahead... press START."
                     </span>
                   </motion.div>

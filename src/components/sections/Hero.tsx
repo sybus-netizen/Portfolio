@@ -214,7 +214,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden bg-[#FAF6EE]"
+      className="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden bg-background"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10 w-full">
         
@@ -260,7 +260,7 @@ export default function Hero() {
             <motion.div
               animate={{ left: ["-30%", "130%"] }}
               transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 3.5, ease: "linear" }}
-              className="absolute top-0 bottom-0 w-2.5 bg-white/40 skew-x-12 pointer-events-none"
+              className="absolute top-0 bottom-0 w-2.5 bg-card/40 skew-x-12 pointer-events-none"
             />
 
             {/* Hover corner sparkles */}
@@ -287,19 +287,19 @@ export default function Hero() {
           </motion.div>
 
           <div className="space-y-5 md:space-y-4 w-full">
-            <h1 className="font-retro text-2xl sm:text-3.5xl lg:text-4.5xl font-bold tracking-tight text-black uppercase leading-none select-none">
+            <h1 className="font-retro text-2xl sm:text-3.5xl lg:text-4.5xl font-bold tracking-tight text-foreground uppercase leading-none select-none">
               SHUBHAM SHUKLA
             </h1>
             <p className="font-retro text-[10px] sm:text-xs text-[#FF5964] uppercase tracking-wider leading-none">
               VISUAL CONTENT CREATOR
             </p>
-            <p className="font-retro text-[8px] sm:text-[9px] text-black/50 uppercase tracking-widest leading-none mt-1">
+            <p className="font-retro text-[8px] sm:text-[9px] text-foreground/50 uppercase tracking-widest leading-none mt-1">
               3.8 YEARS OF EXPERIENCE • INDIA
             </p>
           </div>
 
           {/* RPG DIALOGUE SPEECH BOX */}
-          <div className="w-full retro-card p-5 sm:p-6 bg-[#FFFFFF] border-4 border-black relative">
+          <div className="w-full retro-card p-5 sm:p-6 bg-card border-4 border-black relative">
             {/* Small speaker badge */}
             <div className="absolute top-[-14px] left-6 px-3 py-1 bg-black text-white font-retro text-[8px] uppercase rounded-sm select-none">
               ABOUT ME
@@ -331,15 +331,15 @@ export default function Hero() {
 
 
           {/* QUEST HISTORY (WORK EXPERIENCE) */}
-          <div className="w-full retro-card p-4 sm:p-5 bg-white border-4 border-black relative">
+          <div className="w-full retro-card p-4 sm:p-5 bg-card border-4 border-black relative">
             <div className="absolute top-[-12px] left-6 px-2.5 py-0.5 bg-black text-white font-retro text-[8px] uppercase rounded-sm select-none">
               WORK EXPERIENCE
             </div>
             <div className="space-y-3 pt-2">
               {experienceItems.map((item) => (
-                <div key={item.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-left border-b border-black/10 pb-2.5 last:border-0 last:pb-0">
+                <div key={item.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-left border-b border-slate-800 pb-2.5 last:border-0 last:pb-0">
                   <div>
-                    <div className="font-retro text-[8px] sm:text-[9px] font-bold text-black uppercase leading-tight">
+                    <div className="font-retro text-[8px] sm:text-[9px] font-bold text-foreground uppercase leading-tight">
                       {item.role}
                     </div>
                     <div className="text-[10px] text-gray-500 font-sans font-semibold leading-tight mt-0.5">
@@ -460,7 +460,7 @@ export default function Hero() {
                   onMouseLeave={() => setHoveredIcon(null)}
                   whileHover={{ scale: 1.15, rotate: 6, y: -4 }}
                   className={cn(
-                    "aspect-square rounded-sm border-2 border-black flex items-center justify-center cursor-help bg-white relative transition-all duration-100 shadow-[2px_2px_0px_#000]",
+                    "aspect-square rounded-sm border-2 border-black flex items-center justify-center cursor-help bg-card relative transition-all duration-100 shadow-[2px_2px_0px_#000]",
                     isHovered && "bg-[#FFDE47] shadow-[3.5px_3.5px_0px_#000] border-black"
                   )}
                   onClick={() => unlockAchievement(`tool-${tool.name.toLowerCase()}`, `Collected ${tool.name}!`, "🛠")}
@@ -494,9 +494,9 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.95 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute bottom-16 left-1/2 -translate-x-1/2 p-3.5 retro-card border-3 border-black bg-[#FFFFFF] shadow-[3.5px_3.5px_0px_#000] pointer-events-none min-w-[170px] z-50 text-center flex flex-col items-center gap-1"
+                        className="absolute bottom-16 left-1/2 -translate-x-1/2 p-3.5 retro-card border-3 border-black bg-card shadow-[3.5px_3.5px_0px_#000] pointer-events-none min-w-[170px] z-50 text-center flex flex-col items-center gap-1"
                       >
-                        <div className="font-retro text-[8px] font-bold text-black uppercase leading-none mb-1">
+                        <div className="font-retro text-[8px] font-bold text-foreground uppercase leading-none mb-1">
                           {tool.name}
                         </div>
                         <div className="font-retro text-[8px] text-[#FF5964] font-bold leading-none mb-1">
@@ -548,16 +548,16 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-[#FAF6EE] border-8 border-black flex flex-col items-center justify-center p-6 cursor-pointer select-none"
+            className="fixed inset-0 z-[9999] bg-background border-8 border-black flex flex-col items-center justify-center p-6 cursor-pointer select-none"
             onClick={skipLoading}
           >
-            <div className="w-full max-w-md retro-card p-6 bg-[#FFFFFF] border-4 border-black shadow-[6px_6px_0px_#000] space-y-6 relative text-left">
+            <div className="w-full max-w-md retro-card p-6 bg-card border-4 border-black shadow-[6px_6px_0px_#000] space-y-6 relative text-left">
               <div className="absolute top-[-14px] left-6 px-3 py-1 bg-black text-white font-retro text-[8px] uppercase rounded-sm">
                 BIOS_LOADER
               </div>
 
               {/* Stepped Typewriter steps */}
-              <div className="font-retro text-[9px] sm:text-[10px] text-black space-y-3 leading-loose min-h-[140px]">
+              <div className="font-retro text-[9px] sm:text-[10px] text-foreground space-y-3 leading-loose min-h-[140px]">
                 {loadingStep >= 0 && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     &gt; LOADING ASSETS... DONE.
@@ -588,11 +588,11 @@ export default function Hero() {
 
               {/* Fills Progress Loader Bar */}
               <div className="space-y-2">
-                <div className="flex justify-between font-retro text-[8px] text-black/50">
+                <div className="flex justify-between font-retro text-[8px] text-foreground/50">
                   <span>PROGRESS</span>
                   <span>{progressVal}%</span>
                 </div>
-                <div className="w-full border-3 border-black bg-[#FAF6EE] p-[3px] rounded-sm">
+                <div className="w-full border-3 border-black bg-background p-[3px] rounded-sm">
                   <motion.div 
                     className="h-4 bg-[#FFDE47]" 
                     style={{ width: `${progressVal}%` }} 
@@ -600,7 +600,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="text-center font-retro text-[8px] text-black/30 pt-2 animate-[heartPulse_1.2s_infinite]">
+              <div className="text-center font-retro text-[8px] text-foreground/30 pt-2 animate-[heartPulse_1.2s_infinite]">
                 CLICK ANYWHERE TO SKIP INTRO
               </div>
 

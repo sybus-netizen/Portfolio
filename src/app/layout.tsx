@@ -62,7 +62,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${pressStart2P.variable} h-full antialiased`}
     >
-      <body className="bg-[#FAF6EE] text-[#1A1A1A] min-h-full flex flex-col font-sans selection:bg-[#FFDE47] selection:text-[#000000] relative">
+      <body className="bg-background text-foreground min-h-full flex flex-col font-sans selection:bg-[#FF2E93] selection:text-[#ffffff] relative">
         <GameProvider>
           {/* Custom Pixelated Cursor */}
           <PixelCursor />

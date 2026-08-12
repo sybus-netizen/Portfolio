@@ -77,7 +77,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen py-24 bg-[#FAF6EE] relative select-none">
+    <div className="min-h-screen py-24 bg-background relative select-none">
       <div className="max-w-6xl mx-auto px-6 md:px-12 space-y-16 sm:space-y-24 relative z-10">
         
         {/* Header - Real bio text */}
@@ -87,7 +87,7 @@ export default function AboutPage() {
               <span className="inline-block px-3 py-1 bg-[#FF5964] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">THE ARTIST</span>
             </FadeIn>
             <FadeIn direction="up" delay={0.1}>
-              <h1 className="font-retro text-2xl sm:text-3.5xl font-bold tracking-tight text-black uppercase leading-tight">
+              <h1 className="font-retro text-2xl sm:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-tight">
                 About <br />
                 Shubham Shukla
               </h1>
@@ -109,7 +109,7 @@ export default function AboutPage() {
               <span className="inline-block px-3 py-1 bg-[#3A86C8] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">SPECIALIZATION</span>
             </FadeIn>
             <FadeIn direction="up" delay={0.1}>
-              <h2 className="font-retro text-xl sm:text-2xl font-bold text-black uppercase leading-none">
+              <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
                 Content Expertise
               </h2>
             </FadeIn>
@@ -120,7 +120,7 @@ export default function AboutPage() {
               <FadeIn key={index} direction="up" delay={index * 0.04}>
                 <div className="retro-card p-4 bg-[#FFFFFF] border-3 border-black shadow-[3px_3px_0px_#000] flex items-center gap-3 select-none h-full hover:bg-[#FFDE47]/10 transition-colors">
                   <span className="text-xl shrink-0">{item.emoji}</span>
-                  <span className="font-retro text-[8px] sm:text-[9px] font-bold text-black uppercase tracking-wider leading-tight">
+                  <span className="font-retro text-[8px] sm:text-[9px] font-bold text-foreground uppercase tracking-wider leading-tight">
                     {item.name}
                   </span>
                 </div>
@@ -133,10 +133,10 @@ export default function AboutPage() {
         <div className="space-y-10 text-left">
           <div className="space-y-4">
             <FadeIn direction="up">
-              <span className="inline-block px-3 py-1 bg-[#3BCEAC] border-2 border-black text-black font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">CORE FOCUS</span>
+              <span className="inline-block px-3 py-1 bg-[#3BCEAC] border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">CORE FOCUS</span>
             </FadeIn>
             <FadeIn direction="up" delay={0.1}>
-              <h2 className="font-retro text-xl sm:text-2xl font-bold text-black uppercase leading-none">
+              <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
                 Creative Philosophy
               </h2>
             </FadeIn>
@@ -147,11 +147,11 @@ export default function AboutPage() {
               <FadeIn key={index} direction="up" delay={index * 0.08}>
                 <div className="retro-card p-6 bg-[#FFFFFF] border-3 border-black shadow-[4px_4px_0px_#000] h-full flex flex-col justify-between">
                   <div className="space-y-5">
-                    <div className="w-11 h-11 rounded-sm border-2 border-black bg-[#FAF6EE] flex items-center justify-center text-xl shadow-[1.5px_1.5px_0px_#000] select-none">
+                    <div className="w-11 h-11 rounded-sm border-2 border-black bg-background flex items-center justify-center text-xl shadow-[1.5px_1.5px_0px_#000] select-none">
                       {philo.emoji}
                     </div>
                     <div className="space-y-2">
-                      <h3 className="font-retro text-[10px] sm:text-xs font-bold text-black uppercase tracking-wider">
+                      <h3 className="font-retro text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-wider">
                         {philo.title}
                       </h3>
                       <p className="text-xs text-gray-600 leading-relaxed font-sans font-light">
@@ -172,9 +172,9 @@ export default function AboutPage() {
           <div className="space-y-10">
             <div className="space-y-4">
               <FadeIn direction="up">
-                <span className="inline-block px-3 py-1 bg-[#FFDE47] border-2 border-black text-black font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">EXPERIENCE</span>
+                <span className="inline-block px-3 py-1 bg-[#FFDE47] border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">EXPERIENCE</span>
               </FadeIn>
-              <h2 className="font-retro text-xl sm:text-2xl font-bold text-black uppercase leading-none">
+              <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
                 Work History
               </h2>
             </div>
@@ -185,7 +185,7 @@ export default function AboutPage() {
                   <div className="absolute left-[-32px] top-1.5 w-4 h-4 rounded-full border-2 border-black bg-[#FFDE47]" />
                   <div className="retro-card p-5 bg-[#FFFFFF] border-3 border-black shadow-[3px_3px_0px_#000]">
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b-2 border-black/10 pb-2 mb-3">
-                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-black uppercase leading-none">{item.role}</h3>
+                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-foreground uppercase leading-none">{item.role}</h3>
                       <span className="font-retro text-[7px] text-[#FF5964] font-bold">[{item.duration}]</span>
                     </div>
                     <div className="font-sans text-xs space-y-3">
@@ -211,7 +211,7 @@ export default function AboutPage() {
               <FadeIn direction="up">
                 <span className="inline-block px-3 py-1 bg-[#FF5964] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">ACADEMIC</span>
               </FadeIn>
-              <h2 className="font-retro text-xl sm:text-2xl font-bold text-black uppercase leading-none">
+              <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
                 Education
               </h2>
             </div>
@@ -222,7 +222,7 @@ export default function AboutPage() {
                   <div className="absolute left-[-32px] top-1.5 w-4 h-4 rounded-full border-2 border-black bg-[#FF5964]" />
                   <div className="retro-card p-5 bg-[#FFFFFF] border-3 border-black shadow-[3px_3px_0px_#000]">
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b-2 border-black/10 pb-2 mb-3">
-                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-black uppercase leading-none">{item.role}</h3>
+                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-foreground uppercase leading-none">{item.role}</h3>
                       <span className="font-retro text-[7px] text-[#FFDE47] font-bold">[{item.duration}]</span>
                     </div>
                     <div className="font-sans text-xs space-y-3">

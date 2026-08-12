@@ -101,7 +101,7 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full select-none py-4 px-6 md:px-12",
-        scrolled && !isOpen ? "bg-[#FAF6EE]/90 backdrop-blur-md border-b-3 border-black" : "bg-transparent"
+        scrolled && !isOpen ? "bg-background/90 backdrop-blur-md border-b-3 border-black" : "bg-transparent"
       )}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between relative z-50">
@@ -134,8 +134,8 @@ export default function Navbar() {
                     isActive 
                       ? "bg-[#FFDE47] text-black border-black shadow-[1px_1px_0px_#000] translate-y-[-1px]" 
                       : isTarget
-                      ? "bg-[#FAF6EE] text-black border-black/30"
-                      : "text-black/50 border-transparent hover:text-black"
+                      ? "bg-background text-black border-slate-700"
+                      : "text-slate-400 border-transparent hover:text-black"
                   )}
                 >
                   {link.label}
@@ -149,7 +149,7 @@ export default function Navbar() {
                 playClick();
                 toggleSound();
               }}
-              className="px-3.5 py-2 font-retro text-[9px] uppercase tracking-wide transition-all duration-100 cursor-pointer select-none rounded-sm border-2 border-transparent text-black/50 hover:text-black focus:outline-none flex items-center justify-center min-w-[32px] h-[34px] hover:bg-[#FAF6EE] hover:border-black/30"
+              className="px-3.5 py-2 font-retro text-[9px] uppercase tracking-wide transition-all duration-100 cursor-pointer select-none rounded-sm border-2 border-transparent text-slate-400 hover:text-black focus:outline-none flex items-center justify-center min-w-[32px] h-[34px] hover:bg-background hover:border-slate-700"
               title={soundOn ? "Mute Sounds" : "Unmute Sounds"}
             >
               {soundOn ? "🔊" : "🔇"}
@@ -207,7 +207,7 @@ export default function Navbar() {
                   onClick={(e) => handleMobileLinkClick(e, link.id)}
                   className={cn(
                     "w-full py-3 text-center font-retro text-[10px] uppercase border-3 border-black shadow-[3px_3px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all",
-                    isActive ? "bg-[#FFDE47] text-black" : "bg-[#FAF6EE] text-black"
+                    isActive ? "bg-[#FFDE47] text-black" : "bg-background text-black"
                   )}
                 >
                   {link.label}

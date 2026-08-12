@@ -36,7 +36,7 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="py-20 border-t-3 border-black bg-[#FAF6EE] relative overflow-hidden"
+      className="py-20 border-t-3 border-black bg-background relative overflow-hidden"
     >
       <motion.div
         onViewportEnter={() => {
@@ -52,23 +52,23 @@ export default function Contact() {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF5964] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] rounded-sm animate-[heartPulse_1.5s_infinite]">
             FINAL STAGE
           </div>
-          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-black uppercase leading-none">
+          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
             Ready to Collaborate
           </h2>
-          <p className="text-xs sm:text-sm text-[#555555] font-sans">
+          <p className="text-xs sm:text-sm text-slate-300 font-sans">
             Whether you're hiring, collaborating, or just want to discuss a creative idea, I'd love to hear from you.
           </p>
         </div>
 
         {/* ARCADE HIGH SCORE PANEL */}
-        <div className="retro-card p-6 sm:p-8 bg-[#FFFFFF] border-4 border-black w-full max-w-lg shadow-[6px_6px_0px_#000] space-y-6 relative mb-8">
+        <div className="retro-card p-6 sm:p-8 bg-card border-4 border-black w-full max-w-lg shadow-[6px_6px_0px_#000] space-y-6 relative mb-8">
           
           {/* Credit Slots */}
           <div className="flex justify-between items-center border-b-2 border-black pb-4 select-none">
-            <span className="font-retro text-[8px] text-black/50">INSERT COIN TO START</span>
+            <span className="font-retro text-[8px] text-foreground/50">INSERT COIN TO START</span>
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#3BCEAC] animate-[heartPulse_1s_infinite]" />
-              <span className="font-retro text-[8px] font-bold text-black">CREDITS: {credits}</span>
+              <span className="font-retro text-[8px] font-bold text-foreground">CREDITS: {credits}</span>
             </div>
           </div>
 
@@ -77,8 +77,8 @@ export default function Contact() {
             {/* EMAIL ACTION LINE */}
             <div className="flex items-center justify-between gap-4 flex-wrap w-full">
               <div className="text-left space-y-0.5">
-                <span className="font-retro text-[8px] text-black/40 uppercase block">EMAIL ADDR</span>
-                <span className="font-mono text-xs sm:text-sm font-bold text-black break-all">
+                <span className="font-retro text-[8px] text-foreground/40 uppercase block">EMAIL ADDR</span>
+                <span className="font-mono text-xs sm:text-sm font-bold text-foreground break-all">
                   shubhamshukla327@gmail.com
                 </span>
               </div>
@@ -86,9 +86,9 @@ export default function Contact() {
                 <button
                   onClick={() => copyToClipboard("shubhamshukla327@gmail.com", "Email")}
                   aria-label="Copy email"
-                  className="p-2 border-2 border-black bg-white rounded-sm active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none cursor-pointer"
+                  className="p-2 border-2 border-black bg-card rounded-sm active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none cursor-pointer"
                 >
-                  <Copy className="w-3.5 h-3.5 text-black" />
+                  <Copy className="w-3.5 h-3.5 text-foreground" />
                 </button>
                 <button
                   onClick={handleEmailClick}
@@ -100,10 +100,10 @@ export default function Contact() {
             </div>
 
             {/* PHONE ACTION LINE */}
-            <div className="flex items-center justify-between gap-4 flex-wrap w-full pt-3 border-t-2 border-dashed border-black/10">
+            <div className="flex items-center justify-between gap-4 flex-wrap w-full pt-3 border-t-2 border-dashed border-slate-800">
               <div className="text-left space-y-0.5">
-                <span className="font-retro text-[8px] text-black/40 uppercase block">PHONE NUM</span>
-                <span className="font-mono text-xs sm:text-sm font-bold text-black">
+                <span className="font-retro text-[8px] text-foreground/40 uppercase block">PHONE NUM</span>
+                <span className="font-mono text-xs sm:text-sm font-bold text-foreground">
                   +91 74777 27544
                 </span>
               </div>
@@ -111,9 +111,9 @@ export default function Contact() {
                 <button
                   onClick={() => copyToClipboard("+91 74777 27544", "Phone")}
                   aria-label="Copy phone number"
-                  className="p-2 border-2 border-black bg-white rounded-sm active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none cursor-pointer"
+                  className="p-2 border-2 border-black bg-card rounded-sm active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none cursor-pointer"
                 >
-                  <Copy className="w-3.5 h-3.5 text-black" />
+                  <Copy className="w-3.5 h-3.5 text-foreground" />
                 </button>
                 <button
                   onClick={handlePhoneClick}
@@ -128,23 +128,23 @@ export default function Contact() {
 
           {/* Subtext info */}
           <div className="border-t-2 border-black pt-4 flex justify-between items-center select-none text-[8px]">
-            <span className="font-retro text-black/40">HOST_IP: LOCALHOST</span>
+            <span className="font-retro text-foreground/40">HOST_IP: LOCALHOST</span>
             <span className="font-retro text-[#FF5964] font-bold">1P READY ▶</span>
           </div>
 
         </div>
 
         {/* Availability Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFFFF] border-2 border-black text-black shadow-[2.5px_2.5px_0px_#000] select-none rounded-sm mb-12">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-card border-2 border-black text-foreground shadow-[2.5px_2.5px_0px_#000] select-none rounded-sm mb-12">
           <span className="w-2.5 h-2.5 rounded-full bg-[#3BCEAC] animate-[heartPulse_1s_infinite]" />
-          <span className="font-retro text-[8px] uppercase font-bold text-black">
+          <span className="font-retro text-[8px] uppercase font-bold text-foreground">
             Active Status: Open for work
           </span>
         </div>
 
         {/* Signature */}
-        <div className="text-center select-none border-t border-black/10 pt-4 w-full">
-          <p className="font-retro text-[8px] uppercase tracking-[0.2em] text-black/40">
+        <div className="text-center select-none border-t border-slate-800 pt-4 w-full">
+          <p className="font-retro text-[8px] uppercase tracking-[0.2em] text-foreground/40">
             THANK YOU FOR PLAYING!
           </p>
         </div>
@@ -164,7 +164,7 @@ export default function Contact() {
               left: "50%",
               zIndex: 9999
             }}
-            className="px-5 py-3 border-3 border-black bg-[#FFDE47] text-black font-retro text-[8px] uppercase tracking-wider shadow-[3px_3px_0px_#000] flex items-center gap-2 select-none"
+            className="px-5 py-3 border-3 border-black bg-[#FFDE47] text-foreground font-retro text-[8px] uppercase tracking-wider shadow-[3px_3px_0px_#000] flex items-center gap-2 select-none"
           >
             <span>★</span> {toast.message}
           </motion.div>

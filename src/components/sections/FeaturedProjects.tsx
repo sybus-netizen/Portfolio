@@ -25,7 +25,7 @@ export default function FeaturedProjects() {
     <section 
       id="projects" 
       ref={sectionRef} 
-      className="py-20 border-t-3 border-black bg-[#FAF6EE] overflow-hidden"
+      className="py-20 border-t-3 border-black bg-background overflow-hidden"
     >
       <motion.div
         onViewportEnter={() => unlockQuest("projects", "Work Completed")}
@@ -39,10 +39,10 @@ export default function FeaturedProjects() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#3A86C8] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">
               STAGE 03
             </div>
-            <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-black uppercase leading-none">
+            <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
               Featured Work
             </h2>
-            <p className="text-xs sm:text-sm text-[#555555] font-sans">
+            <p className="text-xs sm:text-sm text-slate-300 font-sans">
               A handpicked selection of my latest design products, commercial video edits, and motion graphic assets.
             </p>
           </FadeIn>
@@ -74,12 +74,12 @@ export default function FeaturedProjects() {
                 <motion.div
                   whileHover={{ y: -6, scale: 1.015, boxShadow: "6px 6px 0px #000" }}
                   whileTap={{ y: 2, scale: 0.985, boxShadow: "2px 2px 0px #000" }}
-                  className="retro-card p-4 bg-[#FFFFFF] border-3 border-black h-full flex flex-col justify-between shadow-[4px_4px_0px_#000] group relative overflow-hidden text-left"
+                  className="retro-card p-4 bg-card border-3 border-black h-full flex flex-col justify-between shadow-[4px_4px_0px_#000] group relative overflow-hidden text-left"
                 >
                   
                   {/* Cartridge Header Ridge */}
                   <div className="flex justify-between items-center border-b-2 border-black pb-3 mb-4 select-none">
-                    <span className="font-retro text-[7px] text-black/40">MODEL: S-SLOT_{project.year}</span>
+                    <span className="font-retro text-[7px] text-foreground/40">MODEL: S-SLOT_{project.year}</span>
                     <div className="flex gap-1">
                       <span className="w-2.5 h-2.5 border border-black bg-black/10 rounded-full" />
                       <span className="w-2.5 h-2.5 border border-black bg-black/10 rounded-full" />
@@ -100,7 +100,7 @@ export default function FeaturedProjects() {
                     
                     {/* Hover Overlay - Flashing PRESS ENTER TO LOAD */}
                     <div className="absolute inset-0 bg-black/75 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center pointer-events-none z-10 p-4">
-                      <div className="px-3.5 py-2 bg-[#FFDE47] border-2 border-black text-black font-retro text-[8px] uppercase shadow-[2.5px_2.5px_0px_#000] scale-90 group-hover:scale-100 transition-transform duration-200 animate-[heartPulse_0.8s_infinite] tracking-wider">
+                      <div className="px-3.5 py-2 bg-[#FFDE47] border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2.5px_2.5px_0px_#000] scale-90 group-hover:scale-100 transition-transform duration-200 animate-[heartPulse_0.8s_infinite] tracking-wider">
                         Press Enter to Load ▶
                       </div>
                     </div>
@@ -112,25 +112,25 @@ export default function FeaturedProjects() {
                       {/* Metadata Header */}
                       <div className="flex items-center justify-between text-[8px] font-retro uppercase text-[#FF5964] font-bold">
                         <span>{project.category}</span>
-                        <span className="text-black/30 font-mono">[{project.year}]</span>
+                        <span className="text-foreground/30 font-mono">[{project.year}]</span>
                       </div>
 
-                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-black uppercase group-hover:text-[#FF5964] transition-colors leading-tight">
+                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-foreground uppercase group-hover:text-[#FF5964] transition-colors leading-tight">
                         {project.title}
                       </h3>
                       
-                      <p className="text-xs text-[#555555] font-sans font-light leading-relaxed line-clamp-2 md:line-clamp-3">
+                      <p className="text-xs text-slate-300 font-sans font-light leading-relaxed line-clamp-2 md:line-clamp-3">
                         {project.description}
                       </p>
                     </div>
 
                     {/* Inventory Labels / Tags */}
-                    <div className="pt-3 border-t-2 border-dashed border-black/10 space-y-2">
+                    <div className="pt-3 border-t-2 border-dashed border-slate-800 space-y-2">
                       <div className="flex flex-wrap gap-1">
                         {project.tags.slice(0, 2).map((tag) => (
                           <span
                             key={tag}
-                            className="text-[9px] font-sans text-black/60 bg-[#FAF6EE] border border-black/20 px-2 py-0.5 rounded-sm"
+                            className="text-[9px] font-sans text-foreground/60 bg-background border border-black/20 px-2 py-0.5 rounded-sm"
                           >
                             #{tag}
                           </span>
