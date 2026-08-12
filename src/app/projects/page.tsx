@@ -7,83 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Button } from "@/components/ui/Button";
 import { getAssetPath } from "@/lib/utils";
-
+import { projectsData } from "@/data/projects";
 const categories = ["All", "Brand Identity", "Social & Marketing", "Video & Motion"];
-
-const projectsData = [
-  {
-    id: "nebula-branding",
-    title: "Nebula Brand Identity",
-    category: "Brand Identity",
-    role: "Lead Designer",
-    year: "2025",
-    description: "A complete visual identity redesign for a creative agency, featuring neon-minimal packaging, custom corporate typography, and stationery mockups.",
-    image: "/assets/projects/branding.jpg",
-    technologies: ["Photoshop", "Illustrator", "Figma"],
-    tags: ["Visual Identity", "Branding Assets", "Packaging Layout"],
-    cartridgeColor: "bg-[#FFDE47]"
-  },
-  {
-    id: "vanguard-film",
-    title: "Vanguard Short Film",
-    category: "Video & Motion",
-    role: "Lead Editor",
-    year: "2024",
-    description: "High-end cinematic video assembly featuring custom sound design, dramatic color grading, complex multitrack pacing, and emotional rhythm.",
-    image: "/assets/projects/video.jpg",
-    technologies: ["Premiere Pro", "After Effects", "Resolve"],
-    tags: ["Color Grading", "Cinematic Cut", "Sound Design"],
-    cartridgeColor: "bg-[#FF5964]"
-  },
-  {
-    id: "abstract-dimensions",
-    title: "Abstract Dimensions",
-    category: "Video & Motion",
-    role: "VFX Artist",
-    year: "2025",
-    description: "Dynamic VFX composition rendering futuristic floating geometric structures, light trails, keyframe animation, and custom glow layers.",
-    image: "/assets/projects/motion.jpg",
-    technologies: ["After Effects", "Cinema 4D", "VFX Suite"],
-    tags: ["3D Compositing", "Keyframe Animation", "Glow Effects"],
-    cartridgeColor: "bg-[#3A86C8]"
-  },
-  {
-    id: "aurora-poster",
-    title: "Aurora Poster Series",
-    category: "Social & Marketing",
-    role: "Visual Artist",
-    year: "2025",
-    description: "A series of futuristic poster designs exploring cosmic layouts, abstract glowing shapes, and vibrant dual-tone gradients.",
-    image: "/assets/projects/branding.jpg",
-    technologies: ["Photoshop", "Illustrator"],
-    tags: ["Print Layout", "Color Theory", "Composition"],
-    cartridgeColor: "bg-[#FFDE47]"
-  },
-  {
-    id: "music-video",
-    title: "Chroma Beat Promo",
-    category: "Video & Motion",
-    role: "Lead Editor",
-    year: "2024",
-    description: "Rhythmic and fast-paced editing sequence utilizing digital light glitches, split-screen configurations, and precision beat mapping.",
-    image: "/assets/projects/video.jpg",
-    technologies: ["Premiere Pro", "After Effects"],
-    tags: ["Beat Syncing", "Glitch Effects", "Fast Cut"],
-    cartridgeColor: "bg-[#FF5964]"
-  },
-  {
-    id: "logo-reveal",
-    title: "Vortex Logo Sting",
-    category: "Video & Motion",
-    role: "Animator",
-    year: "2025",
-    description: "A high-impact animated logo reveal for a digital media corporation, featuring vector morphing and particle glow effects.",
-    image: "/assets/projects/motion.jpg",
-    technologies: ["After Effects", "Illustrator"],
-    tags: ["Logo Animation", "Morphing Assets", "Particles"],
-    cartridgeColor: "bg-[#3A86C8]"
-  }
-];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -167,6 +92,7 @@ export default function ProjectsPage() {
                         src={getAssetPath(project.image)}
                         alt={project.title}
                         fill
+                        unoptimized={true}
                         sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         loading="lazy"

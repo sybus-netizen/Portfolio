@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { experienceItems } from "@/components/sections/TimelineSection";
+import { experienceItems } from "@/data/experience";
 
 interface TimelineItem {
   id: string;
@@ -96,7 +96,7 @@ export default function AboutPage() {
           <div className="lg:col-span-7 pt-4">
             <FadeIn direction="up" delay={0.2} className="text-gray-700 leading-relaxed font-sans text-sm sm:text-base max-w-xl font-light">
               <p>
-                I'm a Graphic Designer and Video Editor with nearly 4 years of experience creating branding, social media creatives, YouTube videos, advertisements, promotional content, and educational videos. I combine creativity with strategy to create visuals that are engaging, impactful, and purpose-driven.
+                I'm a Graphic Designer and Video Editor with over 3.8 years of experience creating branding, social media creatives, YouTube videos, advertisements, promotional content, and educational videos. I combine creativity with strategy to create visuals that are engaging, impactful, and purpose-driven.
               </p>
             </FadeIn>
           </div>

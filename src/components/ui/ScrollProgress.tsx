@@ -16,8 +16,7 @@ const sectionsList: SectionNode[] = [
   { id: "about",    label: "About",    index: "02" },
   { id: "skills",   label: "Skills",   index: "03" },
   { id: "projects", label: "Work",     index: "04" },
-  { id: "timeline", label: "Quest",     index: "05" },
-  { id: "contact",  label: "Contact",  index: "06" },
+  { id: "contact",  label: "Contact",  index: "05" },
 ];
 
 export function ScrollProgress() {

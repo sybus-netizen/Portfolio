@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Award } from "lucide-react";
 import { cn, getAssetPath } from "@/lib/utils";
 import { useGameSystem } from "@/context/GameContext";
+import { experienceItems } from "@/data/experience";
 
 interface OrbitTool {
   name: string;
@@ -59,7 +60,7 @@ const PixelSparkleMini = ({ style }: { style?: React.CSSProperties }) => (
 );
 
 const briefSegments = [
-  { text: "Visual Content Creator with 4+ years of experience crafting engaging visual experiences through ", highlight: false },
+  { text: "Visual Content Creator with 3.8 years of experience crafting engaging visual experiences through ", highlight: false },
   { text: "Graphic Design", highlight: true },
   { text: ", ", highlight: false },
   { text: "Branding", highlight: true },
@@ -293,7 +294,7 @@ export default function Hero() {
               VISUAL CONTENT CREATOR
             </p>
             <p className="font-retro text-[8px] sm:text-[9px] text-black/50 uppercase tracking-widest leading-none mt-1">
-              4+ YEARS OF EXPERIENCE • INDIA
+              3.8 YEARS OF EXPERIENCE • INDIA
             </p>
           </div>
 
@@ -328,51 +329,29 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* CHARACTER STATS SCREEN */}
-          <div className="w-full grid grid-cols-2 gap-4">
-            <div className="retro-card p-4 flex flex-col justify-center">
-              <div className="font-retro text-[8px] text-black/50 uppercase leading-none mb-2 select-none">EXPERIENCE (EXP)</div>
-              <div className="flex items-center justify-between font-retro text-[10px] text-black font-bold select-none">
-                <span>4 YEARS</span>
-                <span className="text-[#3BCEAC]">MAX</span>
-              </div>
-              <div className="w-full h-3 border-2 border-black bg-[#FAF6EE] mt-2 p-[2px] rounded-sm select-none">
-                <div className="h-full bg-[#3BCEAC] w-full" />
-              </div>
-            </div>
 
-            <div className="retro-card p-4 flex flex-col justify-center" onClick={triggerCelebrate}>
-              <div className="font-retro text-[8px] text-black/50 uppercase leading-none mb-2 select-none">HP STATS (CREATIVITY)</div>
-              <div className="flex items-center justify-between font-retro text-[10px] text-black font-bold select-none">
-                <span>99 / 99</span>
-                <span className="text-[#FF5964]">❤❤❤</span>
-              </div>
-              <div className="w-full h-3 border-2 border-black bg-[#FAF6EE] mt-2 p-[2px] rounded-sm select-none">
-                <div className="h-full bg-[#FF5964] w-full" />
-              </div>
+          {/* QUEST HISTORY (WORK EXPERIENCE) */}
+          <div className="w-full retro-card p-4 sm:p-5 bg-white border-4 border-black relative">
+            <div className="absolute top-[-12px] left-6 px-2.5 py-0.5 bg-black text-white font-retro text-[8px] uppercase rounded-sm select-none">
+              WORK EXPERIENCE
             </div>
-          </div>
-
-          {/* ACTION BUTTONS */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full pt-4">
-            <button 
-              onClick={handleStartGame} 
-              className="w-full sm:w-auto"
-            >
-              <div className="retro-btn w-full sm:w-auto shadow-[3.5px_3.5px_0px_#000] flex items-center justify-center gap-2">
-                <span>🎨</span> View Projects
-              </div>
-            </button>
-            
-            <a
-              href="https://drive.google.com/file/d/1FT6n0wjmBkwOFaMGGtooEYybnv6iXhd_/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="retro-btn retro-btn-outline w-full sm:w-auto shadow-[3.5px_3.5px_0px_#000] gap-2"
-              onClick={() => unlockAchievement("view-resume", "Read Resume.TXT", "📑")}
-            >
-              <span>📄</span> Download Resume
-            </a>
+            <div className="space-y-3 pt-2">
+              {experienceItems.map((item) => (
+                <div key={item.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-left border-b border-black/10 pb-2.5 last:border-0 last:pb-0">
+                  <div>
+                    <div className="font-retro text-[8px] sm:text-[9px] font-bold text-black uppercase leading-tight">
+                      {item.role}
+                    </div>
+                    <div className="text-[10px] text-gray-500 font-sans font-semibold leading-tight mt-0.5">
+                      {item.company}
+                    </div>
+                  </div>
+                  <div className="font-retro text-[7px] sm:text-[8px] text-[#FF5964] font-bold shrink-0 sm:text-right leading-tight">
+                    {item.duration}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
@@ -494,6 +473,7 @@ export default function Hero() {
                       alt={tool.name}
                       width={20}
                       height={20}
+                      unoptimized={true}
                       className="object-contain w-5 h-5"
                     />
                   )}
@@ -531,6 +511,30 @@ export default function Hero() {
                 </motion.div>
               );
             })}
+          </div>
+
+          {/* ACTION BUTTONS */}
+          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-[340px] mt-6 relative z-20">
+            <button 
+              onClick={handleStartGame} 
+              className="w-full sm:flex-1"
+            >
+              <div className="retro-btn w-full shadow-[3px_3px_0px_#000] flex items-center justify-center gap-1.5 py-2.5 text-[8px] sm:text-[9px] text-center">
+                <span>🎨</span>
+                <span className="text-center font-retro leading-tight">View Projects</span>
+              </div>
+            </button>
+            
+            <a
+              href="https://drive.google.com/file/d/1FT6n0wjmBkwOFaMGGtooEYybnv6iXhd_/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="retro-btn retro-btn-outline w-full sm:flex-1 shadow-[3px_3px_0px_#000] flex items-center justify-center gap-1.5 py-2.5 text-[8px] sm:text-[9px] text-center"
+              onClick={() => unlockAchievement("view-resume", "Read Resume.TXT", "📑")}
+            >
+              <span>📄</span>
+              <span className="text-center font-retro leading-tight">Download Resume</span>
+            </a>
           </div>
 
         </div>

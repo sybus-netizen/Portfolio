@@ -38,9 +38,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [soundOn, setSoundOn] = useState(true);
 
   // Audio References
-  const clickAudioRef = useRef<HTMLAudioElement | null>(null);
-  const startAudioRef = useRef<HTMLAudioElement | null>(null);
-  const achievementAudioRef = useRef<HTMLAudioElement | null>(null);
+  const buttonAudioRef = useRef<HTMLAudioElement | null>(null);
 
   // Initialize and preload sounds after first interaction
   useEffect(() => {
@@ -52,20 +50,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     }
 
     const initAudio = () => {
-      if (!clickAudioRef.current) {
-        clickAudioRef.current = new Audio(getAssetPath("/sounds/click.mp3"));
-        clickAudioRef.current.volume = 0.2;
-        clickAudioRef.current.preload = "auto";
-      }
-      if (!startAudioRef.current) {
-        startAudioRef.current = new Audio(getAssetPath("/sounds/start.mp3"));
-        startAudioRef.current.volume = 0.2;
-        startAudioRef.current.preload = "auto";
-      }
-      if (!achievementAudioRef.current) {
-        achievementAudioRef.current = new Audio(getAssetPath("/sounds/achievement.mp3"));
-        achievementAudioRef.current.volume = 0.2;
-        achievementAudioRef.current.preload = "auto";
+      if (!buttonAudioRef.current) {
+        buttonAudioRef.current = new Audio(getAssetPath("/sounds/button.mp3"));
+        buttonAudioRef.current.volume = 0.2;
+        buttonAudioRef.current.preload = "auto";
       }
       
       window.removeEventListener("click", initAudio);
@@ -82,21 +70,21 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const playClick = () => {
-    if (!soundOn || !clickAudioRef.current) return;
-    clickAudioRef.current.currentTime = 0;
-    clickAudioRef.current.play().catch(() => {});
+    if (!soundOn || !buttonAudioRef.current) return;
+    buttonAudioRef.current.currentTime = 0;
+    buttonAudioRef.current.play().catch(() => {});
   };
 
   const playStart = () => {
-    if (!soundOn || !startAudioRef.current) return;
-    startAudioRef.current.currentTime = 0;
-    startAudioRef.current.play().catch(() => {});
+    if (!soundOn || !buttonAudioRef.current) return;
+    buttonAudioRef.current.currentTime = 0;
+    buttonAudioRef.current.play().catch(() => {});
   };
 
   const playAchievement = () => {
-    if (!soundOn || !achievementAudioRef.current) return;
-    achievementAudioRef.current.currentTime = 0;
-    achievementAudioRef.current.play().catch(() => {});
+    if (!soundOn || !buttonAudioRef.current) return;
+    buttonAudioRef.current.currentTime = 0;
+    buttonAudioRef.current.play().catch(() => {});
   };
 
   const toggleSound = () => {

@@ -75,14 +75,14 @@ export default function Contact() {
           <div className="space-y-4">
             
             {/* EMAIL ACTION LINE */}
-            <div className="flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap">
+            <div className="flex items-center justify-between gap-4 flex-wrap w-full">
               <div className="text-left space-y-0.5">
                 <span className="font-retro text-[8px] text-black/40 uppercase block">EMAIL ADDR</span>
                 <span className="font-mono text-xs sm:text-sm font-bold text-black break-all">
                   shubhamshukla327@gmail.com
                 </span>
               </div>
-              <div className="flex gap-2 w-full sm:w-auto justify-end">
+              <div className="flex gap-3 items-center justify-start sm:justify-end w-full sm:w-auto">
                 <button
                   onClick={() => copyToClipboard("shubhamshukla327@gmail.com", "Email")}
                   aria-label="Copy email"
@@ -100,14 +100,14 @@ export default function Contact() {
             </div>
 
             {/* PHONE ACTION LINE */}
-            <div className="flex items-center justify-between gap-3 flex-wrap sm:flex-nowrap pt-3 border-t-2 border-dashed border-black/10">
+            <div className="flex items-center justify-between gap-4 flex-wrap w-full pt-3 border-t-2 border-dashed border-black/10">
               <div className="text-left space-y-0.5">
                 <span className="font-retro text-[8px] text-black/40 uppercase block">PHONE NUM</span>
                 <span className="font-mono text-xs sm:text-sm font-bold text-black">
                   +91 74777 27544
                 </span>
               </div>
-              <div className="flex gap-2 w-full sm:w-auto justify-end">
+              <div className="flex gap-3 items-center justify-start sm:justify-end w-full sm:w-auto">
                 <button
                   onClick={() => copyToClipboard("+91 74777 27544", "Phone")}
                   aria-label="Copy phone number"
