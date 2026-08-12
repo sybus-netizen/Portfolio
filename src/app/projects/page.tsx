@@ -8,7 +8,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { Button } from "@/components/ui/Button";
 import { getAssetPath } from "@/lib/utils";
 import { projectsData } from "@/data/projects";
-const categories = ["All", "Brand Identity", "Social & Marketing", "Video & Motion"];
+const categories = ["All", "Social & Marketing", "Video & Motion"];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
