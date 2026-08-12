@@ -200,31 +200,35 @@ export default function RetroTitleScreen() {
   const iconIdCounter = useRef(0);
   const particleIdCounter = useRef(0);
 
-  // Initialize Falling Software Icons (max 7 active)
+  // Initialize Software Icons pre-positioned on screen (no drop-in from top)
   useEffect(() => {
     if (!isTitleActive) return;
 
-    const initialIcons: FallingIcon[] = Array.from({ length: 7 }).map((_, index) => {
+    const initialPositions = [
+      { left: 8, top: 22, vy: 0.06, rotDir: 0.2 },
+      { left: 22, top: 62, vy: -0.07, rotDir: -0.25 },
+      { left: 12, top: 76, vy: 0.05, rotDir: 0.15 },
+      { left: 78, top: 24, vy: -0.06, rotDir: 0.2 },
+      { left: 88, top: 54, vy: 0.07, rotDir: -0.2 },
+      { left: 80, top: 78, vy: -0.05, rotDir: 0.18 }
+    ];
+
+    const initialIcons: FallingIcon[] = initialPositions.map((pos, index) => {
       const template = SOFTWARE_ICONS[index % SOFTWARE_ICONS.length];
-      const side = Math.random() > 0.5 ? "left" : "right";
-      const leftCol = side === "left" 
-        ? 3 + Math.random() * 25 // 3% to 28%
-        : 72 + Math.random() * 23; // 72% to 95%
-      
       iconIdCounter.current += 1;
       return {
         id: iconIdCounter.current,
         src: template.src,
         color: template.color,
         name: template.name,
-        left: leftCol,
-        top: -20 - (Math.random() * 40), // Staggered spawn heights
-        size: 42 + Math.floor(Math.random() * 24), // 42px to 66px
-        opacity: 0.75 + Math.random() * 0.25,
-        speed: 0.12 + Math.random() * 0.12,
-        rotation: -20 + Math.random() * 40,
-        rotDir: -0.4 + Math.random() * 0.8,
-        drift: -0.06 + Math.random() * 0.12,
+        left: pos.left,
+        top: pos.top,
+        size: 48 + (index % 3) * 6,
+        opacity: 0.85,
+        speed: pos.vy,
+        rotation: (index * 45) % 360,
+        rotDir: pos.rotDir,
+        drift: 0,
         bounceCount: 0
       };
     });
@@ -285,59 +289,26 @@ export default function RetroTitleScreen() {
       });
 
     } else {
-      // ── STANDARD INDEFINITE FALLING PHASE ──
+      // ── CONTINUOUS FLOATING BOUNCE PHASE ──
       setFallingIcons((prev) => {
         return prev.map((icon) => {
           let top = icon.top + icon.speed;
-          let left = icon.left + icon.drift;
           let speed = icon.speed;
-          let bounceCount = icon.bounceCount;
-          let opacity = icon.opacity;
           let rotation = icon.rotation + icon.rotDir;
 
-          // Keep within horizontal bounds per column
-          if (left < 1 || (left > 30 && left < 70) || left > 98) {
-            // Reverse drift direction on bounds collision
-            icon.drift = -icon.drift;
-          }
-
-          // Bottom Platform Ground Bounce trigger (starts at approx 84% height)
-          if (top >= 83 && bounceCount === 0) {
-            speed = -speed * 0.45; // Bounce up
-            bounceCount = 1;
-            opacity = opacity * 0.65; // Fade slightly on impact
-          }
-
-          // Second impact fall off
-          if (bounceCount === 1 && speed > 0 && top >= 84) {
-            speed = -speed * 0.3; // Small second bounce
-            bounceCount = 2;
-            opacity = opacity * 0.4;
-          }
-
-          // Respawn once completely off-screen or faded
-          if (top >= 92 || opacity <= 0.1) {
-            const template = SOFTWARE_ICONS[Math.floor(Math.random() * SOFTWARE_ICONS.length)];
-            const side = Math.random() > 0.5 ? "left" : "right";
-            const leftCol = side === "left" 
-              ? 3 + Math.random() * 25 // 3% to 28%
-              : 72 + Math.random() * 23; // 72% to 95%
-            
-            top = -12;
-            left = leftCol;
-            speed = 0.12 + Math.random() * 0.12;
-            bounceCount = 0;
-            opacity = 0.75 + Math.random() * 0.25;
-            rotation = -20 + Math.random() * 40;
+          // Gentle smooth bounce off top boundary (15%) and bottom boundary (80%)
+          if (top <= 15) {
+            top = 15;
+            speed = Math.abs(speed); // Bounce downwards
+          } else if (top >= 80) {
+            top = 80;
+            speed = -Math.abs(speed); // Bounce upwards
           }
 
           return {
             ...icon,
             top,
-            left,
             speed,
-            bounceCount,
-            opacity,
             rotation
           };
         });
@@ -553,34 +524,18 @@ export default function RetroTitleScreen() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 0.65, ease: "easeInOut" }}
-            className="fixed inset-0 z-[9998] bg-background flex flex-col justify-between p-6 select-none cursor-pointer"
+            className="fixed inset-0 z-[9998] bg-[#0E0C22] flex flex-col justify-between p-8 select-none cursor-pointer overflow-hidden"
             onClick={handleStart}
           >
-            {/* CRT Screen Scanline & Vignette filters */}
-            <div className="crt-overlay crt-flicker" />
-            <div className="retro-vignette" />
+            {/* Background Ambient RGB Glows */}
+            <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+              <div className="absolute top-[-20%] left-[-15%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-br from-[#C084FC]/25 to-transparent blur-[120px] animate-rgb-glow" />
+              <div className="absolute bottom-[-20%] right-[-15%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-br from-[#FFA5A5]/20 to-transparent blur-[120px] animate-rgb-glow-reverse" />
+              <div className="absolute inset-0 pixel-grid opacity-60" />
+            </div>
 
-            {/* Repeating Warm Pixel Grid Backdrop */}
-            <div className="absolute inset-0 pixel-grid opacity-100 pointer-events-none" />
-
-            {/* Subtle Ambient Background Animations */}
+            {/* Floating Software Icons */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-              
-              {/* Star sparkles */}
-              <PixelStarMini style={{ top: "18%", left: "15%", animationDelay: "0.2s" }} />
-              <PixelStarMini style={{ top: "25%", right: "18%", animationDelay: "1.4s" }} />
-              <PixelStarMini style={{ top: "72%", left: "20%", animationDelay: "0.8s" }} />
-              <PixelStarMini style={{ top: "54%", right: "10%", animationDelay: "1.9s" }} />
-              
-              {/* Drifting Clouds */}
-              <div style={{ position: "absolute", top: "12%", opacity: 0.45, left: "-80px", animationDelay: "0s" }} className="text-white drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,0.04)] animate-cloud-slow">
-                <PixelCloudMini />
-              </div>
-              <div style={{ position: "absolute", top: "45%", opacity: 0.35, left: "-80px", animationDelay: "-20s" }} className="text-white drop-shadow-[2.5px_2.5px_0_rgba(0,0,0,0.04)] animate-cloud-slow">
-                <PixelCloudMini />
-              </div>
-
-              {/* Falling Software Icons */}
               {fallingIcons.map((icon) => (
                 <div
                   key={icon.id}
@@ -593,7 +548,7 @@ export default function RetroTitleScreen() {
                     opacity: icon.opacity,
                     transform: `rotate(${icon.rotation}deg)`,
                     transition: isMerging ? "none" : "transform 0.05s linear",
-                    filter: "drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.15))"
+                    filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))"
                   }}
                   className="pointer-events-none"
                 >
@@ -604,189 +559,69 @@ export default function RetroTitleScreen() {
                   />
                 </div>
               ))}
-
-              {/* Pixel Burst Explosion Particles */}
-              {particles.map((p) => (
-                <div
-                  key={p.id}
-                  style={{
-                    position: "absolute",
-                    left: `${p.left}%`,
-                    top: `${p.top}%`,
-                    width: `${p.size}px`,
-                    height: `${p.size}px`,
-                    backgroundColor: p.color,
-                    opacity: p.opacity,
-                    transform: "translate(-50%, -50%)",
-                    boxShadow: "1px 1px 0px rgba(0,0,0,0.15)"
-                  }}
-                  className="pointer-events-none rounded-none"
-                />
-              ))}
-
             </div>
 
-            {/* HEADER HUD METADATA */}
-            <div className="flex justify-between items-center text-[7px] font-retro text-foreground/35 select-none relative z-10">
-              <div className="flex items-center gap-2">
-                <span>SYSTEM: 8-BIT_CPU</span>
-                <Equalizer />
+            {/* TOP HEADER HUD */}
+            <div className="flex justify-between items-center text-xs font-sans text-slate-400 font-semibold tracking-widest uppercase select-none relative z-10">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#A7F3D0] shadow-[0_0_10px_#A7F3D0] animate-pulse" />
+                <span className="text-foreground">SHUBHAM SHUKLA | PORTFOLIO</span>
               </div>
-              <span>1P READY</span>
+              <div className="hidden sm:flex items-center gap-4 text-slate-400">
+                <span>INDIA</span>
+                <span>•</span>
+                <span>AVAILABLE FOR FREELANCE & FULL-TIME</span>
+              </div>
             </div>
 
-            {/* CENTER TITLE & START BUTTON */}
-            <div className="flex flex-col items-center justify-center flex-grow text-center space-y-12 relative z-10">
+            {/* CENTER HERO & ENTER BUTTON */}
+            <div className="flex flex-col items-center justify-center flex-grow text-center space-y-10 relative z-10 my-auto">
               
-              <div className="space-y-4">
-                <h1 className="font-retro text-2.5xl sm:text-4.5xl font-bold tracking-tight text-foreground uppercase leading-none select-none drop-shadow-[3px_3px_0px_#FFDE47]">
+              <div className="space-y-6 max-w-2xl">
+                {/* Category Pill */}
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[#FFA5A5] font-sans text-xs font-bold tracking-widest uppercase shadow-lg">
+                  ✨ VISUAL CONTENT CREATOR & DESIGNER
+                </div>
+
+                {/* Main Name Heading with RGB Glow */}
+                <h1 className="relative font-sans text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent uppercase leading-none select-none">
+                  <span className="absolute -inset-4 bg-gradient-to-r from-[#C084FC]/35 via-[#FFA5A5]/35 to-[#A7F3D0]/35 rounded-3xl blur-3xl opacity-70 pointer-events-none z-[-1] animate-pulse" />
                   SHUBHAM SHUKLA
                 </h1>
-                <h2 className="font-retro text-xs sm:text-sm tracking-[0.25em] text-[#FF5964] font-bold uppercase select-none">
-                  PIXEL PORTFOLIO
-                </h2>
-                <div className="h-1 w-24 bg-black mx-auto mt-6" />
-                <p className="text-[10px] text-gray-500 font-sans tracking-wide">
-                  Graphic Designer • Video Editor • Motion Designer
+
+                {/* Subtitle */}
+                <p className="text-sm sm:text-base text-slate-300 font-sans tracking-widest uppercase font-medium">
+                  GRAPHIC DESIGNER • VIDEO EDITOR • MOTION ARTIST
                 </p>
               </div>
 
-              {/* Pulsing PRESS START */}
+              {/* Glowing Enter Dashboard Button */}
               <motion.div
                 onMouseEnter={() => setStartHover(true)}
                 onMouseLeave={() => setStartHover(false)}
-                animate={
-                  startClicked
-                    ? { scale: 0.95, y: 3, backgroundColor: "#FFFFFF", boxShadow: "1px 1px 0px #000" }
-                    : startHover
-                    ? { scale: 1.05, y: -4, boxShadow: "5px 5px 0px #000" }
-                    : { opacity: [1, 0.45, 1], y: 0, boxShadow: "3px 3px 0px #000", backgroundColor: "#FFDE47" }
-                }
-                transition={
-                  startHover
-                    ? { type: "spring", stiffness: 220, damping: 10 }
-                    : { duration: 1.0, repeat: Infinity, ease: "easeInOut" }
-                }
-                className="font-retro text-xs sm:text-sm text-foreground tracking-wider py-3.5 px-6 border-3 border-black bg-[#FFDE47] shadow-[3px_3px_0px_#000] cursor-pointer select-none relative overflow-hidden rounded-sm z-10"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="font-sans text-sm sm:text-base font-extrabold tracking-wider py-4 px-8 border border-white/20 bg-gradient-to-r from-[#C084FC] via-[#FFA5A5] to-[#FFE082] text-[#131130] shadow-[0_0_35px_rgba(192,132,252,0.45)] cursor-pointer select-none relative overflow-hidden rounded-2xl z-10 flex items-center gap-3 transition-all duration-200"
               >
-                {/* Diagonal sheen sweep */}
-                <motion.div
-                  animate={{ left: ["-30%", "130%"] }}
-                  transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 2.2, ease: "linear" }}
-                  className="absolute top-0 bottom-0 w-3 bg-white/40 skew-x-12 pointer-events-none"
-                />
-
-                {/* Hover Particles */}
-                {startHover && (
-                  <>
-                    <motion.div animate={{ y: [-4, 4, -4] }} transition={{ duration: 1.2, repeat: Infinity }} className="absolute -top-1.5 -left-1.5 w-1 h-1 bg-[#FFDE47]" />
-                    <motion.div animate={{ y: [4, -4, 4] }} transition={{ duration: 1.2, repeat: Infinity }} className="absolute -bottom-1.5 -right-1.5 w-1 h-1 bg-[#FFDE47]" />
-                    <motion.div animate={{ x: [-4, 4, -4] }} transition={{ duration: 1.2, repeat: Infinity }} className="absolute -top-1.5 -right-1.5 w-1 h-1 bg-[#FFDE47]" />
-                    <motion.div animate={{ x: [4, -4, 4] }} transition={{ duration: 1.2, repeat: Infinity }} className="absolute -bottom-1.5 -left-1.5 w-1 h-1 bg-[#FFDE47]" />
-                  </>
-                )}
-
                 <motion.span
-                  animate={{ x: [0, 3, 0] }}
+                  animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-                  className="inline-block mr-2"
+                  className="inline-block text-lg"
                 >
                   ▶
                 </motion.span>
-                PRESS START
+                <span>EXPLORE PORTFOLIO</span>
               </motion.div>
 
             </div>
 
-            {/* PLATFORM GROUND SCENERY (Mario Style) */}
-            <div className="absolute bottom-0 left-0 right-0 h-14 border-t-4 border-black bg-background z-10 flex items-center px-8 justify-between select-none pointer-events-none">
-              
-              {/* Bottom Ground check pattern */}
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.035)_50%,transparent_50%)] bg-[length:16px_100%] pointer-events-none" />
-
-              {/* Left Side Scenery: Pixel Studio & Swaying Plants */}
-              <div className="flex items-end gap-2 absolute bottom-14 left-6 pointer-events-none z-10">
-                <PixelStudio />
-                <PixelGrass className="w-4 h-3 text-[#1A1A1A]" />
-                <PixelFlower className="w-3.5 h-5" />
-              </div>
-
-              {/* Permanent Standing Character on the ground (Breathing, Blinks, Jumps) */}
-              <motion.div
-                style={{
-                  position: "absolute",
-                  bottom: "54px",
-                  right: "120px",
-                  zIndex: 20,
-                  transformOrigin: "bottom center"
-                }}
-                animate={
-                  bgCharState === "jump" 
-                    ? { y: [0, -20, 0] }
-                    : bgCharState === "look"
-                    ? { rotate: [0, 4, -4, 0] }
-                    : { y: [0, -1.5, 0] }
-                }
-                transition={
-                  bgCharState === "jump"
-                    ? { duration: 0.55, ease: "easeOut" }
-                    : { duration: 1.8, repeat: bgCharState === "idle" ? Infinity : 0, ease: "easeInOut" }
-                }
-              >
-                <PixelCharacter frame={0} state={bgCharState} />
-              </motion.div>
-
-              {/* Right Side Plants */}
-              <div className="flex items-end gap-1.5 absolute bottom-14 right-8 pointer-events-none z-10">
-                <PixelGrass className="w-3.5 h-3 text-[#1A1A1A]" />
-                <PixelGrass className="w-4 h-3.5 text-[#1A1A1A]" style={{ animationDelay: "0.2s" }} />
-                <PixelFlower className="w-3.5 h-5" style={{ animationDelay: "0.4s" }} />
-              </div>
-
-            </div>
-
-            {/* FOOTER STATS */}
-            <div className="flex justify-between items-end text-[8px] font-retro text-foreground/40 select-none relative z-20 pb-4">
-              <span>v1.0</span>
-              <span>© 2026 Shubham Shukla</span>
-            </div>
-
-            {/* INACTIVITY EASTER EGG CHARACTER */}
-            <div 
-              style={{
-                position: "absolute",
-                bottom: "54px",
-                left: `${charX}px`,
-                zIndex: 50,
-                pointerEvents: "auto",
-                transition: (eggState === "waving" || eggState === "shrug") ? "none" : "left 0.1s linear"
-              }}
-              className="flex items-end cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleStart();
-              }}
-            >
-              <PixelCharacter frame={walkFrame} state={eggState === "shrug" ? "shrug" : eggState === "waving" ? "wave" : "idle"} />
-
-              {/* Dialogue Box speech bubble */}
-              <AnimatePresence>
-                {dialogueOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8, y: 15 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.8, y: 15 }}
-                    className="absolute bottom-16 left-6 p-3 retro-card border-3 border-black bg-card shadow-[3px_3px_0px_#000] min-w-[170px] text-left relative z-[60]"
-                  >
-                    <div className="absolute bottom-[-10px] left-4 border-t-8 border-t-black border-x-8 border-x-transparent" />
-                    <div className="absolute bottom-[-6px] left-[17px] border-t-6 border-t-card border-x-6 border-x-transparent" />
-                    
-                    <span className="font-retro text-[8px] leading-relaxed text-foreground">
-                      💬 "Go ahead... press START."
-                    </span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            {/* BOTTOM FOOTER HUD */}
+            <div className="flex justify-between items-center text-xs font-sans text-slate-400 select-none relative z-10 pt-4 border-t border-white/10 px-2 sm:px-0">
+              <span className="tracking-widest uppercase pl-10 sm:pl-0 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C084FC] animate-ping" />
+                [ CLICK ANYWHERE TO EXPLORE ]
+              </span>
+              <span>© 2026 SHUBHAM SHUKLA</span>
             </div>
 
           </motion.div>

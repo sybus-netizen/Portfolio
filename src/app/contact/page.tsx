@@ -6,7 +6,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen py-24 bg-background relative flex flex-col justify-center select-none">
+    <div className="min-h-screen py-24 bg-transparent relative flex flex-col justify-center select-none">
       <div className="max-w-6xl mx-auto px-6 md:px-12 w-full pt-12 text-left">
         <div className="space-y-4 max-w-2xl mb-4">
           <FadeIn direction="up">

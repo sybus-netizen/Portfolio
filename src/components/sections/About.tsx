@@ -67,7 +67,7 @@ export default function About() {
   const { unlockQuest } = useGameSystem();
 
   return (
-    <section id="about" className="py-20 border-t-3 border-black bg-background relative overflow-hidden">
+    <section id="about" className="py-20 border-t border-white/10 bg-transparent relative overflow-hidden">
       <motion.div
         onViewportEnter={() => unlockQuest("about", "About")}
         viewport={{ once: true, amount: 0.1 }}
@@ -100,19 +100,19 @@ export default function About() {
                 <div
                   key={cat.id}
                   onClick={() => setSelectedIdx(idx)}
-                  className={`retro-card p-4 flex items-center justify-between cursor-pointer select-none text-left border-3 transition-all duration-100 ${
+                  className={`retro-card p-4 rounded-xl flex items-center justify-between cursor-pointer select-none text-left transition-all duration-300 border ${
                     isSelected 
-                      ? "bg-[#FFDE47] border-black translate-x-1 shadow-[2px_2px_0px_#000]" 
-                      : "bg-card border-black/80 hover:bg-[#FFFDF9]"
+                      ? "bg-gradient-to-r from-[#C084FC]/25 to-[#FFA5A5]/15 border-[#C084FC]/60 text-white shadow-[0_0_25px_rgba(192,132,252,0.25)] translate-x-1" 
+                      : "bg-[#131130]/90 border-white/10 text-slate-300 hover:border-white/20 hover:text-white"
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
                     <span className="text-lg">{cat.statusEmoji}</span>
-                    <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-foreground">
+                    <span className="font-sans text-xs sm:text-sm font-bold uppercase text-white">
                       {cat.title}
                     </span>
                   </div>
-                  <span className="font-retro text-[8px] text-foreground/40">
+                  <span className={`font-sans text-xs font-bold ${isSelected ? 'text-[#A7F3D0]' : 'text-slate-400'}`}>
                     {isSelected ? "◀ ACTIVE" : "SELECT"}
                   </span>
                 </div>
@@ -123,11 +123,11 @@ export default function About() {
           {/* RIGHT PANEL: SELECTED DETAIL (STATS SCREEN) */}
           <div className="lg:col-span-7">
             {selectedIdx !== -1 && (
-              <div className="retro-card p-6 sm:p-8 bg-card border-4 border-black lg:h-full h-auto flex flex-col justify-between shadow-[6px_6px_0px_#000] relative">
+              <div className="retro-card p-6 sm:p-8 bg-[#131130]/90 backdrop-blur-xl border border-white/10 lg:h-full h-auto flex flex-col justify-between shadow-2xl rounded-2xl relative text-left">
                 
                 {/* Corner tech specs */}
-                <div className="absolute top-4 right-6 font-retro text-[8px] text-foreground/30">
-                  LOG_ID: {categories[selectedIdx].id.toUpperCase()}
+                <div className="absolute top-4 right-6 font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                  FIELD: {categories[selectedIdx].id.toUpperCase()}
                 </div>
 
                 <div className="space-y-6">
@@ -135,7 +135,7 @@ export default function About() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{categories[selectedIdx].statusEmoji}</span>
-                      <h3 className="font-retro text-base sm:text-lg font-bold text-foreground uppercase leading-none">
+                      <h3 className="font-sans text-lg sm:text-xl font-bold text-white uppercase leading-none">
                         {categories[selectedIdx].title}
                       </h3>
                     </div>
@@ -144,16 +144,16 @@ export default function About() {
                     </p>
                   </div>
 
-                  {/* Deliverables / Inventory */}
+                  {/* Deliverables */}
                   <div className="space-y-3">
-                    <div className="font-retro text-[8px] text-foreground/50 uppercase leading-none">INVENTORY DELIVERABLES</div>
+                    <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">KEY DELIVERABLES</div>
                     <div className="flex flex-wrap gap-2">
                       {categories[selectedIdx].deliverables.map((del, i) => (
                         <span
                           key={i}
-                          className="px-3 py-1.5 bg-background border-2 border-black text-foreground font-sans text-xs rounded-sm shadow-[1.5px_1.5px_0px_#000]"
+                          className="px-3 py-1.5 bg-white/5 border border-white/10 text-slate-200 font-sans text-xs rounded-xl"
                         >
-                          🧰 {del}
+                          ✦ {del}
                         </span>
                       ))}
                     </div>
@@ -161,14 +161,14 @@ export default function About() {
 
                   {/* Primary Tools */}
                   <div className="space-y-3">
-                    <div className="font-retro text-[8px] text-foreground/50 uppercase leading-none">EQUIPPED TOOLS</div>
+                    <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">PRIMARY SOFTWARE</div>
                     <div className="flex flex-wrap gap-2">
                       {categories[selectedIdx].tools.map((tool, i) => (
                         <span
                           key={i}
-                          className="px-3 py-1.5 bg-card border-2 border-black text-foreground font-retro text-[9px] rounded-sm shadow-[1.5px_1.5px_0px_#000] flex items-center gap-1.5"
+                          className="px-3 py-1.5 bg-white/5 border border-white/10 text-white font-sans text-xs font-semibold rounded-xl flex items-center gap-2"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: tool.brandColor }} />
+                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: tool.brandColor }} />
                           {tool.name}
                         </span>
                       ))}
@@ -177,9 +177,9 @@ export default function About() {
                 </div>
 
                 {/* Status bar */}
-                <div className="mt-8 pt-4 border-t-2 border-dashed border-black/20 flex justify-between items-center text-left">
-                  <div className="font-retro text-[8px] text-foreground/40">QUEST LEVEL: 04</div>
-                  <div className="font-retro text-[9px] text-[#3BCEAC] font-bold">READY TO DEPLOY ➔</div>
+                <div className="mt-8 pt-4 border-t border-white/10 flex justify-between items-center text-left">
+                  <div className="font-sans text-xs text-slate-400 font-medium">EXPERIENCE: 3.8+ YEARS</div>
+                  <div className="font-sans text-xs text-[#A7F3D0] font-bold uppercase">EXPLORE WORK ➔</div>
                 </div>
 
               </div>
@@ -196,19 +196,19 @@ export default function About() {
                 {/* Category Row Item */}
                 <div
                   onClick={() => setSelectedIdx(isSelected ? -1 : idx)}
-                  className={`retro-card p-4 flex items-center justify-between cursor-pointer select-none text-left border-3 transition-all duration-100 ${
+                  className={`retro-card p-4 flex items-center justify-between cursor-pointer select-none text-left border transition-all duration-200 rounded-xl ${
                     isSelected 
-                      ? "bg-[#FFDE47] border-black translate-x-1 shadow-[2px_2px_0px_#000]" 
-                      : "bg-card border-black/80 hover:bg-[#FFFDF9]"
+                      ? "bg-[#C084FC]/20 border-[#C084FC]/50 text-white" 
+                      : "bg-[#131130]/90 border-white/10 text-slate-300 hover:border-white/20"
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
                     <span className="text-lg">{cat.statusEmoji}</span>
-                    <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-foreground">
+                    <span className="font-sans text-xs uppercase font-bold text-white">
                       {cat.title}
                     </span>
                   </div>
-                  <span className="font-retro text-[8px] text-foreground/40">
+                  <span className="font-sans text-xs font-bold text-slate-400">
                     {isSelected ? "▲ CLOSE" : "▼ SELECT"}
                   </span>
                 </div>
@@ -223,43 +223,37 @@ export default function About() {
                       transition={{ duration: 0.2, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="retro-card p-5 sm:p-6 bg-card border-3 border-black shadow-[4px_4px_0px_#000] relative">
-                        {/* Corner tech specs */}
-                        <div className="absolute top-3 right-4 font-retro text-[7px] text-foreground/30">
-                          LOG_ID: {cat.id.toUpperCase()}
+                      <div className="retro-card p-5 sm:p-6 bg-[#131130]/90 backdrop-blur-xl border border-white/10 rounded-2xl relative text-left space-y-4">
+                        <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                          FIELD: {cat.id.toUpperCase()}
                         </div>
 
-                        <div className="space-y-5">
-                          {/* Description */}
-                          <div className="space-y-1 mt-2">
-                            <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                              {cat.description}
-                            </p>
-                          </div>
+                        <div className="space-y-4">
+                          <p className="text-xs text-slate-300 font-sans leading-relaxed">
+                            {cat.description}
+                          </p>
 
-                          {/* Deliverables / Inventory */}
                           <div className="space-y-2">
-                            <div className="font-retro text-[7px] text-foreground/50 uppercase leading-none">INVENTORY DELIVERABLES</div>
+                            <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">KEY DELIVERABLES</div>
                             <div className="flex flex-wrap gap-1.5">
                               {cat.deliverables.map((del, i) => (
                                 <span
                                   key={i}
-                                  className="px-2.5 py-1 bg-background border-2 border-black text-foreground font-sans text-[11px] rounded-sm shadow-[1px_1px_0px_#000]"
+                                  className="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200 font-sans text-xs rounded-xl"
                                 >
-                                  🧰 {del}
+                                  ✦ {del}
                                 </span>
                               ))}
                             </div>
                           </div>
 
-                          {/* Primary Tools */}
                           <div className="space-y-2">
-                            <div className="font-retro text-[7px] text-foreground/50 uppercase leading-none">EQUIPPED TOOLS</div>
+                            <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">PRIMARY SOFTWARE</div>
                             <div className="flex flex-wrap gap-1.5">
                               {cat.tools.map((tool, i) => (
                                 <span
                                   key={i}
-                                  className="px-2.5 py-1 bg-card border-2 border-black text-foreground font-retro text-[8px] rounded-sm shadow-[1px_1px_0px_#000] flex items-center gap-1"
+                                  className="px-2.5 py-1 bg-white/5 border border-white/10 text-white font-sans text-xs font-semibold rounded-xl flex items-center gap-1.5"
                                 >
                                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: tool.brandColor }} />
                                   {tool.name}
@@ -269,10 +263,9 @@ export default function About() {
                           </div>
                         </div>
 
-                        {/* Status bar */}
-                        <div className="mt-6 pt-3 border-t-2 border-dashed border-black/20 flex justify-between items-center text-left">
-                          <div className="font-retro text-[7px] text-foreground/40">QUEST LEVEL: 04</div>
-                          <div className="font-retro text-[8px] text-[#3BCEAC] font-bold">READY TO DEPLOY ➔</div>
+                        <div className="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-left">
+                          <div className="font-sans text-xs text-slate-400 font-medium">EXPERIENCE: 3.8+ YEARS</div>
+                          <div className="font-sans text-xs text-[#A7F3D0] font-bold uppercase">EXPLORE WORK ➔</div>
                         </div>
 
                       </div>

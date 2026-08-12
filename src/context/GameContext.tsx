@@ -101,18 +101,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   // Soundless visual wave alert trigger
   const triggerNotification = (type: "quest" | "achievement", title: string, description: string, icon: string) => {
-    // Play achievement audio
-    playAchievement();
-
-    const id = Math.random().toString(36).substr(2, 9);
-    const newNotif: GameNotification = { id, type, title, description, icon };
-    
-    setNotifications((prev) => [...prev, newNotif]);
-
-    // Automatically remove after 3.2 seconds
-    setTimeout(() => {
-      removeNotification(id);
-    }, 3200);
+    // Disabled for clean professional presentation
+    return;
   };
 
   const unlockQuest = (id: string, label: string) => {

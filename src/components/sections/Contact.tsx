@@ -36,7 +36,7 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="py-20 border-t-3 border-black bg-background relative overflow-hidden"
+      className="py-20 border-t border-white/10 bg-transparent relative overflow-hidden"
     >
       <motion.div
         onViewportEnter={() => {
@@ -49,26 +49,26 @@ export default function Contact() {
         
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16 max-w-xl mx-auto select-none">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF5964] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] rounded-sm animate-[heartPulse_1.5s_infinite]">
-            FINAL STAGE
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FF5964]/20 border border-[#FF5964]/40 text-[#FFA5A5] font-sans text-xs font-bold uppercase tracking-wider rounded-full">
+            GET IN TOUCH
           </div>
-          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
+          <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
             Ready to Collaborate
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 font-sans">
-            Whether you're hiring, collaborating, or just want to discuss a creative idea, I'd love to hear from you.
+          <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
+            Whether you're hiring, collaborating, or just want to discuss a creative project, I'd love to hear from you.
           </p>
         </div>
 
-        {/* ARCADE HIGH SCORE PANEL */}
-        <div className="retro-card p-6 sm:p-8 bg-card border-4 border-black w-full max-w-lg shadow-[6px_6px_0px_#000] space-y-6 relative mb-8">
+        {/* MODERN GLASS CONTACT PANEL */}
+        <div className="retro-card p-6 sm:p-8 bg-[#131130]/90 backdrop-blur-xl border border-white/10 w-full max-w-lg shadow-2xl rounded-2xl space-y-6 relative mb-8 text-left">
           
-          {/* Credit Slots */}
-          <div className="flex justify-between items-center border-b-2 border-black pb-4 select-none">
-            <span className="font-retro text-[8px] text-foreground/50">INSERT COIN TO START</span>
+          {/* Header Badge */}
+          <div className="flex justify-between items-center border-b border-white/10 pb-4 select-none">
+            <span className="font-sans text-xs font-bold text-slate-400 uppercase tracking-wider">DIRECT CONTACT</span>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#3BCEAC] animate-[heartPulse_1s_infinite]" />
-              <span className="font-retro text-[8px] font-bold text-foreground">CREDITS: {credits}</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#3BCEAC] animate-pulse" />
+              <span className="font-sans text-xs font-bold text-[#A7F3D0]">OPEN FOR WORK</span>
             </div>
           </div>
 
@@ -77,75 +77,80 @@ export default function Contact() {
             {/* EMAIL ACTION LINE */}
             <div className="flex items-center justify-between gap-4 flex-wrap w-full">
               <div className="text-left space-y-0.5">
-                <span className="font-retro text-[8px] text-foreground/40 uppercase block">EMAIL ADDR</span>
-                <span className="font-mono text-xs sm:text-sm font-bold text-foreground break-all">
+                <span className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider block">EMAIL ADDRESS</span>
+                <span className="font-sans text-xs sm:text-sm font-semibold text-white break-all">
                   shubhamshukla327@gmail.com
                 </span>
               </div>
-              <div className="flex gap-3 items-center justify-start sm:justify-end w-full sm:w-auto">
+              <div className="flex gap-2.5 items-center justify-start sm:justify-end w-full sm:w-auto">
                 <button
                   onClick={() => copyToClipboard("shubhamshukla327@gmail.com", "Email")}
                   aria-label="Copy email"
-                  className="p-2 border-2 border-black bg-card rounded-sm active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none cursor-pointer"
+                  className="p-2 border border-white/10 bg-white/5 hover:bg-white/10 rounded-xl text-slate-300 transition-colors cursor-pointer"
                 >
-                  <Copy className="w-3.5 h-3.5 text-foreground" />
+                  <Copy className="w-4 h-4 text-slate-300" />
                 </button>
                 <button
                   onClick={handleEmailClick}
-                  className="retro-btn retro-btn-green py-2 px-3 shadow-[2px_2px_0px_#000] text-[8px] shrink-0"
+                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#C084FC] to-[#FFA5A5] text-[#131130] font-sans text-xs font-bold uppercase shadow-lg hover:brightness-110 transition-all shrink-0"
                 >
-                  SEND ✉
+                  SEND EMAIL ✉
                 </button>
               </div>
             </div>
 
             {/* PHONE ACTION LINE */}
-            <div className="flex items-center justify-between gap-4 flex-wrap w-full pt-3 border-t-2 border-dashed border-slate-800">
+            <div className="flex items-center justify-between gap-4 flex-wrap w-full pt-4 border-t border-white/10">
               <div className="text-left space-y-0.5">
-                <span className="font-retro text-[8px] text-foreground/40 uppercase block">PHONE NUM</span>
-                <span className="font-mono text-xs sm:text-sm font-bold text-foreground">
+                <span className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider block">PHONE NUMBER</span>
+                <span className="font-sans text-xs sm:text-sm font-semibold text-white">
                   +91 74777 27544
                 </span>
               </div>
-              <div className="flex gap-3 items-center justify-start sm:justify-end w-full sm:w-auto">
+              <div className="flex gap-2.5 items-center justify-start sm:justify-end w-full sm:w-auto">
                 <button
                   onClick={() => copyToClipboard("+91 74777 27544", "Phone")}
                   aria-label="Copy phone number"
-                  className="p-2 border-2 border-black bg-card rounded-sm active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none cursor-pointer"
+                  className="p-2 border border-white/10 bg-white/5 hover:bg-white/10 rounded-xl text-slate-300 transition-colors cursor-pointer"
                 >
-                  <Copy className="w-3.5 h-3.5 text-foreground" />
+                  <Copy className="w-4 h-4 text-slate-300" />
                 </button>
                 <button
                   onClick={handlePhoneClick}
-                  className="retro-btn retro-btn-outline py-2 px-3 shadow-[2px_2px_0px_#000] text-[8px] shrink-0"
+                  className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-sans text-xs font-bold uppercase transition-all shrink-0"
                 >
-                  CALL 📞
+                  CALL NOW 📞
                 </button>
               </div>
             </div>
 
+            {/* LINKEDIN ACTION LINE */}
+            <div className="flex items-center justify-between gap-4 flex-wrap w-full pt-4 border-t border-white/10">
+              <div className="text-left space-y-0.5">
+                <span className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider block">LINKEDIN PROFILE</span>
+                <span className="font-sans text-xs sm:text-sm font-semibold text-white">
+                  Shubham Shukla
+                </span>
+              </div>
+              <div className="flex gap-2.5 items-center justify-start sm:justify-end w-full sm:w-auto">
+                <a
+                  href="https://www.linkedin.com/in/shubham-shukla-bb9760429/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white font-sans text-xs font-bold uppercase transition-all shrink-0 inline-flex items-center gap-1.5"
+                >
+                  CONNECT 🔗
+                </a>
+              </div>
+            </div>
+
           </div>
-
-          {/* Subtext info */}
-          <div className="border-t-2 border-black pt-4 flex justify-between items-center select-none text-[8px]">
-            <span className="font-retro text-foreground/40">HOST_IP: LOCALHOST</span>
-            <span className="font-retro text-[#FF5964] font-bold">1P READY ▶</span>
-          </div>
-
-        </div>
-
-        {/* Availability Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-card border-2 border-black text-foreground shadow-[2.5px_2.5px_0px_#000] select-none rounded-sm mb-12">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#3BCEAC] animate-[heartPulse_1s_infinite]" />
-          <span className="font-retro text-[8px] uppercase font-bold text-foreground">
-            Active Status: Open for work
-          </span>
         </div>
 
         {/* Signature */}
-        <div className="text-center select-none border-t border-slate-800 pt-4 w-full">
-          <p className="font-retro text-[8px] uppercase tracking-[0.2em] text-foreground/40">
-            THANK YOU FOR PLAYING!
+        <div className="text-center select-none border-t border-white/10 pt-6 w-full">
+          <p className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-slate-300">
+            THANK YOU FOR VISITING!
           </p>
         </div>
 
@@ -164,7 +169,7 @@ export default function Contact() {
               left: "50%",
               zIndex: 9999
             }}
-            className="px-5 py-3 border-3 border-black bg-[#FFDE47] text-foreground font-retro text-[8px] uppercase tracking-wider shadow-[3px_3px_0px_#000] flex items-center gap-2 select-none"
+            className="px-5 py-3 border-3 border-black bg-[#FFE082] text-[#131130] font-bold font-retro text-[8px] uppercase tracking-wider shadow-[3px_3px_0px_#000] flex items-center gap-2 select-none"
           >
             <span>★</span> {toast.message}
           </motion.div>

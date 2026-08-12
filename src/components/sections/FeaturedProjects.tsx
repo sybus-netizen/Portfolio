@@ -25,7 +25,7 @@ export default function FeaturedProjects() {
     <section 
       id="projects" 
       ref={sectionRef} 
-      className="py-20 border-t-3 border-black bg-background overflow-hidden"
+      className="py-20 border-t border-white/10 bg-transparent relative overflow-hidden"
     >
       <motion.div
         onViewportEnter={() => unlockQuest("projects", "Work Completed")}
@@ -36,20 +36,20 @@ export default function FeaturedProjects() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6 w-full text-left">
           <FadeIn direction="left" className="space-y-4 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#3A86C8] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">
-              STAGE 03
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#C084FC]/20 border border-[#C084FC]/40 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider rounded-full">
+              PORTFOLIO
             </div>
-            <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
+            <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
               Featured Work
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 font-sans">
-              A handpicked selection of my latest design products, commercial video edits, and motion graphic assets.
+            <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
+              A handpicked selection of my latest commercial video edits, graphic designs, and motion assets.
             </p>
           </FadeIn>
           <FadeIn direction="right" className="shrink-0">
             <Link href="/projects">
-              <div className="retro-btn shadow-[3px_3px_0px_#000] text-[9px]">
-                Browse Catalog ➔
+              <div className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-sans text-xs font-bold uppercase transition-all shadow-lg">
+                SHOWCASE ➔
               </div>
             </Link>
           </FadeIn>
@@ -70,86 +70,67 @@ export default function FeaturedProjects() {
                 }}
                 className="block h-full cursor-pointer select-none"
               >
-                {/* Chunky Game Cartridge Layout with dynamic hover spring */}
+                {/* Modern Glass Project Card */}
                 <motion.div
-                  whileHover={{ y: -6, scale: 1.015, boxShadow: "6px 6px 0px #000" }}
-                  whileTap={{ y: 2, scale: 0.985, boxShadow: "2px 2px 0px #000" }}
-                  className="retro-card p-4 bg-card border-3 border-black h-full flex flex-col justify-between shadow-[4px_4px_0px_#000] group relative overflow-hidden text-left"
+                  whileHover={{ y: -6, scale: 1.015 }}
+                  whileTap={{ y: 2, scale: 0.985 }}
+                  className="retro-card p-5 bg-[#131130]/80 backdrop-blur-xl border border-white/10 h-full flex flex-col justify-between shadow-2xl rounded-2xl group relative overflow-hidden text-left hover:border-[#C084FC]/50 hover:shadow-[0_0_30px_rgba(192,132,252,0.25)] transition-all duration-300"
                 >
-                  
-                  {/* Cartridge Header Ridge */}
-                  <div className="flex justify-between items-center border-b-2 border-black pb-3 mb-4 select-none">
-                    <span className="font-retro text-[7px] text-foreground/40">MODEL: S-SLOT_{project.year}</span>
-                    <div className="flex gap-1">
-                      <span className="w-2.5 h-2.5 border border-black bg-black/10 rounded-full" />
-                      <span className="w-2.5 h-2.5 border border-black bg-black/10 rounded-full" />
-                    </div>
+                  {/* Card Header Category Pill */}
+                  <div className="flex justify-between items-center pb-3 mb-4 border-b border-white/10 select-none">
+                    <span className="px-2.5 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-[10px] font-bold uppercase tracking-wider">
+                      {project.category}
+                    </span>
+                    <span className="font-sans text-[11px] text-slate-400 font-semibold">
+                      {project.year}
+                    </span>
                   </div>
 
-                  {/* Cartridge Label Image Container */}
-                  <div className="relative aspect-[3/2.1] w-full overflow-hidden border-2 border-black bg-neutral-900 mb-4 rounded-sm">
+                  {/* Image Container */}
+                  <div className="relative aspect-[3/2] w-full overflow-hidden border border-white/10 bg-neutral-900 mb-4 rounded-xl">
                     <Image
                       src={getAssetPath(project.image)}
                       alt={project.title}
                       fill
                       unoptimized={true}
                       sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
                     
-                    {/* Hover Overlay - Flashing PRESS ENTER TO LOAD */}
-                    <div className="absolute inset-0 bg-black/75 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center pointer-events-none z-10 p-4">
-                      <div className="px-3.5 py-2 bg-[#FFDE47] border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2.5px_2.5px_0px_#000] scale-90 group-hover:scale-100 transition-transform duration-200 animate-[heartPulse_0.8s_infinite] tracking-wider">
-                        Press Enter to Load ▶
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center pointer-events-none z-10 p-4">
+                      <div className="px-4 py-2 bg-gradient-to-r from-[#C084FC] to-[#FFA5A5] text-[#131130] font-sans font-bold text-xs uppercase rounded-full shadow-[0_0_20px_rgba(192,132,252,0.5)] scale-90 group-hover:scale-100 transition-transform duration-300 tracking-wider flex items-center gap-2">
+                        <span>VIEW PROJECT</span>
+                        <span>➔</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Cartridge Content Details */}
+                  {/* Details */}
                   <div className="flex flex-col flex-grow justify-between text-left space-y-4">
-                    <div className="space-y-3">
-                      {/* Metadata Header */}
-                      <div className="flex items-center justify-between text-[8px] font-retro uppercase text-[#FF5964] font-bold">
-                        <span>{project.category}</span>
-                        <span className="text-foreground/30 font-mono">[{project.year}]</span>
-                      </div>
-
-                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-foreground uppercase group-hover:text-[#FF5964] transition-colors leading-tight">
+                    <div className="space-y-2">
+                      <h3 className="font-sans text-base font-bold text-white uppercase group-hover:text-[#C084FC] transition-colors leading-tight">
                         {project.title}
                       </h3>
                       
-                      <p className="text-xs text-slate-300 font-sans font-light leading-relaxed line-clamp-2 md:line-clamp-3">
+                      <p className="text-xs text-slate-300 font-sans font-normal leading-relaxed line-clamp-2">
                         {project.description}
                       </p>
                     </div>
 
-                    {/* Inventory Labels / Tags */}
-                    <div className="pt-3 border-t-2 border-dashed border-slate-800 space-y-2">
-                      <div className="flex flex-wrap gap-1">
-                        {project.tags.slice(0, 2).map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[9px] font-sans text-foreground/60 bg-background border border-black/20 px-2 py-0.5 rounded-sm"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-1">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="text-[8px] font-retro font-bold text-[#3A86C8] uppercase tracking-wide mr-1.5"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                    {/* Technology Chips */}
+                    <div className="pt-3 border-t border-white/10 flex flex-wrap gap-1.5">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-slate-300 text-[10px] font-sans font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                  
                 </motion.div>
               </Link>
             </div>

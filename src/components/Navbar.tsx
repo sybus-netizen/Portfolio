@@ -100,8 +100,8 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full select-none py-4 px-6 md:px-12",
-        scrolled && !isOpen ? "bg-background/90 backdrop-blur-md border-b-3 border-black" : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full select-none py-3 px-6 md:px-12",
+        scrolled && !isOpen ? "bg-[#0E0C22]/80 backdrop-blur-xl border-b border-white/10 shadow-lg" : "bg-transparent"
       )}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between relative z-50">
@@ -110,14 +110,14 @@ export default function Navbar() {
         <Link 
           href="/" 
           onClick={() => setIsOpen(false)}
-          className="font-retro text-xs sm:text-sm font-bold tracking-tight text-black flex items-center gap-1 hover:text-[#FF5964] transition-colors"
+          className="font-sans text-sm sm:text-base font-extrabold tracking-wider text-white flex items-center gap-1 hover:text-[#C084FC] transition-colors"
         >
-          SHUBHAM<span className="text-[#FF5964]">_</span>
+          SHUBHAM<span className="text-[#C084FC]">_</span>
         </Link>
 
         {/* DESKTOP HUD MENU CARD */}
         <div className="hidden md:block">
-          <div className="flex items-center gap-1 bg-[#FFFFFF] border-3 border-black p-1 shadow-[3px_3px_0px_#000] rounded-sm">
+          <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 p-1.5 backdrop-blur-md rounded-full shadow-lg">
             {navLinks.map((link) => {
               const isTarget = targetSection === link.id;
               const isActive = activeSection === link.id;
@@ -130,12 +130,12 @@ export default function Navbar() {
                   onMouseLeave={() => setHoveredSection(null)}
                   onClick={(e) => handleNavClick(e, link.id)}
                   className={cn(
-                    "px-4 py-2 font-retro text-[9px] uppercase tracking-wide transition-all duration-100 cursor-pointer select-none rounded-sm border-2",
+                    "px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer select-none rounded-full",
                     isActive 
-                      ? "bg-[#FFDE47] text-black border-black shadow-[1px_1px_0px_#000] translate-y-[-1px]" 
+                      ? "bg-gradient-to-r from-[#C084FC] to-[#FFA5A5] text-[#131130] font-extrabold shadow-[0_0_15px_rgba(192,132,252,0.4)]" 
                       : isTarget
-                      ? "bg-background text-black border-slate-700"
-                      : "text-slate-400 border-transparent hover:text-black"
+                      ? "bg-white/15 text-white"
+                      : "text-slate-300 hover:text-white"
                   )}
                 >
                   {link.label}
@@ -149,7 +149,7 @@ export default function Navbar() {
                 playClick();
                 toggleSound();
               }}
-              className="px-3.5 py-2 font-retro text-[9px] uppercase tracking-wide transition-all duration-100 cursor-pointer select-none rounded-sm border-2 border-transparent text-slate-400 hover:text-black focus:outline-none flex items-center justify-center min-w-[32px] h-[34px] hover:bg-background hover:border-slate-700"
+              className="px-3 py-1.5 font-sans text-xs transition-all duration-200 cursor-pointer select-none rounded-full text-slate-300 hover:text-white hover:bg-white/10 flex items-center justify-center min-w-[32px] h-[32px]"
               title={soundOn ? "Mute Sounds" : "Unmute Sounds"}
             >
               {soundOn ? "🔊" : "🔇"}
@@ -165,7 +165,7 @@ export default function Navbar() {
               playClick();
               toggleSound();
             }}
-            className="w-10 h-10 flex items-center justify-center border-3 border-black bg-white shadow-[2px_2px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer focus:outline-none font-retro text-xs"
+            className="w-10 h-10 flex items-center justify-center border border-white/15 bg-white/10 backdrop-blur-md rounded-xl text-white shadow-md active:scale-95 transition-all focus:outline-none"
             aria-label="Toggle Sound"
           >
             {soundOn ? "🔊" : "🔇"}
@@ -173,13 +173,13 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-10 h-10 flex flex-col items-center justify-center border-3 border-black bg-[#FFDE47] shadow-[2px_2px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer focus:outline-none"
+            className="w-10 h-10 flex flex-col items-center justify-center border border-white/15 bg-white/10 backdrop-blur-md rounded-xl text-white shadow-md active:scale-95 transition-all focus:outline-none"
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             <div className="w-4 h-3 flex flex-col justify-between items-center relative">
-              <span className={cn("w-full h-[2px] bg-black transition-all", isOpen && "rotate-45 translate-y-[5px]")} />
-              <span className={cn("w-full h-[2px] bg-black transition-all", isOpen && "opacity-0 scale-0")} />
-              <span className={cn("w-full h-[2px] bg-black transition-all", isOpen && "-rotate-45 -translate-y-[5px]")} />
+              <span className={cn("w-full h-[2px] bg-white transition-all", isOpen && "rotate-45 translate-y-[5px]")} />
+              <span className={cn("w-full h-[2px] bg-white transition-all", isOpen && "opacity-0 scale-0")} />
+              <span className={cn("w-full h-[2px] bg-white transition-all", isOpen && "-rotate-45 -translate-y-[5px]")} />
             </div>
           </button>
         </div>
@@ -194,7 +194,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-6 top-20 z-40 bg-[#FFFFFF] border-4 border-black p-6 shadow-[5px_5px_0px_#000] flex flex-col items-center gap-4 md:hidden"
+            className="fixed inset-x-6 top-20 z-40 bg-[#131130]/95 backdrop-blur-2xl border border-white/15 p-6 shadow-2xl rounded-2xl flex flex-col items-center gap-3 md:hidden"
             role="dialog"
             aria-modal="true"
           >
@@ -206,8 +206,8 @@ export default function Navbar() {
                   href={link.href}
                   onClick={(e) => handleMobileLinkClick(e, link.id)}
                   className={cn(
-                    "w-full py-3 text-center font-retro text-[10px] uppercase border-3 border-black shadow-[3px_3px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all",
-                    isActive ? "bg-[#FFDE47] text-black" : "bg-background text-black"
+                    "w-full py-3 text-center font-sans text-xs font-bold uppercase rounded-xl border transition-all",
+                    isActive ? "bg-[#C084FC] text-[#131130] border-[#C084FC] shadow-[0_0_15px_rgba(192,132,252,0.4)]" : "bg-white/5 border-white/10 text-white hover:bg-white/10"
                   )}
                 >
                   {link.label}

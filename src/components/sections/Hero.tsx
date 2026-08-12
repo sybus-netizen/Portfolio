@@ -214,98 +214,48 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden bg-background"
+      className="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden bg-transparent"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10 w-full">
         
         {/* LEFT COLUMN: RPG TEXT & STATUS SCREEN */}
-        <div className="md:col-span-7 flex flex-col items-start space-y-8 md:space-y-6">
-          
-          {/* Badge indicator */}
+        <motion.div
+          className="md:col-span-7 flex flex-col items-start space-y-8 md:space-y-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.18, delayChildren: 0.3 } }
+          }}
+        >
+                   {/* Badge indicator */}
           <motion.div
-            onMouseEnter={() => setBadgeHover(true)}
-            onMouseLeave={() => setBadgeHover(false)}
-            onClick={() => {
-              setBadgeClicked(true);
-              const id = Date.now() + Math.random();
-              setBadgeBursts((prev) => [...prev, id]);
-              setTimeout(() => {
-                setBadgeClicked(false);
-                setBadgeBursts((prev) => prev.filter((item) => item !== id));
-              }, 450);
-            }}
-            animate={
-              badgeClicked
-                ? { scale: 0.95, y: 2, boxShadow: "1px 1px 0px #000" }
-                : badgeHover
-                ? { scale: 1.05, y: -5, boxShadow: "4px 4px 10px rgba(255, 89, 100, 0.4)", backgroundColor: "#FF707B" }
-                : { 
-                    y: [0, -3, 0], 
-                    boxShadow: ["2.5px 2.5px 0px #000", "2.5px 2.5px 12px rgba(255, 89, 100, 0.4)", "2.5px 2.5px 0px #000"],
-                    backgroundColor: "#FF5964"
-                  }
-            }
-            transition={
-              badgeHover
-                ? { type: "spring", stiffness: 220, damping: 12 }
-                : { 
-                    y: { duration: 3.2, repeat: Infinity, ease: "easeInOut" },
-                    boxShadow: { duration: 2.2, repeat: Infinity, ease: "easeInOut" },
-                    default: { duration: 0.15 }
-                  }
-            }
-            className="inline-flex items-center justify-center px-3.5 py-1.5 border-3 border-black text-white font-retro text-[8.5px] sm:text-[9px] uppercase select-none rounded-sm relative overflow-hidden cursor-pointer w-auto text-center"
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}
+            className="inline-flex items-center justify-center px-4 py-1.5 border border-[#C084FC]/40 bg-[#C084FC]/20 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider rounded-full select-none"
           >
-            {/* Diagonal sheen sweep */}
-            <motion.div
-              animate={{ left: ["-30%", "130%"] }}
-              transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 3.5, ease: "linear" }}
-              className="absolute top-0 bottom-0 w-2.5 bg-card/40 skew-x-12 pointer-events-none"
-            />
-
-            {/* Hover corner sparkles */}
-            {badgeHover && (
-              <>
-                <motion.div animate={{ y: [-3, 3, -3] }} transition={{ duration: 1.0, repeat: Infinity }} className="absolute -top-1 -left-1 w-0.5 h-0.5 bg-[#FFDE47]" />
-                <motion.div animate={{ y: [3, -3, 3] }} transition={{ duration: 1.0, repeat: Infinity }} className="absolute -bottom-1 -right-1 w-0.5 h-0.5 bg-[#FFDE47]" />
-              </>
-            )}
-
-            HI THERE!
-
-            {/* Click particle bursts */}
-            <AnimatePresence>
-              {badgeBursts.map((id) => (
-                <div key={id} className="absolute inset-0 pointer-events-none overflow-visible">
-                  <motion.div initial={{ x: 0, y: 0, opacity: 1 }} animate={{ x: -14, y: -14, opacity: 0 }} exit={{ opacity: 0 }} className="absolute top-0 left-0 w-1 h-1 bg-[#FFDE47]" />
-                  <motion.div initial={{ x: 0, y: 0, opacity: 1 }} animate={{ x: 14, y: -14, opacity: 0 }} exit={{ opacity: 0 }} className="absolute top-0 right-0 w-1 h-1 bg-[#FFDE47]" />
-                  <motion.div initial={{ x: 0, y: 0, opacity: 1 }} animate={{ x: -14, y: 14, opacity: 0 }} exit={{ opacity: 0 }} className="absolute bottom-0 left-0 w-1 h-1 bg-[#FFDE47]" />
-                  <motion.div initial={{ x: 0, y: 0, opacity: 1 }} animate={{ x: 14, y: 14, opacity: 0 }} exit={{ opacity: 0 }} className="absolute bottom-0 right-0 w-1 h-1 bg-[#FFDE47]" />
-                </div>
-              ))}
-            </AnimatePresence>
+            WELCOME TO MY PORTFOLIO
           </motion.div>
 
-          <div className="space-y-5 md:space-y-4 w-full">
-            <h1 className="font-retro text-2xl sm:text-3.5xl lg:text-4.5xl font-bold tracking-tight text-foreground uppercase leading-none select-none">
+          <motion.div className="space-y-3 w-full" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
+            <h1 className="relative font-sans text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase leading-none select-none">
+              <span className="absolute -inset-2 bg-gradient-to-r from-[#C084FC]/25 to-[#FFA5A5]/25 rounded-xl blur-2xl opacity-45 pointer-events-none z-[-1] animate-pulse" />
               SHUBHAM SHUKLA
             </h1>
-            <p className="font-retro text-[10px] sm:text-xs text-[#FF5964] uppercase tracking-wider leading-none">
-              VISUAL CONTENT CREATOR
+            <p className="font-sans text-xs sm:text-sm font-bold text-[#FFA5A5] uppercase tracking-wider leading-none">
+              VISUAL CONTENT CREATOR & GRAPHIC DESIGNER
             </p>
-            <p className="font-retro text-[8px] sm:text-[9px] text-foreground/50 uppercase tracking-widest leading-none mt-1">
-              3.8 YEARS OF EXPERIENCE • INDIA
+            <p className="font-sans text-xs text-slate-300 uppercase tracking-widest leading-none mt-1">
+              3.8+ YEARS OF PROFESSIONAL EXPERIENCE • INDIA
             </p>
-          </div>
+          </motion.div>
 
-          {/* RPG DIALOGUE SPEECH BOX */}
-          <div className="w-full retro-card p-5 sm:p-6 bg-card border-4 border-black relative">
-            {/* Small speaker badge */}
-            <div className="absolute top-[-14px] left-6 px-3 py-1 bg-black text-white font-retro text-[8px] uppercase rounded-sm select-none">
+          {/* PROFESSIONAL INTRO GLASS BOX */}
+          <motion.div className="w-full retro-card p-5 sm:p-6 bg-[#131130]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl relative" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
+            <div className="absolute top-[-12px] left-6 px-3 py-0.5 bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-[10px] font-bold uppercase tracking-wider rounded-full select-none">
               ABOUT ME
             </div>
             
-            <div className="font-mono text-xs sm:text-sm text-[#1A1A1A] leading-relaxed min-h-[70px] select-text whitespace-pre-line">
+            <div className="font-sans text-xs sm:text-sm text-slate-200 leading-relaxed min-h-[70px] select-text whitespace-pre-line pt-1">
               {(() => {
                 let remaining = typedLength;
                 return briefSegments.map((seg, i) => {
@@ -315,7 +265,7 @@ export default function Hero() {
                   return (
                     <span
                       key={i}
-                      className={seg.highlight ? "text-[#FF5964] font-bold" : ""}
+                      className={seg.highlight ? "text-[#FFA5A5] font-bold" : ""}
                     >
                       {visibleText}
                     </span>
@@ -323,48 +273,49 @@ export default function Hero() {
                 });
               })()}
               <span className={cn(
-                "inline-block w-2.5 h-4 bg-black ml-1 align-middle",
-                typedLength < totalCharacters ? "animate-[heartPulse_0.8s_infinite]" : ""
+                "inline-block w-2.5 h-4 bg-[#C084FC] ml-1 align-middle",
+                typedLength < totalCharacters ? "animate-pulse" : ""
               )} />
             </div>
-          </div>
+          </motion.div>
 
-
-          {/* QUEST HISTORY (WORK EXPERIENCE) */}
-          <div className="w-full retro-card p-4 sm:p-5 bg-card border-4 border-black relative">
-            <div className="absolute top-[-12px] left-6 px-2.5 py-0.5 bg-black text-white font-retro text-[8px] uppercase rounded-sm select-none">
+          {/* WORK EXPERIENCE GLASS CARD */}
+          <motion.div className="w-full retro-card p-5 bg-[#131130]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl relative" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
+            <div className="absolute top-[-12px] left-6 px-3 py-0.5 bg-white/10 border border-white/20 text-white font-sans text-[10px] font-bold uppercase tracking-wider rounded-full select-none">
               WORK EXPERIENCE
             </div>
             <div className="space-y-3 pt-2">
               {experienceItems.map((item) => (
-                <div key={item.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-left border-b border-slate-800 pb-2.5 last:border-0 last:pb-0">
+                <div key={item.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-left border-b border-white/10 pb-2.5 last:border-0 last:pb-0">
                   <div>
-                    <div className="font-retro text-[8px] sm:text-[9px] font-bold text-foreground uppercase leading-tight">
+                    <div className="font-sans text-xs font-bold text-white uppercase leading-tight">
                       {item.role}
                     </div>
-                    <div className="text-[10px] text-gray-500 font-sans font-semibold leading-tight mt-0.5">
+                    <div className="text-xs text-slate-400 font-sans font-medium leading-tight mt-0.5">
                       {item.company}
                     </div>
                   </div>
-                  <div className="font-retro text-[7px] sm:text-[8px] text-[#FF5964] font-bold shrink-0 sm:text-right leading-tight">
+                  <div className="font-sans text-xs text-[#A7F3D0] font-bold shrink-0 sm:text-right leading-tight">
                     {item.duration}
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
 
         {/* RIGHT COLUMN: PIXEL AVATAR & COLLECTIBLE TOOL SLOTS */}
-        <div 
+        <motion.div 
           className="md:col-span-5 flex flex-col items-center justify-center relative min-h-[300px] md:min-h-[420px]"
           ref={avatarRef}
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
         >
-          {/* Concentric Dotted Retro Orbits */}
+          {/* Pulsing Ambient Glow behind Avatar */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-            <div className="w-[280px] h-[280px] border-3 border-dashed border-[#FFDE47]/30 rounded-full" />
-            <div className="w-[340px] h-[340px] border-2 border-dashed border-[#FF5964]/20 rounded-full absolute hidden md:block" />
+            <div className="w-[320px] h-[320px] rounded-full bg-[#C084FC]/15 blur-[70px] animate-pulse" />
           </div>
 
           {/* Central Interactive Pixel Avatar */}
@@ -494,15 +445,15 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.95 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute bottom-16 left-1/2 -translate-x-1/2 p-3.5 retro-card border-3 border-black bg-card shadow-[3.5px_3.5px_0px_#000] pointer-events-none min-w-[170px] z-50 text-center flex flex-col items-center gap-1"
+                        className="absolute bottom-16 left-1/2 -translate-x-1/2 p-3.5 bg-[#131130]/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-xl pointer-events-none min-w-[170px] z-50 text-center flex flex-col items-center gap-1"
                       >
-                        <div className="font-retro text-[8px] font-bold text-foreground uppercase leading-none mb-1">
+                        <div className="font-sans text-xs font-bold text-white uppercase leading-none mb-1">
                           {tool.name}
                         </div>
-                        <div className="font-retro text-[8px] text-[#FF5964] font-bold leading-none mb-1">
-                          LVL: {tool.proficiency}
+                        <div className="font-sans text-[11px] text-[#A7F3D0] font-bold leading-none mb-1">
+                          PROFICIENCY: {tool.proficiency}
                         </div>
-                        <div className="font-sans text-[10px] text-gray-500 font-light leading-snug">
+                        <div className="font-sans text-xs text-slate-300 font-normal leading-snug">
                           {tool.tagline}
                         </div>
                       </motion.div>
@@ -519,25 +470,25 @@ export default function Hero() {
               onClick={handleStartGame} 
               className="w-full sm:flex-1"
             >
-              <div className="retro-btn w-full shadow-[3px_3px_0px_#000] flex items-center justify-center gap-1.5 py-2.5 text-[8px] sm:text-[9px] text-center">
+              <div className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#C084FC] to-[#FFA5A5] text-[#131130] font-sans text-xs font-bold uppercase shadow-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer">
                 <span>🎨</span>
-                <span className="text-center font-retro leading-tight">View Projects</span>
+                <span>View Projects</span>
               </div>
             </button>
             
             <a
-              href="https://drive.google.com/file/d/1FT6n0wjmBkwOFaMGGtooEYybnv6iXhd_/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1XoeKfryks6UOD8sv-GLEQMDtKPDIy7hV/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="retro-btn retro-btn-outline w-full sm:flex-1 shadow-[3px_3px_0px_#000] flex items-center justify-center gap-1.5 py-2.5 text-[8px] sm:text-[9px] text-center"
+              className="w-full sm:flex-1 py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-sans text-xs font-bold uppercase transition-all shadow-lg flex items-center justify-center gap-2"
               onClick={() => unlockAchievement("view-resume", "Read Resume.TXT", "📑")}
             >
               <span>📄</span>
-              <span className="text-center font-retro leading-tight">Download Resume</span>
+              <span>Download Resume</span>
             </a>
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
 
@@ -548,7 +499,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-background border-8 border-black flex flex-col items-center justify-center p-6 cursor-pointer select-none"
+            className="fixed inset-0 z-[9999] bg-transparent border-8 border-black flex flex-col items-center justify-center p-6 cursor-pointer select-none"
             onClick={skipLoading}
           >
             <div className="w-full max-w-md retro-card p-6 bg-card border-4 border-black shadow-[6px_6px_0px_#000] space-y-6 relative text-left">
@@ -592,7 +543,7 @@ export default function Hero() {
                   <span>PROGRESS</span>
                   <span>{progressVal}%</span>
                 </div>
-                <div className="w-full border-3 border-black bg-background p-[3px] rounded-sm">
+                <div className="w-full border-3 border-black bg-transparent p-[3px] rounded-sm">
                   <motion.div 
                     className="h-4 bg-[#FFDE47]" 
                     style={{ width: `${progressVal}%` }} 

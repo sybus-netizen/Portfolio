@@ -77,7 +77,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen py-24 bg-background relative select-none">
+    <div className="min-h-screen py-24 bg-transparent relative select-none">
       <div className="max-w-6xl mx-auto px-6 md:px-12 space-y-16 sm:space-y-24 relative z-10">
         
         {/* Header - Real bio text */}
@@ -147,7 +147,7 @@ export default function AboutPage() {
               <FadeIn key={index} direction="up" delay={index * 0.08}>
                 <div className="retro-card p-6 bg-[#FFFFFF] border-3 border-black shadow-[4px_4px_0px_#000] h-full flex flex-col justify-between">
                   <div className="space-y-5">
-                    <div className="w-11 h-11 rounded-sm border-2 border-black bg-background flex items-center justify-center text-xl shadow-[1.5px_1.5px_0px_#000] select-none">
+                    <div className="w-11 h-11 rounded-sm border-2 border-black bg-transparent flex items-center justify-center text-xl shadow-[1.5px_1.5px_0px_#000] select-none">
                       {philo.emoji}
                     </div>
                     <div className="space-y-2">
@@ -172,7 +172,7 @@ export default function AboutPage() {
           <div className="space-y-10">
             <div className="space-y-4">
               <FadeIn direction="up">
-                <span className="inline-block px-3 py-1 bg-[#FFDE47] border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">EXPERIENCE</span>
+                <span className="inline-block px-3 py-1 bg-[#FFE082] border-2 border-black text-[#131130] font-bold font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">EXPERIENCE</span>
               </FadeIn>
               <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
                 Work History

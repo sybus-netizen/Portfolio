@@ -12,7 +12,7 @@ export const experienceItems: TimelineItem[] = [
     id: "digital-clouds-iot",
     role: "Graphic Designer & Video Editor",
     company: "Digital Clouds IoT Pvt Ltd",
-    duration: "Jan 2026 - Present",
+    duration: "Jan 2026 - Jun 2026",
     location: "Bangalore, India",
     description: [
       "Designed social media creatives and branding visuals for digital campaigns.",

@@ -149,7 +149,7 @@ export default function GameCompanion() {
     }, 1000);
   };
 
-  if (!mounted) return null;
+  return null;
 
   return (
     <div

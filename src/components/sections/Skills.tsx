@@ -47,22 +47,19 @@ const categories: SkillCategory[] = [
   }
 ];
 
-// Helper to render heart containers based on skill percentages
-function HeartMeter({ percentage }: { percentage: number }) {
-  const total = 5;
-  const filled = Math.round((percentage / 100) * total);
-  
+// Helper to render modern progress bar based on skill percentages
+function ProgressBar({ percentage, brandColor }: { percentage: number; brandColor: string }) {
   return (
-    <div className="flex items-center gap-1 text-[#FF5964]">
-      {Array.from({ length: total }).map((_, i) => (
-        <span 
-          key={i} 
-          className={`text-sm ${i < filled ? "animate-[heartPulse_1.5s_infinite]" : "opacity-30"}`}
-          style={{ animationDelay: `${i * 0.15}s` }}
-        >
-          ❤
-        </span>
-      ))}
+    <div className="flex items-center gap-2.5">
+      <div className="w-20 sm:w-24 h-2 bg-white/10 rounded-full overflow-hidden border border-white/10">
+        <div 
+          className="h-full rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+          style={{ width: `${percentage}%`, backgroundColor: brandColor }}
+        />
+      </div>
+      <span className="font-sans text-xs font-bold text-slate-300">
+        {percentage}%
+      </span>
     </div>
   );
 }
@@ -71,7 +68,7 @@ export default function Skills() {
   const { unlockQuest } = useGameSystem();
 
   return (
-    <section id="skills" className="py-20 border-t-3 border-black bg-background relative overflow-hidden">
+    <section id="skills" className="py-20 border-t border-white/10 bg-transparent relative overflow-hidden">
       <motion.div
         onViewportEnter={() => unlockQuest("skills", "Skills")}
         viewport={{ once: true, amount: 0.1 }}
@@ -80,14 +77,14 @@ export default function Skills() {
         
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#3BCEAC] border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">
-            POWER STATUS
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#3BCEAC]/20 border border-[#3BCEAC]/40 text-[#3BCEAC] font-sans text-xs font-bold uppercase tracking-wider rounded-full">
+            TECHNICAL PROFICIENCY
           </div>
-          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
+          <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
             Creative Toolkit
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
-            Equipped with industry-standard software tools and frameworks calibrated to professional levels.
+            Equipped with industry-standard software tools and creative suites for professional visual production.
           </p>
         </div>
 
@@ -96,13 +93,13 @@ export default function Skills() {
           {categories.map((cat, idx) => (
             <div 
               key={idx}
-              className="retro-card p-6 bg-card border-3 border-black shadow-[4px_4px_0px_#000] flex flex-col justify-between"
+              className="retro-card p-6 bg-[#131130]/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl flex flex-col justify-between"
             >
               <div className="space-y-6">
                 {/* Category Header */}
-                <div className="flex items-center gap-3 border-b-2 border-slate-800 pb-4">
+                <div className="flex items-center gap-3 border-b border-white/10 pb-4">
                   <span className="text-2xl select-none">{cat.iconEmoji}</span>
-                  <h3 className="font-retro text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-wider">
+                  <h3 className="font-sans text-sm font-bold text-white uppercase tracking-wider">
                     {cat.title}
                   </h3>
                 </div>
@@ -110,15 +107,15 @@ export default function Skills() {
                 {/* Tools Status Bars */}
                 <div className="space-y-5">
                   {cat.tools.map((tool, tIdx) => (
-                    <div key={tIdx} className="space-y-1 text-left">
+                    <div key={tIdx} className="space-y-1.5 text-left">
                       <div className="flex items-center justify-between">
-                        <span className="font-retro text-[9px] sm:text-[10px] uppercase font-bold text-foreground flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: tool.brandColor }} />
+                        <span className="font-sans text-xs font-bold text-slate-200 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: tool.brandColor }} />
                           {tool.name}
                         </span>
-                        <HeartMeter percentage={tool.proficiency} />
+                        <ProgressBar percentage={tool.proficiency} brandColor={tool.brandColor} />
                       </div>
-                      <p className="text-[10px] text-gray-500 font-sans font-light pl-3.5 leading-normal">
+                      <p className="text-[11px] text-slate-400 font-sans font-normal pl-4 leading-normal">
                         {tool.subLabel}
                       </p>
                     </div>
@@ -126,9 +123,11 @@ export default function Skills() {
                 </div>
               </div>
 
-              {/* Status bar */}
-              <div className="mt-8 pt-4 border-t border-dashed border-slate-800 text-left">
-                <span className="font-retro text-[8px] text-foreground/30">SKILL_SYS_LVL: STABLE</span>
+              {/* Footer Indicator */}
+              <div className="mt-8 pt-4 border-t border-white/10 text-left">
+                <span className="font-sans text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
+                  ADVANCED PROFICIENCY
+                </span>
               </div>
             </div>
           ))}

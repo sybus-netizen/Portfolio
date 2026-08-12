@@ -18,8 +18,7 @@ export default function ProjectsPage() {
     : projectsData.filter(project => project.category === activeCategory);
 
   return (
-    <div className="min-h-screen py-24 bg-background relative select-none">
-
+    <div className="min-h-screen py-24 bg-transparent relative overflow-hidden select-none">
       <div className="max-w-6xl mx-auto px-6 md:px-12 space-y-12 sm:space-y-16 relative z-10">
         
         {/* Page Header */}
@@ -47,10 +46,10 @@ export default function ProjectsPage() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`relative px-4 py-2 border-2 border-black font-retro text-[8px] sm:text-[9px] uppercase tracking-wider transition-all duration-100 cursor-pointer rounded-sm ${
+              className={`relative px-4 py-2 font-retro text-[8px] sm:text-[9px] uppercase tracking-wider transition-all duration-200 cursor-pointer rounded-lg border ${
                 activeCategory === category
-                  ? "bg-[#FFDE47] text-black shadow-[2px_2px_0px_#000] translate-y-[-1px]"
-                  : "bg-card text-slate-300 shadow-[1.5px_1.5px_0px_#000] active:translate-y-0.5 active:shadow-none hover:text-white hover:bg-slate-850"
+                  ? "bg-[#C084FC] text-[#131130] border-[#C084FC] font-bold shadow-[0_0_15px_rgba(192,132,252,0.4)]"
+                  : "bg-card/70 text-slate-300 border-white/10 hover:text-white hover:bg-card/90 hover:border-white/20"
               }`}
             >
               {category}
@@ -100,7 +99,7 @@ export default function ProjectsPage() {
                       
                       {/* Hover Overlay */}
                       <div className="absolute inset-0 bg-black/75 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center pointer-events-none z-10 p-4">
-                        <div className="px-3.5 py-2 bg-[#FFDE47] border-2 border-black text-foreground font-retro text-[9px] uppercase shadow-[2.5px_2.5px_0px_#000] scale-90 group-hover:scale-100 transition-transform duration-200">
+                        <div className="px-3.5 py-2 bg-[#FFE082] border-2 border-black text-[#131130] font-bold font-retro text-[9px] uppercase shadow-[2.5px_2.5px_0px_#000] scale-90 group-hover:scale-100 transition-transform duration-200">
                           Insert Cartridge ▶
                         </div>
                       </div>
@@ -129,7 +128,7 @@ export default function ProjectsPage() {
                           {project.tags.slice(0, 2).map((tag) => (
                             <span
                               key={tag}
-                              className="text-[9px] font-sans text-foreground/60 bg-background border border-black/20 px-2 py-0.5 rounded-sm"
+                              className="text-[9px] font-sans text-foreground/60 bg-transparent border border-black/20 px-2 py-0.5 rounded-sm"
                             >
                               #{tag}
                             </span>

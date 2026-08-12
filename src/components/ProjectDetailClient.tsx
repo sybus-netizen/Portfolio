@@ -33,193 +33,184 @@ export default function ProjectDetailClient({ project }: ClientProps) {
     : "bg-[#3A86C8]";
 
   return (
-    <div className="min-h-screen py-24 bg-background relative select-none">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 space-y-8 relative z-10">
+    <div className="min-h-screen pt-32 pb-32 mb-12 bg-transparent relative overflow-hidden select-none z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 space-y-6 relative z-10">
         
         {/* Back Link */}
         <div className="text-left">
           <Link 
             href="/projects" 
             onClick={playClick}
-            className="inline-flex items-center gap-2 font-retro text-[8px] sm:text-[9px] uppercase tracking-wider text-slate-400 hover:text-foreground transition-colors"
+            className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-widest text-slate-400 hover:text-white transition-colors"
           >
-            <ArrowLeft className="w-3 h-3" />
+            <ArrowLeft className="w-4 h-4" />
             Back to Catalog
           </Link>
         </div>
 
-        {/* main retro cartridge container */}
-        <div className={`retro-card p-6 sm:p-8 bg-card border-4 border-black shadow-[8px_8px_0px_#000] relative overflow-hidden text-left border-t-[16px] ${accentColor}`}>
+        {/* 2-Column Responsive Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
           
-          {/* Cartridge Header Ridge details */}
-          <div className="flex justify-between items-center border-b-2 border-black pb-4 mb-6 select-none">
-            <div className="flex flex-col">
-              <span className="font-retro text-[8px] text-slate-500">SYSTEM: PORTFOLIO_OS</span>
-              <span className="font-retro text-[7px] text-slate-600">ID: {project.id.toUpperCase()}</span>
-            </div>
-            <div className="flex gap-2">
-              <span className="w-3 h-3 border border-black bg-black/10 rounded-full" />
-              <span className="w-3 h-3 border border-black bg-black/10 rounded-full" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            
-            {/* Left Info Column */}
-            <div className="md:col-span-5 space-y-6 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className={`inline-flex items-center gap-2 px-2.5 py-1 ${accentBg} border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000]`}>
+          {/* LEFT COLUMN: STICKY INFO SIDEBAR */}
+          <div className="md:col-span-5 md:sticky md:top-28 space-y-6">
+            <div className="retro-card p-5 sm:p-6 bg-[#131130]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl space-y-5 text-left">
+              
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider">
                   {project.category}
                 </div>
-                <h1 className="font-retro text-lg sm:text-xl font-bold uppercase tracking-tight text-foreground leading-tight">
+                <h1 className="font-sans text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-white leading-tight">
                   {project.title}
                 </h1>
-                <p className="text-xs sm:text-sm text-slate-300 font-sans font-light leading-relaxed">
+                <p className="text-xs text-slate-300 font-sans font-normal leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
               {/* Specs Table */}
-              <div className="border-2 border-black bg-background p-4 space-y-3 font-sans rounded-sm">
-                <div className="flex items-center justify-between text-xs border-b border-black/10 pb-1.5">
-                  <span className="font-retro text-[7px] text-slate-500 flex items-center gap-1.5 uppercase">
-                    <ShieldCheck className="w-3 h-3 text-slate-500" /> Role
+              <div className="bg-white/5 border border-white/10 p-4 space-y-2.5 font-sans rounded-xl backdrop-blur-md">
+                <div className="flex items-center justify-between text-xs border-b border-white/10 pb-2">
+                  <span className="font-sans text-xs text-slate-400 flex items-center gap-2 uppercase font-medium">
+                    <ShieldCheck className="w-3.5 h-3.5 text-slate-400" /> Role
                   </span>
-                  <span className="font-bold text-foreground">{project.role}</span>
+                  <span className="font-bold text-white">{project.role}</span>
                 </div>
-                <div className="flex items-center justify-between text-xs border-b border-black/10 pb-1.5">
-                  <span className="font-retro text-[7px] text-slate-500 flex items-center gap-1.5 uppercase">
-                    <Calendar className="w-3 h-3 text-slate-500" /> Release
-                  </span>
-                  <span className="font-bold text-foreground">{project.year}</span>
-                </div>
-                <div className="flex flex-col gap-1 text-xs pt-0.5">
-                  <span className="font-retro text-[7px] text-slate-500 flex items-center gap-1.5 uppercase">
-                    <Tag className="w-3 h-3 text-slate-500" /> Tools
+                <div className="flex flex-col gap-1.5 text-xs pt-1">
+                  <span className="font-sans text-xs text-slate-400 flex items-center gap-2 uppercase font-medium">
+                    <Tag className="w-3.5 h-3.5 text-slate-400" /> Tools
                   </span>
                   <div className="flex flex-wrap gap-1.5 mt-1">
                     {project.technologies.map((tech) => (
-                      <span key={tech} className="text-[8px] font-retro font-bold text-[#3A86C8] uppercase tracking-wide">
+                      <span key={tech} className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-200 text-[10px] font-sans font-semibold uppercase tracking-wider">
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
               </div>
+
+              {/* Media Stream Metadata */}
+              <div className="pt-2 border-t border-white/10 flex justify-between items-center text-xs font-sans text-slate-400">
+                <span>PROJECT SHOWCASE</span>
+                <span className="text-[#A7F3D0] font-semibold">
+                  {project.gallery ? `${project.gallery.length} FRAMES` : 'VIDEO SHOWCASE'}
+                </span>
+              </div>
+
             </div>
+          </div>
 
-            {/* Right Showcase Media Column */}
-            <div className="md:col-span-7 space-y-6">
-              
-              {/* Video Player Embed */}
-              {currentVideoUrl ? (
-                <div className="space-y-4">
-                  <span className="font-retro text-[8px] text-slate-500 uppercase block select-none">
-                    Video Output [Loaded]
-                  </span>
-                  <div className={
-                    project.videoAspectRatio === "portrait"
-                      ? "relative w-full max-w-[300px] mx-auto aspect-[9/16] border-3 border-black bg-black shadow-[4px_4px_0px_#000] rounded-sm overflow-hidden"
-                      : "relative w-full aspect-video border-3 border-black bg-black shadow-[4px_4px_0px_#000] rounded-sm overflow-hidden"
-                  }>
-                    <iframe
-                      src={currentVideoUrl}
-                      title={project.title}
-                      className="absolute inset-0 w-full h-full border-0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    />
-                  </div>
-
-                  {/* VHS Cassette Playlist Shelf */}
-                  {project.videos && project.videos.length > 0 && (
-                    <div className="space-y-3 pt-4 border-t-2 border-black/10">
-                      <span className="font-retro text-[8px] text-slate-500 uppercase block select-none">
-                        VHS Cassette Rack (Select Tape to Play)
-                      </span>
-                      <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
-                        {project.videos.map((vidUrl, index) => {
-                          const isActive = currentVideoUrl === vidUrl;
-                          return (
-                            <button
-                              key={index}
-                              onClick={() => {
-                                playClick();
-                                setCurrentVideoUrl(vidUrl);
-                              }}
-                              className={`relative border-2 border-black p-2 font-retro text-[8px] uppercase flex flex-col items-center justify-center transition-all ${
-                                isActive
-                                  ? `${accentBg} text-foreground shadow-none translate-y-0.5`
-                                  : "bg-[#1E1E1E] text-white shadow-[2px_2px_0px_#000] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] active:translate-y-0.5 active:shadow-none"
-                              } rounded-sm`}
-                            >
-                              <div className="flex gap-1.5 mb-1 opacity-60">
-                                <span className={`w-2 h-2 border rounded-full ${isActive ? 'border-black bg-black/20' : 'border-white bg-white/20'}`} />
-                                <span className={`w-2 h-2 border rounded-full ${isActive ? 'border-black bg-black/20' : 'border-white bg-white/20'}`} />
-                              </div>
-                              <span>TAPE {String(index + 1).padStart(2, "0")}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
+          {/* RIGHT COLUMN: COMPACT MEDIA SHOWCASE STREAM */}
+          <div className="md:col-span-7 space-y-6 text-left">
+            
+            {/* Video Section (if video exists) */}
+            {currentVideoUrl && (
+              <div className="space-y-4">
+                <div className={
+                  project.videoAspectRatio === "portrait"
+                    ? "relative w-full max-w-[240px] sm:max-w-[260px] mx-auto aspect-[9/16] border border-white/10 bg-black shadow-2xl rounded-2xl overflow-hidden"
+                    : "relative w-full aspect-video border border-white/10 bg-black shadow-2xl rounded-2xl overflow-hidden"
+                }>
+                  <iframe
+                    src={currentVideoUrl}
+                    title={project.title}
+                    className="absolute inset-0 w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
                 </div>
-              ) : project.gallery && project.gallery.length > 0 ? (
-                <div className="space-y-4">
-                  <span className="font-retro text-[8px] text-slate-500 uppercase block select-none">
-                    Image Gallery [{project.gallery.length} frames] (Click to Expand)
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {project.gallery.map((img, index) => (
-                      <div 
-                        key={index} 
-                        onClick={() => {
-                          playClick();
-                          setActiveImage(img);
-                        }}
-                        className="relative aspect-square w-full overflow-hidden border-2 border-black bg-neutral-900 group hover:shadow-[3px_3px_0px_#000] transition-shadow rounded-sm cursor-zoom-in"
-                      >
+
+                {/* Video Clip Rack Selector */}
+                {project.videos && project.videos.length > 0 && (
+                  <div className="space-y-2.5 p-4 rounded-2xl bg-[#131130]/80 border border-white/10 backdrop-blur-xl">
+                    <span className="font-sans text-[11px] text-slate-400 uppercase font-semibold tracking-wider block">
+                      Select Video Clip
+                    </span>
+                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                      {project.videos.map((vidUrl, index) => {
+                        const isActive = currentVideoUrl === vidUrl;
+                        return (
+                          <button
+                            key={index}
+                            onClick={() => {
+                              playClick();
+                              setCurrentVideoUrl(vidUrl);
+                            }}
+                            className={`px-2 py-1.5 rounded-lg border font-sans text-[10px] uppercase flex items-center justify-center transition-all ${
+                              isActive
+                                ? "bg-[#C084FC] text-[#131130] border-[#C084FC] font-extrabold shadow-[0_0_12px_rgba(192,132,252,0.4)]"
+                                : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:border-white/20"
+                            }`}
+                          >
+                            CLIP {String(index + 1).padStart(2, "0")}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Gallery Grid (Compact 2-column for multiple images) */}
+            {project.gallery && project.gallery.length > 0 ? (
+              <div className="space-y-3">
+                <span className="font-sans text-[11px] text-slate-400 uppercase font-semibold tracking-wider block">
+                  Gallery Showcase ({project.gallery.length} Frames)
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {project.gallery.map((img, index) => (
+                    <div 
+                      key={index}
+                      onClick={() => {
+                        playClick();
+                        setActiveImage(img);
+                      }}
+                      className="group relative w-full overflow-hidden rounded-xl border border-white/10 bg-[#131130]/90 shadow-xl backdrop-blur-md cursor-zoom-in hover:border-[#C084FC]/50 hover:shadow-[0_0_20px_rgba(192,132,252,0.25)] transition-all duration-300"
+                    >
+                      {/* Frame Indicator Pill */}
+                      <div className="absolute top-2.5 left-2.5 z-20 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-slate-300 font-sans text-[9px] font-bold uppercase tracking-widest">
+                        {String(index + 1).padStart(2, "0")} / {String(project.gallery?.length || 0).padStart(2, "0")}
+                      </div>
+
+                      <div className="relative w-full aspect-square overflow-hidden">
                         <Image
                           src={getAssetPath(img)}
-                          alt={`${project.title} screenshot ${index + 1}`}
+                          alt={`${project.title} frame ${index + 1}`}
                           fill
                           unoptimized={true}
                           sizes="(max-w-768px) 100vw, 50vw"
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          loading="lazy"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                          loading={index === 0 ? "eager" : "lazy"}
                         />
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
-              ) : (
-                <div 
-                  onClick={() => {
-                    playClick();
-                    setActiveImage(project.image);
-                  }}
-                  className="relative aspect-[4/3] w-full overflow-hidden border-3 border-black bg-neutral-900 shadow-[4px_4px_0px_#000] rounded-sm cursor-zoom-in group hover:shadow-[6px_6px_0px_#000] transition-shadow"
-                >
+              </div>
+            ) : !currentVideoUrl ? (
+              /* Single Featured Image */
+              <div 
+                onClick={() => {
+                  playClick();
+                  setActiveImage(project.image);
+                }}
+                className="group relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl border border-white/10 bg-[#131130]/90 shadow-2xl backdrop-blur-md cursor-zoom-in hover:border-[#C084FC]/50 hover:shadow-[0_0_30px_rgba(192,132,252,0.25)] transition-all duration-300"
+              >
+                <div className="relative w-full aspect-[16/10] overflow-hidden">
                   <Image
                     src={getAssetPath(project.image)}
                     alt={project.title}
                     fill
                     unoptimized={true}
-                    sizes="(max-w-768px) 100vw, 50vw"
-                    className="object-cover"
+                    sizes="(max-w-768px) 100vw, 60vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                     priority
                   />
                 </div>
-              )}
-            </div>
+              </div>
+            ) : null}
 
-          </div>
-
-          {/* Subtext info */}
-          <div className="border-t-2 border-black pt-4 mt-8 flex justify-between items-center select-none text-[8px]">
-            <span className="font-retro text-slate-500">HOST_IP: LOCALHOST</span>
-            <span className="font-retro text-[#FF5964] font-bold">CARTRIDGE LOADED OK ▶</span>
           </div>
 
         </div>
@@ -237,7 +228,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
               playClick();
               setActiveImage(null);
             }}
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
+            className="fixed inset-0 bg-black/95 z-[99999] flex items-center justify-center p-6 cursor-zoom-out backdrop-blur-xl"
           >
             {/* Close Button */}
             <button
@@ -246,9 +237,9 @@ export default function ProjectDetailClient({ project }: ClientProps) {
                 playClick();
                 setActiveImage(null);
               }}
-              className="absolute top-6 right-6 retro-btn bg-[#FF5964] border-2 border-black text-white py-1.5 px-3.5 text-[8px] font-retro shadow-[2px_2px_0px_#000]"
+              className="absolute top-6 right-6 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full font-sans text-xs font-semibold backdrop-blur-md transition-all shadow-xl z-[100000]"
             >
-              CLOSE [X]
+              Close ✕
             </button>
             <motion.img
               initial={{ scale: 0.95 }}
@@ -257,7 +248,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
               onClick={(e) => e.stopPropagation()}
               src={getAssetPath(activeImage)}
               alt="Expanded view"
-              className="max-h-[85vh] max-w-[90vw] w-auto h-auto object-contain border-4 border-black bg-transparent shadow-[8px_8px_0px_#000] rounded-sm select-none"
+              className="max-h-[80vh] max-w-[85vw] w-auto h-auto object-contain border border-white/20 rounded-2xl shadow-2xl select-none"
             />
           </motion.div>
         )}
