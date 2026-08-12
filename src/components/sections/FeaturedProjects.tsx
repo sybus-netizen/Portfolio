@@ -25,7 +25,7 @@ export default function FeaturedProjects() {
     <section 
       id="projects" 
       ref={sectionRef} 
-      className="py-20 border-t border-white/10 bg-transparent relative overflow-hidden"
+      className="py-12 md:py-16 border-t border-white/10 bg-transparent relative overflow-hidden"
     >
       <motion.div
         onViewportEnter={() => unlockQuest("projects", "Work Completed")}
@@ -34,7 +34,7 @@ export default function FeaturedProjects() {
       >
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6 w-full text-left">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 md:mb-10 gap-6 w-full text-left">
           <FadeIn direction="left" className="space-y-4 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-xs font-bold uppercase tracking-wider select-none">
               PORTFOLIO SHOWCASE

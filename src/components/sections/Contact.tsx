@@ -36,7 +36,7 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="py-20 border-t border-white/10 bg-transparent relative overflow-hidden"
+      className="pt-12 pb-10 md:pt-16 md:pb-12 border-t border-white/10 bg-transparent relative overflow-hidden"
     >
       <motion.div
         onViewportEnter={() => {
@@ -48,7 +48,7 @@ export default function Contact() {
       >
         
         {/* Section Header */}
-        <div className="text-center space-y-4 mb-16 max-w-xl mx-auto select-none">
+        <div className="text-center space-y-3 mb-8 md:mb-10 max-w-xl mx-auto select-none">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-xs font-bold uppercase tracking-wider select-none">
             GET IN TOUCH
           </div>
@@ -61,41 +61,41 @@ export default function Contact() {
         </div>
 
         {/* MODERN GLASS CONTACT PANEL */}
-        <div className="retro-card p-6 sm:p-8 bg-[#131130]/90 backdrop-blur-xl border border-white/10 w-full max-w-lg shadow-2xl rounded-2xl space-y-6 relative mb-8 text-left">
+        <div className="retro-card p-6 sm:p-8 bg-[#131130]/90 backdrop-blur-xl border border-white/10 w-full max-w-lg shadow-2xl rounded-2xl space-y-6 relative text-left">
           
-          {/* Header Badge */}
-          <div className="flex justify-between items-center border-b border-white/10 pb-4 select-none">
-            <span className="font-sans text-xs font-bold text-slate-400 uppercase tracking-wider">DIRECT CONTACT</span>
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#3BCEAC] animate-pulse" />
-              <span className="font-sans text-xs font-bold text-[#A7F3D0]">OPEN FOR WORK</span>
+          {/* DIRECT CONTACT LIST */}
+          <div className="space-y-5">
+            <div className="flex items-center justify-between font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider border-b border-white/10 pb-3">
+              <span>DIRECT CONTACT</span>
+              <span className="text-[#A7F3D0] flex items-center gap-1.5 font-bold">
+                <span className="w-2 h-2 rounded-full bg-[#A7F3D0] animate-pulse" />
+                OPEN FOR WORK
+              </span>
             </div>
-          </div>
 
-          <div className="space-y-4">
-            
             {/* EMAIL ACTION LINE */}
-            <div className="flex items-center justify-between gap-4 flex-wrap w-full">
+            <div className="flex items-center justify-between gap-4 flex-wrap w-full pt-1">
               <div className="text-left space-y-0.5">
                 <span className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider block">EMAIL ADDRESS</span>
-                <span className="font-sans text-xs sm:text-sm font-semibold text-white break-all">
+                <span className="font-sans text-xs sm:text-sm font-semibold text-white">
                   shubhamshukla327@gmail.com
                 </span>
               </div>
-              <div className="flex gap-2.5 items-center justify-start sm:justify-end w-full sm:w-auto">
+              <div className="flex gap-2 items-center justify-start sm:justify-end w-full sm:w-auto">
                 <button
-                  onClick={() => copyToClipboard("shubhamshukla327@gmail.com", "Email")}
-                  aria-label="Copy email"
-                  className="p-2 border border-white/10 bg-white/5 hover:bg-white/10 rounded-xl text-slate-300 transition-colors cursor-pointer"
+                  onClick={() => copyToClipboard("shubhamshukla327@gmail.com", "Email copied!")}
+                  className="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all shrink-0"
+                  title="Copy Email"
                 >
-                  <Copy className="w-4 h-4 text-slate-300" />
+                  <Copy className="w-4 h-4" />
                 </button>
-                <button
+                <a
+                  href="mailto:shubhamshukla327@gmail.com"
                   onClick={handleEmailClick}
-                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#C084FC] to-[#FFA5A5] text-[#131130] font-sans text-xs font-bold uppercase shadow-lg hover:brightness-110 transition-all shrink-0"
+                  className="px-3.5 py-2 rounded-xl bg-[#FFA5A5] hover:bg-[#ff8f8f] text-[#131130] font-sans text-xs font-bold uppercase transition-all shrink-0 inline-flex items-center gap-1.5"
                 >
                   SEND EMAIL ✉
-                </button>
+                </a>
               </div>
             </div>
 
@@ -107,13 +107,13 @@ export default function Contact() {
                   +91 74777 27544
                 </span>
               </div>
-              <div className="flex gap-2.5 items-center justify-start sm:justify-end w-full sm:w-auto">
+              <div className="flex gap-2 items-center justify-start sm:justify-end w-full sm:w-auto">
                 <button
-                  onClick={() => copyToClipboard("+91 74777 27544", "Phone")}
-                  aria-label="Copy phone number"
-                  className="p-2 border border-white/10 bg-white/5 hover:bg-white/10 rounded-xl text-slate-300 transition-colors cursor-pointer"
+                  onClick={() => copyToClipboard("+91 74777 27544", "Phone number copied!")}
+                  className="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all shrink-0"
+                  title="Copy Phone"
                 >
-                  <Copy className="w-4 h-4 text-slate-300" />
+                  <Copy className="w-4 h-4" />
                 </button>
                 <button
                   onClick={handlePhoneClick}
@@ -148,8 +148,8 @@ export default function Contact() {
         </div>
 
         {/* Signature */}
-        <div className="text-center select-none border-t border-white/10 pt-6 w-full">
-          <p className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-slate-300">
+        <div className="text-center select-none pt-8">
+          <p className="font-sans text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
             THANK YOU FOR VISITING!
           </p>
         </div>

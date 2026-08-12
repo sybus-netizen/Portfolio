@@ -215,7 +215,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen pt-28 pb-16 flex items-center relative overflow-hidden bg-transparent"
+      className="min-h-screen pt-24 pb-12 sm:pt-28 sm:pb-14 flex items-center relative overflow-hidden bg-transparent"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10 w-full">
         

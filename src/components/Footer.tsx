@@ -13,7 +13,7 @@ export default function Footer() {
   };
   
   return (
-    <footer className="pt-10 pb-8 border-t border-white/10 bg-[#0E0C22]/80 backdrop-blur-md relative z-10 overflow-hidden mt-auto select-none">
+    <footer className="pt-8 pb-6 border-t border-white/10 bg-[#0E0C22]/80 backdrop-blur-md relative z-10 overflow-hidden mt-auto select-none">
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
         
         {/* TOP ROW */}

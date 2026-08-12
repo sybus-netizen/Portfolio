@@ -67,7 +67,7 @@ export default function About() {
   const { unlockQuest } = useGameSystem();
 
   return (
-    <section id="about" className="py-20 border-t border-white/10 bg-transparent relative overflow-hidden">
+    <section id="about" className="py-12 md:py-16 border-t border-white/10 bg-transparent relative overflow-hidden">
       <motion.div
         onViewportEnter={() => unlockQuest("about", "About")}
         viewport={{ once: true, amount: 0.1 }}
@@ -75,7 +75,7 @@ export default function About() {
       >
         
         {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-xl mx-auto mb-8 md:mb-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-xs font-bold uppercase tracking-wider select-none">
             SPECIFICATION
           </div>
