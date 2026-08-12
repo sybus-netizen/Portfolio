@@ -252,7 +252,7 @@ export default function Hero() {
 
           {/* PROFESSIONAL INTRO GLASS BOX */}
           <motion.div className="w-full retro-card p-5 sm:p-6 bg-[#131130]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl relative" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
-            <div className="absolute top-[-12px] left-6 px-3 py-0.5 bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-[10px] font-bold uppercase tracking-wider rounded-full select-none">
+            <div className="absolute top-[-12px] left-6 px-3 py-1 bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider rounded-full select-none">
               ABOUT ME
             </div>
             
@@ -282,7 +282,7 @@ export default function Hero() {
 
           {/* WORK EXPERIENCE GLASS CARD */}
           <motion.div className="w-full retro-card p-5 bg-[#131130]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl relative" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
-            <div className="absolute top-[-12px] left-6 px-3 py-0.5 bg-white/10 border border-white/20 text-white font-sans text-[10px] font-bold uppercase tracking-wider rounded-full select-none">
+            <div className="absolute top-[-12px] left-6 px-3 py-1 bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider rounded-full select-none">
               WORK EXPERIENCE
             </div>
             <div className="space-y-3 pt-2">
@@ -468,7 +468,7 @@ export default function Hero() {
           {/* ACTION BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-3 w-full max-w-[340px] mt-6 relative z-20">
             <button 
-              onClick={handleStartGame} 
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} 
               className="w-full sm:flex-1"
             >
               <div className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#C084FC] to-[#FFA5A5] text-[#131130] font-sans text-xs font-bold uppercase shadow-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer">
@@ -492,75 +492,6 @@ export default function Hero() {
         </motion.div>
 
       </div>
-
-      {/* FULL SCREEN RETRO LOADING SCREEN */}
-      <AnimatePresence>
-        {showLoading && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-transparent border-8 border-black flex flex-col items-center justify-center p-6 cursor-pointer select-none"
-            onClick={skipLoading}
-          >
-            <div className="w-full max-w-md retro-card p-6 bg-card border-4 border-black shadow-[6px_6px_0px_#000] space-y-6 relative text-left">
-              <div className="absolute top-[-14px] left-6 px-3 py-1 bg-black text-white font-retro text-[8px] uppercase rounded-sm">
-                BIOS_LOADER
-              </div>
-
-              {/* Stepped Typewriter steps */}
-              <div className="font-retro text-[9px] sm:text-[10px] text-foreground space-y-3 leading-loose min-h-[140px]">
-                {loadingStep >= 0 && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                    &gt; LOADING ASSETS... DONE.
-                  </motion.div>
-                )}
-                {loadingStep >= 1 && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                    &gt; GENERATING CREATIVITY... OK.
-                  </motion.div>
-                )}
-                {loadingStep >= 2 && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                    &gt; PREPARING PORTFOLIO... STABLE.
-                  </motion.div>
-                )}
-                {loadingStep >= 3 && (
-                  <motion.div 
-                    initial={{ opacity: 0 }} 
-                    animate={{ opacity: 1 }}
-                    className="text-[#FF5964] font-bold mt-4"
-                  >
-                    &gt; WELCOME PLAYER 1
-                    <br />
-                    &gt; MISSION: EXPLORE MY WORK
-                  </motion.div>
-                )}
-              </div>
-
-              {/* Fills Progress Loader Bar */}
-              <div className="space-y-2">
-                <div className="flex justify-between font-retro text-[8px] text-foreground/50">
-                  <span>PROGRESS</span>
-                  <span>{progressVal}%</span>
-                </div>
-                <div className="w-full border-3 border-black bg-transparent p-[3px] rounded-sm">
-                  <motion.div 
-                    className="h-4 bg-[#FFDE47]" 
-                    style={{ width: `${progressVal}%` }} 
-                  />
-                </div>
-              </div>
-
-              <div className="text-center font-retro text-[8px] text-foreground/30 pt-2 animate-[heartPulse_1.2s_infinite]">
-                CLICK ANYWHERE TO SKIP INTRO
-              </div>
-
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
     </section>
   );
 }

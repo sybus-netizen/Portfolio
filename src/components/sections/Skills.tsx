@@ -77,7 +77,7 @@ export default function Skills() {
         
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#3BCEAC]/20 border border-[#3BCEAC]/40 text-[#3BCEAC] font-sans text-xs font-bold uppercase tracking-wider rounded-full">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-xs font-bold uppercase tracking-wider select-none">
             TECHNICAL PROFICIENCY
           </div>
           <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">

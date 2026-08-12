@@ -36,8 +36,8 @@ export default function FeaturedProjects() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6 w-full text-left">
           <FadeIn direction="left" className="space-y-4 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#C084FC]/20 border border-[#C084FC]/40 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider rounded-full">
-              PORTFOLIO
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-xs font-bold uppercase tracking-wider select-none">
+              PORTFOLIO SHOWCASE
             </div>
             <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
               Featured Work

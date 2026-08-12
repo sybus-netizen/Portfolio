@@ -76,10 +76,10 @@ export default function About() {
         
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF5964] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-xs font-bold uppercase tracking-wider select-none">
             SPECIFICATION
           </div>
-          <h2 className="font-retro text-xl sm:text-2xl md:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-none">
+          <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
             What I Create
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">

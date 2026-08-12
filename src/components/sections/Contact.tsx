@@ -49,7 +49,7 @@ export default function Contact() {
         
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16 max-w-xl mx-auto select-none">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FF5964]/20 border border-[#FF5964]/40 text-[#FFA5A5] font-sans text-xs font-bold uppercase tracking-wider rounded-full">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-xs font-bold uppercase tracking-wider select-none">
             GET IN TOUCH
           </div>
           <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-none">
