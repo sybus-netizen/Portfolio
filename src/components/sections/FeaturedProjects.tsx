@@ -81,9 +81,6 @@ export default function FeaturedProjects() {
                     <span className="px-2.5 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-[10px] font-bold uppercase tracking-wider">
                       {project.category}
                     </span>
-                    <span className="font-sans text-[11px] text-slate-400 font-semibold">
-                      {project.year}
-                    </span>
                   </div>
 
                   {/* Image Container */}

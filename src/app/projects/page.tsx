@@ -74,72 +74,54 @@ export default function ProjectsPage() {
                 className="h-full flex flex-col"
               >
                 <Link href={`/projects/${project.id}`} className="block h-full cursor-pointer select-none">
-                  <div className="retro-card p-4 bg-card border-3 border-black h-full flex flex-col justify-between shadow-[4px_4px_0px_#000] group relative overflow-hidden">
+                  <div className="retro-card p-5 bg-[#131130]/90 backdrop-blur-xl border border-white/10 h-full flex flex-col justify-between shadow-2xl rounded-2xl group relative overflow-hidden text-left hover:border-[#C084FC]/50 hover:shadow-[0_0_30px_rgba(192,132,252,0.25)] transition-all duration-300">
                     
-                    {/* Cartridge Header Ridge */}
-                    <div className="flex justify-between items-center border-b-2 border-black pb-3 mb-4 select-none">
-                      <span className="font-retro text-[7px] text-foreground/40">MODEL: S-SLOT_{project.year}</span>
-                      <div className="flex gap-1">
-                        <span className="w-2.5 h-2.5 border border-black bg-black/10 rounded-full" />
-                        <span className="w-2.5 h-2.5 border border-black bg-black/10 rounded-full" />
-                      </div>
+                    {/* Card Header Category Pill */}
+                    <div className="flex justify-between items-center pb-3 mb-4 border-b border-white/10 select-none">
+                      <span className="px-2.5 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-[10px] font-bold uppercase tracking-wider">
+                        {project.category}
+                      </span>
                     </div>
 
-                    {/* Cartridge Label Image Container */}
-                    <div className="relative aspect-[3/2.1] w-full overflow-hidden border-2 border-black bg-neutral-900 mb-4 rounded-sm">
+                    {/* Image Container */}
+                    <div className="relative aspect-[3/2] w-full overflow-hidden border border-white/10 bg-neutral-900 mb-4 rounded-xl">
                       <Image
                         src={getAssetPath(project.image)}
                         alt={project.title}
                         fill
                         unoptimized={true}
                         sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                       
                       {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-black/75 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center pointer-events-none z-10 p-4">
-                        <div className="px-3.5 py-2 bg-[#FFE082] border-2 border-black text-[#131130] font-bold font-retro text-[9px] uppercase shadow-[2.5px_2.5px_0px_#000] scale-90 group-hover:scale-100 transition-transform duration-200">
-                          Insert Cartridge ▶
-                        </div>
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-10 p-4">
+                        <span className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold font-sans text-xs uppercase tracking-wider rounded-xl shadow-lg">
+                          VIEW CASE STUDY ➔
+                        </span>
                       </div>
                     </div>
 
                     {/* Details */}
                     <div className="flex flex-col flex-grow justify-between text-left space-y-4">
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between text-[8px] font-retro uppercase text-[#FF5964] font-bold">
-                          <span>{project.category}</span>
-                          <span className="text-foreground/30 font-mono">[{project.year}]</span>
-                        </div>
-
-                        <h3 className="font-retro text-[10px] sm:text-xs font-bold text-foreground uppercase group-hover:text-[#FF5964] transition-colors leading-tight">
+                      <div className="space-y-2">
+                        <h3 className="font-sans text-base font-extrabold text-white uppercase group-hover:text-[#C084FC] transition-colors leading-tight">
                           {project.title}
                         </h3>
                         
-                        <p className="text-xs text-slate-400 font-sans font-light leading-relaxed line-clamp-2 md:line-clamp-3">
+                        <p className="text-xs text-slate-300 font-sans font-normal leading-relaxed line-clamp-2 md:line-clamp-3">
                           {project.description}
                         </p>
                       </div>
 
                       {/* Badges Footer */}
-                      <div className="pt-3 border-t-2 border-dashed border-black/10 space-y-2">
-                        <div className="flex flex-wrap gap-1">
-                          {project.tags.slice(0, 2).map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-[9px] font-sans text-foreground/60 bg-transparent border border-black/20 px-2 py-0.5 rounded-sm"
-                            >
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex flex-wrap gap-1">
+                      <div className="pt-3 border-t border-white/10 space-y-2">
+                        <div className="flex flex-wrap gap-1.5">
                           {project.technologies.map((tech) => (
                             <span
                               key={tech}
-                              className="text-[8px] font-retro font-bold text-[#3A86C8] uppercase tracking-wide mr-1.5"
+                              className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-slate-300 text-[10px] font-sans font-semibold uppercase tracking-wider"
                             >
                               {tech}
                             </span>
@@ -147,7 +129,6 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                     </div>
-
                   </div>
                 </Link>
               </motion.div>
