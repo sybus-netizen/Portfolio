@@ -97,16 +97,17 @@ export default function Hero() {
 
   const totalCharacters = useMemo(() => briefSegments.reduce((sum, seg) => sum + seg.text.length, 0), []);
 
-  // Typewriter effect on mount
+  // Typewriter effect on mount (Fast, snappy typing)
   useEffect(() => {
     let current = 0;
     const interval = setInterval(() => {
-      current += 1;
+      current += 3;
       setTypedLength(current);
       if (current >= totalCharacters) {
+        setTypedLength(totalCharacters);
         clearInterval(interval);
       }
-    }, 30);
+    }, 10);
     return () => clearInterval(interval);
   }, [totalCharacters]);
 
