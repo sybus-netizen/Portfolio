@@ -26,7 +26,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
-  image-rendering: pixelated;
 }
 
 /* Custom Scrollbar - Retro Pixel Theme */
