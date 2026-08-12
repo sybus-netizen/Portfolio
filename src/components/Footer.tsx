@@ -38,7 +38,7 @@ export default function Footer() {
             {/* Email Icon */}
             <a
               href="mailto:shubhamshukla327@gmail.com"
-              className="w-9 h-9 border-2 border-black bg-white flex items-center justify-center text-black active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none transition-all rounded-sm cursor-pointer"
+              className="w-9 h-9 border border-white/20 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all rounded-xl cursor-pointer shadow-lg hover:scale-105"
               aria-label="Email"
             >
               <Mail className="w-4 h-4 shrink-0" />
@@ -49,7 +49,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/shubham-shukla-bb9760429/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 border-2 border-black bg-white flex items-center justify-center text-black active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none transition-all rounded-sm cursor-pointer"
+              className="w-9 h-9 border border-white/20 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all rounded-xl cursor-pointer shadow-lg hover:scale-105"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4 shrink-0" />
@@ -60,7 +60,7 @@ export default function Footer() {
               href="https://github.com/shubham-shukla"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 border-2 border-black bg-white flex items-center justify-center text-black active:translate-x-0.5 active:translate-y-0.5 shadow-[1.5px_1.5px_0px_#000] active:shadow-none transition-all rounded-sm cursor-pointer"
+              className="w-9 h-9 border border-white/20 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all rounded-xl cursor-pointer shadow-lg hover:scale-105"
               aria-label="GitHub"
             >
               <GithubIcon className="w-4 h-4 shrink-0" />
@@ -69,7 +69,7 @@ export default function Footer() {
             {/* Back to Top */}
             <button
               onClick={scrollToTop}
-              className="w-9 h-9 border border-white/20 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all rounded-xl cursor-pointer shadow-lg"
+              className="w-9 h-9 border border-white/20 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all rounded-xl cursor-pointer shadow-lg hover:scale-105"
               title="Back to Top"
               aria-label="Scroll to top"
             >
