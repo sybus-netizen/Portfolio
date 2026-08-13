@@ -9,8 +9,8 @@ import { useTheme } from "@/context/ThemeContext";
 interface ToolItem {
   name: string;
   subLabel: string;
+  tags: string[];
   brandColor: string;
-  proficiency: number;
 }
 
 interface SkillCategory {
@@ -24,165 +24,194 @@ const categories: SkillCategory[] = [
     title: "Graphic Design",
     iconEmoji: "🎨",
     tools: [
-      { name: "Photoshop", subLabel: "Image Manipulation", brandColor: "#31A8FF", proficiency: 95 },
-      { name: "Illustrator", subLabel: "Vector Layouts", brandColor: "#FF9A00", proficiency: 90 },
-      { name: "Canva", subLabel: "Quick Graphics Templates", brandColor: "#00C4CC", proficiency: 95 },
+      {
+        name: "Photoshop",
+        subLabel: "Image manipulation · Compositing · Social media design",
+        tags: ["Image manipulation", "Compositing", "Social media design"],
+        brandColor: "#31A8FF"
+      },
+      {
+        name: "Illustrator",
+        subLabel: "Vector layouts · Illustration · Branding",
+        tags: ["Vector layouts", "Illustration", "Branding"],
+        brandColor: "#FF9A00"
+      },
+      {
+        name: "Canva",
+        subLabel: "Social media creatives · Templates · Marketing content",
+        tags: ["Social media creatives", "Templates", "Marketing content"],
+        brandColor: "#00C4CC"
+      }
     ]
   },
   {
     title: "Video Editing & Motion",
     iconEmoji: "🎬",
     tools: [
-      { name: "Premiere Pro", subLabel: "Video Timeline Cuts", brandColor: "#EA77FF", proficiency: 92 },
-      { name: "After Effects", subLabel: "Keyframe Motion VFX", brandColor: "#9999FF", proficiency: 85 },
-      { name: "Audition", subLabel: "Sound Design Mixing", brandColor: "#00C896", proficiency: 75 },
+      {
+        name: "Premiere Pro",
+        subLabel: "Video editing · Short-form content · Promotional videos",
+        tags: ["Video editing", "Short-form content", "Promotional videos"],
+        brandColor: "#EA77FF"
+      },
+      {
+        name: "After Effects",
+        subLabel: "Motion graphics · Logo animation · Visual effects",
+        tags: ["Motion graphics", "Logo animation", "Visual effects"],
+        brandColor: "#9999FF"
+      },
+      {
+        name: "Audition",
+        subLabel: "Audio editing · Sound cleanup · Sound mixing",
+        tags: ["Audio editing", "Sound cleanup", "Sound mixing"],
+        brandColor: "#00C896"
+      }
     ]
   },
   {
     title: "Web & Digital",
     iconEmoji: "🌐",
     tools: [
-      { name: "WordPress", subLabel: "Web Themes Publishing", brandColor: "#21759B", proficiency: 80 },
-      { name: "Adobe Express", subLabel: "Social Creative Collaterals", brandColor: "#FF3F56", proficiency: 85 },
+      {
+        name: "WordPress",
+        subLabel: "Website content · Visual customization · Publishing",
+        tags: ["Website content", "Visual customization", "Publishing"],
+        brandColor: "#21759B"
+      },
+      {
+        name: "Adobe Express",
+        subLabel: "Quick graphics · Social media content · Marketing creatives",
+        tags: ["Quick graphics", "Social media content", "Marketing creatives"],
+        brandColor: "#FF3F56"
+      }
     ]
   }
 ];
 
-function ToolRow({ tool }: { tool: ToolItem }) {
+function renderLogo(name: string) {
+  switch (name) {
+    case "Photoshop":
+      return (
+        <div className="w-8 h-8 rounded-lg border border-[#00C8FF] bg-[#001c3d]/90 flex items-center justify-center font-sans font-extrabold text-xs text-[#00C8FF] shadow-[0_0_14px_rgba(0,200,255,0.3)] select-none">
+          Ps
+        </div>
+      );
+    case "Illustrator":
+      return (
+        <div className="w-8 h-8 rounded-lg border border-[#FF9F00] bg-[#261300]/90 flex items-center justify-center font-sans font-extrabold text-xs text-[#FF9F00] shadow-[0_0_14px_rgba(255,159,0,0.3)] select-none">
+          Ai
+        </div>
+      );
+    case "Canva":
+      return (
+        <div className="w-8 h-8 rounded-full bg-[#00c4cc] flex items-center justify-center font-sans italic font-extrabold text-xs text-white shadow-[0_0_14px_rgba(0,196,204,0.3)] select-none">
+          C
+        </div>
+      );
+    case "Premiere Pro":
+      return (
+        <div className="w-8 h-8 rounded-lg border border-[#E053FF] bg-[#1E0029]/90 flex items-center justify-center font-sans font-extrabold text-xs text-[#E053FF] shadow-[0_0_14px_rgba(224,83,255,0.3)] select-none">
+          Pr
+        </div>
+      );
+    case "After Effects":
+      return (
+        <div className="w-8 h-8 rounded-lg border border-[#9999FF] bg-[#0D002B]/90 flex items-center justify-center font-sans font-extrabold text-xs text-[#9999FF] shadow-[0_0_14px_rgba(153,153,255,0.3)] select-none">
+          Ae
+        </div>
+      );
+    case "Audition":
+      return (
+        <div className="w-8 h-8 rounded-lg border border-[#00E5A3] bg-[#001C15]/90 flex items-center justify-center font-sans font-extrabold text-xs text-[#00E5A3] shadow-[0_0_14px_rgba(0,229,163,0.3)] select-none">
+          Au
+        </div>
+      );
+    case "WordPress":
+      return (
+        <div className="w-8 h-8 rounded-full bg-[#21759B] border border-[#00A0D2]/20 flex items-center justify-center font-sans font-extrabold text-xs text-white shadow-[0_0_14px_rgba(33,117,155,0.3)] select-none">
+          W
+        </div>
+      );
+    case "Adobe Express":
+      return (
+        <div className="w-8 h-8 rounded-lg border border-[#FF5F72]/30 bg-[#FF3F56] flex items-center justify-center font-sans font-extrabold text-xs text-white shadow-[0_0_14px_rgba(255,63,86,0.3)] select-none">
+          Ex
+        </div>
+      );
+    default:
+      return (
+        <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs">
+          🛠
+        </div>
+      );
+  }
+}
+
+function ToolCard({ tool }: { tool: ToolItem }) {
   const [isHovered, setIsHovered] = useState(false);
-
-  const renderLogo = () => {
-    switch (tool.name) {
-      case "Photoshop":
-        return (
-          <div className="w-7 h-7 rounded border border-[#00C8FF] bg-[#001c3d]/90 flex items-center justify-center font-sans font-extrabold text-[10px] text-[#00C8FF] shadow-[0_0_12px_rgba(0,200,255,0.25)] select-none">
-            Ps
-          </div>
-        );
-      case "Illustrator":
-        return (
-          <div className="w-7 h-7 rounded border border-[#FF9F00] bg-[#261300]/90 flex items-center justify-center font-sans font-extrabold text-[10px] text-[#FF9F00] shadow-[0_0_12px_rgba(255,159,0,0.25)] select-none">
-            Ai
-          </div>
-        );
-      case "Canva":
-        return (
-          <div className="w-7 h-7 rounded-full bg-[#00c4cc] flex items-center justify-center font-sans italic font-extrabold text-[10px] text-white shadow-[0_0_12px_rgba(0,196,204,0.25)] select-none">
-            C
-          </div>
-        );
-      case "Premiere Pro":
-        return (
-          <div className="w-7 h-7 rounded border border-[#E053FF] bg-[#1E0029]/90 flex items-center justify-center font-sans font-extrabold text-[10px] text-[#E053FF] shadow-[0_0_12px_rgba(224,83,255,0.25)] select-none">
-            Pr
-          </div>
-        );
-      case "After Effects":
-        return (
-          <div className="w-7 h-7 rounded border border-[#9999FF] bg-[#0D002B]/90 flex items-center justify-center font-sans font-extrabold text-[10px] text-[#9999FF] shadow-[0_0_12px_rgba(153,153,255,0.25)] select-none">
-            Ae
-          </div>
-        );
-      case "Audition":
-        return (
-          <div className="w-7 h-7 rounded border border-[#00E5A3] bg-[#001C15]/90 flex items-center justify-center font-sans font-extrabold text-[10px] text-[#00E5A3] shadow-[0_0_12px_rgba(0,229,163,0.25)] select-none">
-            Au
-          </div>
-        );
-      case "WordPress":
-        return (
-          <div className="w-7 h-7 rounded-full bg-[#21759B] border border-[#00A0D2]/20 flex items-center justify-center font-sans font-extrabold text-[11px] text-white shadow-[0_0_12px_rgba(33,117,155,0.25)] select-none">
-            W
-          </div>
-        );
-      case "Adobe Express":
-        return (
-          <div className="w-7 h-7 rounded border border-[#FF5F72]/30 bg-[#FF3F56] flex items-center justify-center font-sans font-extrabold text-[10px] text-white shadow-[0_0_12px_rgba(255,63,86,0.25)] select-none">
-            Ex
-          </div>
-        );
-      default:
-        return (
-          <div className="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-xs">
-            🛠
-          </div>
-        );
-    }
-  };
-
   const { theme } = useTheme();
 
   return (
-    <div 
-      className="space-y-1.5 text-left group transition-all duration-200 cursor-pointer"
+    <motion.div 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.2 }}
+      style={{
+        backgroundColor: isHovered 
+          ? theme === "light" ? "#FFFFFF" : "rgba(255, 255, 255, 0.04)"
+          : theme === "light" ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.02)",
+        borderColor: isHovered 
+          ? tool.brandColor 
+          : theme === "light" ? "#E2E8F0" : "rgba(255, 255, 255, 0.08)",
+        boxShadow: isHovered 
+          ? `0 8px 24px -6px ${tool.brandColor}30` 
+          : theme === "light" ? "0 2px 8px rgba(0,0,0,0.04)" : "none"
+      }}
+      className="p-4 rounded-xl border transition-all duration-200 text-left space-y-3 group cursor-pointer"
     >
-      <div className="flex items-center justify-between font-sans text-xs font-bold tracking-wide">
-        <span 
-          style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
-          className="flex items-center gap-2.5 min-w-0 pr-2 transition-colors duration-200"
+      {/* Header: Icon + Name */}
+      <div className="flex items-center gap-3">
+        <motion.div
+          animate={isHovered ? { scale: 1.12, rotate: [0, -5, 5, 0] } : { scale: 1, rotate: 0 }}
+          transition={{ duration: 0.3 }}
+          className="shrink-0"
         >
-          <motion.div
-            animate={isHovered ? { scale: 1.18, rotate: [0, -6, 6, 0] } : { scale: 1, rotate: 0 }}
-            transition={{ duration: 0.3 }}
-            className="shrink-0"
+          {renderLogo(tool.name)}
+        </motion.div>
+        <div>
+          <h4 
+            style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
+            className="font-sans text-sm font-extrabold uppercase tracking-wide transition-colors duration-200"
           >
-            {renderLogo()}
-          </motion.div>
-          <span className="truncate font-extrabold">{tool.name}</span>
-        </span>
-        <div className="flex items-center gap-2 shrink-0 ml-auto">
-          <div 
-            style={{
-              backgroundColor: theme === "light" ? "#E2E8F0" : "rgba(255, 255, 255, 0.1)",
-              borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.1)"
-            }}
-            className="w-20 xs:w-24 sm:w-28 h-2.5 rounded-full overflow-hidden border relative shrink-0"
-          >
-            <motion.div 
-              className="h-full rounded-full absolute left-0 top-0 overflow-hidden"
-              initial={{ width: "0%" }}
-              whileInView={{ width: `${tool.proficiency}%` }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ 
-                width: { duration: 1.4, ease: [0.25, 1, 0.5, 1] },
-                boxShadow: { duration: 0.2 }
-              }}
-              animate={{ 
-                boxShadow: isHovered 
-                  ? `0 0 12px ${tool.brandColor}, 0 0 4px ${tool.brandColor}` 
-                  : `0 0 4px ${tool.brandColor}/20`
-              }}
-              style={{ backgroundColor: tool.brandColor }}
-            >
-              {/* Fluid Animated Wavy Shimmer Line */}
-              <motion.div
-                className="absolute inset-0 w-full h-full rounded-full"
-                style={{
-                  backgroundImage: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%)",
-                  backgroundSize: "200% 100%"
-                }}
-                animate={{ backgroundPosition: ["200% 0", "-200% 0"] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-              />
-            </motion.div>
-          </div>
-          <motion.span 
-            style={{ color: theme === "light" ? "#0F172A" : "#94A3B8" }}
-            className="font-sans text-xs font-extrabold w-8 text-right shrink-0"
-          >
-            {tool.proficiency}%
-          </motion.span>
+            {tool.name}
+          </h4>
         </div>
       </div>
-      <p 
-        style={{ color: theme === "light" ? "#475569" : "#94A3B8" }}
-        className="text-[11px] font-sans font-medium pl-9.5 leading-normal transition-colors duration-200"
-      >
-        {tool.subLabel}
-      </p>
-    </div>
+
+      {/* Capability Tags */}
+      <div className="flex flex-wrap gap-1.5 pt-0.5">
+        {tool.tags.map((tag, tIdx) => (
+          <span
+            key={tIdx}
+            style={{
+              backgroundColor: isHovered
+                ? theme === "light" ? `${tool.brandColor}15` : `${tool.brandColor}25`
+                : theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.06)",
+              color: isHovered
+                ? theme === "light" ? tool.brandColor : "#F8FAFC"
+                : theme === "light" ? "#334155" : "#CBD5E1",
+              borderColor: isHovered
+                ? `${tool.brandColor}60`
+                : theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.12)"
+            }}
+            className="px-2.5 py-1 rounded-md border font-sans text-[11px] font-semibold transition-all duration-200"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </motion.div>
   );
 }
 
@@ -209,7 +238,7 @@ export default function Skills() {
             }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border font-sans text-xs font-extrabold uppercase tracking-wider select-none shadow-sm"
           >
-            TECHNICAL PROFICIENCY
+            SOFTWARE & CAPABILITIES
           </div>
           <h2 
             style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
@@ -221,7 +250,7 @@ export default function Skills() {
             style={{ color: theme === "light" ? "#334155" : "#CBD5E1" }}
             className="text-xs sm:text-sm font-sans leading-relaxed font-medium"
           >
-            Equipped with industry-standard software tools and creative suites for professional visual production.
+            Core software tools and creative suites used to create visual content, animations, graphics, and digital media.
           </p>
         </div>
 
@@ -236,22 +265,22 @@ export default function Skills() {
               }}
               className="retro-card p-6 rounded-2xl shadow-xl flex flex-col justify-between border"
             >
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {/* Category Header */}
                 <div className="flex items-center gap-3 border-b border-black/10 dark:border-white/10 pb-4">
                   <span className="text-2xl select-none">{cat.iconEmoji}</span>
                   <h3 
                     style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
-                    className="font-sans text-sm font-bold uppercase tracking-wider"
+                    className="font-sans text-sm font-bold uppercase tracking-wider text-left"
                   >
                     {cat.title}
                   </h3>
                 </div>
 
-                {/* Tools Status Bars */}
-                <div className="space-y-5">
+                {/* Tools Cards */}
+                <div className="space-y-3.5">
                   {cat.tools.map((tool, tIdx) => (
-                    <ToolRow key={tIdx} tool={tool} />
+                    <ToolCard key={tIdx} tool={tool} />
                   ))}
                 </div>
               </div>
