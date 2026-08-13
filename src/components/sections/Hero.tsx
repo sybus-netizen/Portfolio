@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { FileText, Award } from "lucide-react";
 import { cn, getAssetPath } from "@/lib/utils";
 import { useGameSystem } from "@/context/GameContext";
@@ -70,11 +70,115 @@ const briefSegments = [
   { text: ". Passionate about turning ideas into impactful digital content.", highlight: false }
 ];
 
+interface FloatingIconConfig {
+  id: string;
+  name: string;
+  src: string;
+  sizeClass: string;
+  position: React.CSSProperties;
+  xKeyframes: number[];
+  yKeyframes: number[];
+  rotateKeyframes: number[];
+  opacityKeyframes: number[];
+  duration: number;
+  delay: number;
+  zIndex: number;
+}
+
+const floatingCreativeIcons: FloatingIconConfig[] = [
+  {
+    id: "photo",
+    name: "Photo Icon",
+    src: "/assets/media_1786616672274.png",
+    sizeClass: "w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14",
+    position: { top: "8%", left: "10%" },
+    xKeyframes: [0, 14, -8, 6, 0],
+    yKeyframes: [0, -16, -4, -20, 0],
+    rotateKeyframes: [0, 7, -6, 8, 0],
+    opacityKeyframes: [0.85, 1, 0.9, 0.98, 0.85],
+    duration: 11.5,
+    delay: 0,
+    zIndex: 15
+  },
+  {
+    id: "camera",
+    name: "Camera Icon",
+    src: "/assets/media_1786616672275.png",
+    sizeClass: "w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14",
+    position: { top: "16%", right: "3%" },
+    xKeyframes: [0, -12, 8, -10, 0],
+    yKeyframes: [0, -20, -7, -22, 0],
+    rotateKeyframes: [0, -9, 8, -7, 0],
+    opacityKeyframes: [0.9, 1, 0.88, 1, 0.9],
+    duration: 9.2,
+    delay: 1.2,
+    zIndex: 25
+  },
+  {
+    id: "pen-tool",
+    name: "Pen Tool Vector Icon",
+    src: "/assets/media_1786661521951.png",
+    sizeClass: "w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13",
+    position: { top: "50%", left: "1%" },
+    xKeyframes: [0, 16, -6, 12, 0],
+    yKeyframes: [0, -14, -24, -10, 0],
+    rotateKeyframes: [0, -12, 9, -6, 0],
+    opacityKeyframes: [0.88, 0.98, 1, 0.92, 0.88],
+    duration: 13.8,
+    delay: 2.4,
+    zIndex: 20
+  },
+  {
+    id: "filmstrip",
+    name: "Filmstrip Reel Icon",
+    src: "/assets/media_1786661521932.png",
+    sizeClass: "w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13",
+    position: { top: "36%", right: "11%" },
+    xKeyframes: [0, -14, 10, -8, 0],
+    yKeyframes: [0, -18, -8, -16, 0],
+    rotateKeyframes: [0, 10, -9, 7, 0],
+    opacityKeyframes: [0.92, 1, 0.85, 0.98, 0.92],
+    duration: 7.8,
+    delay: 0.7,
+    zIndex: 20
+  },
+  {
+    id: "design",
+    name: "Design Palette Icon",
+    src: "/assets/media_1786616672277.png",
+    sizeClass: "w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12",
+    position: { bottom: "8%", left: "14%" },
+    xKeyframes: [0, -10, 14, -6, 0],
+    yKeyframes: [0, -18, -6, -14, 0],
+    rotateKeyframes: [0, 6, -8, 6, 0],
+    opacityKeyframes: [0.86, 0.96, 1, 0.9, 0.86],
+    duration: 12.2,
+    delay: 1.8,
+    zIndex: 15
+  },
+  {
+    id: "video-cam",
+    name: "Video Camera Icon",
+    src: "/assets/media_1786616672294.png",
+    sizeClass: "w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14",
+    position: { bottom: "18%", right: "5%" },
+    xKeyframes: [0, 12, -14, 8, 0],
+    yKeyframes: [0, -22, -10, -18, 0],
+    rotateKeyframes: [0, -8, 11, -6, 0],
+    opacityKeyframes: [0.9, 1, 0.92, 0.98, 0.9],
+    duration: 10.4,
+    delay: 3.1,
+    zIndex: 25
+  }
+];
+
 import { useTheme } from "@/context/ThemeContext";
 
 export default function Hero() {
   const { unlockQuest, unlockAchievement } = useGameSystem();
   const { theme } = useTheme();
+  const prefersReducedMotion = useReducedMotion();
+  const shouldReduceMotion = Boolean(prefersReducedMotion);
   
   // Interactive dialogue typing
   const [typedLength, setTypedLength] = useState(0);
@@ -346,60 +450,51 @@ export default function Hero() {
               />
             ))}
 
-            {/* Bobbing Floating Creative Icons (Zero Gravity Effect) */}
-            <motion.img
-              src={getAssetPath("/assets/media_1786616672274.png")}
-              alt="Photo"
-              className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ top: "14%", left: "6%" }}
-              animate={{ y: [0, -8, 0], rotate: [0, 6, -6, 0] }}
-              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            <motion.img
-              src={getAssetPath("/assets/media_1786616672275.png")}
-              alt="Camera"
-              className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ top: "12%", right: "6%" }}
-              animate={{ y: [0, -10, 0], rotate: [0, -8, 8, 0] }}
-              transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            />
-
-            <motion.img
-              src={getAssetPath("/assets/media_1786661521951.png")}
-              alt="Pen Tool Vector"
-              className="absolute w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ top: "46%", left: "2%" }}
-              animate={{ y: [0, -11, 0], rotate: [0, -7, 7, 0] }}
-              transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
-            />
-
-            <motion.img
-              src={getAssetPath("/assets/media_1786661521932.png")}
-              alt="Filmstrip Reel"
-              className="absolute w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ top: "44%", right: "2%" }}
-              animate={{ y: [0, -9, 0], rotate: [0, 7, -7, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
-            />
-
-            <motion.img
-              src={getAssetPath("/assets/media_1786616672277.png")}
-              alt="Design"
-              className="absolute w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ bottom: "14%", left: "6%" }}
-              animate={{ y: [0, -6, 0], rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-            />
-
-            <motion.img
-              src={getAssetPath("/assets/media_1786616672294.png")}
-              alt="Video"
-              className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ bottom: "12%", right: "6%" }}
-              animate={{ y: [0, -9, 0], rotate: [0, -6, 6, 0] }}
-              transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-            />
+            {/* Organic Floating Creative Workspace Icons (Alive Zero-Gravity Motion) */}
+            {floatingCreativeIcons.map((icon) => (
+              <motion.img
+                key={icon.id}
+                src={getAssetPath(icon.src)}
+                alt={icon.name}
+                className={cn(
+                  "absolute pointer-events-auto cursor-pointer select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.45)] transition-all duration-300 hover:drop-shadow-[0_0_20px_rgba(192,132,252,0.7)]",
+                  icon.sizeClass
+                )}
+                style={{
+                  ...icon.position,
+                  zIndex: icon.zIndex
+                }}
+                animate={
+                  shouldReduceMotion
+                    ? { x: 0, y: 0, rotate: 0, opacity: 1 }
+                    : {
+                        x: icon.xKeyframes,
+                        y: icon.yKeyframes,
+                        rotate: icon.rotateKeyframes,
+                        opacity: icon.opacityKeyframes,
+                      }
+                }
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : {
+                        duration: icon.duration,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: icon.delay,
+                      }
+                }
+                whileHover={
+                  shouldReduceMotion
+                    ? {}
+                    : {
+                        scale: 1.18,
+                        y: -6,
+                        transition: { type: "spring", stiffness: 300, damping: 20 },
+                      }
+                }
+              />
+            ))}
 
             {/* Central Interactive Pixel Avatar */}
             <motion.div 
