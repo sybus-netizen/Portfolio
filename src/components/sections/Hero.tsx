@@ -324,8 +324,8 @@ export default function Hero() {
               { id: 2, src: getAssetPath("/assets/media_1786616672275.png"), size: 24, left: "75%", delay: 1.5, speed: 7.2 },
               { id: 3, src: getAssetPath("/assets/media_1786616672277.png"), size: 18, left: "30%", delay: 0.8, speed: 5.8 },
               { id: 4, src: getAssetPath("/assets/media_1786616672294.png"), size: 22, left: "60%", delay: 2.2, speed: 6.8 },
-              { id: 5, src: getAssetPath("/assets/media_1786616672274.png"), size: 18, left: "85%", delay: 3.1, speed: 6.0 },
-              { id: 6, src: getAssetPath("/assets/media_1786616672275.png"), size: 22, left: "10%", delay: 4.0, speed: 7.0 },
+              { id: 5, src: getAssetPath("/assets/media_1786661521932.png"), size: 20, left: "45%", delay: 1.2, speed: 6.2 },
+              { id: 6, src: getAssetPath("/assets/media_1786661521951.png"), size: 22, left: "88%", delay: 3.5, speed: 7.0 },
             ].map((item) => (
               <motion.img
                 key={item.id}
@@ -351,7 +351,7 @@ export default function Hero() {
               src={getAssetPath("/assets/media_1786616672274.png")}
               alt="Photo"
               className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ top: "18%", left: "4%" }}
+              style={{ top: "14%", left: "6%" }}
               animate={{ y: [0, -8, 0], rotate: [0, 6, -6, 0] }}
               transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -360,16 +360,34 @@ export default function Hero() {
               src={getAssetPath("/assets/media_1786616672275.png")}
               alt="Camera"
               className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ top: "15%", right: "4%" }}
+              style={{ top: "12%", right: "6%" }}
               animate={{ y: [0, -10, 0], rotate: [0, -8, 8, 0] }}
               transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            />
+
+            <motion.img
+              src={getAssetPath("/assets/media_1786661521951.png")}
+              alt="Pen Tool Vector"
+              className="absolute w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
+              style={{ top: "46%", left: "2%" }}
+              animate={{ y: [0, -11, 0], rotate: [0, -7, 7, 0] }}
+              transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 }}
+            />
+
+            <motion.img
+              src={getAssetPath("/assets/media_1786661521932.png")}
+              alt="Filmstrip Reel"
+              className="absolute w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
+              style={{ top: "44%", right: "2%" }}
+              animate={{ y: [0, -9, 0], rotate: [0, 7, -7, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
             />
 
             <motion.img
               src={getAssetPath("/assets/media_1786616672277.png")}
               alt="Design"
               className="absolute w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ bottom: "18%", left: "4%" }}
+              style={{ bottom: "14%", left: "6%" }}
               animate={{ y: [0, -6, 0], rotate: [0, 5, -5, 0] }}
               transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
             />
@@ -378,7 +396,7 @@ export default function Hero() {
               src={getAssetPath("/assets/media_1786616672294.png")}
               alt="Video"
               className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ bottom: "15%", right: "4%" }}
+              style={{ bottom: "12%", right: "6%" }}
               animate={{ y: [0, -9, 0], rotate: [0, -6, 6, 0] }}
               transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
             />
