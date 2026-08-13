@@ -30,8 +30,8 @@ export default function ProjectDetailClient({ project }: ClientProps) {
     : [{ type: "image" as const, url: project.image }];
 
   return (
-    <div className="pt-20 pb-8 sm:pt-28 sm:pb-16 bg-transparent relative overflow-hidden select-none z-10">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 space-y-6 relative z-10">
+    <div className="pt-14 pb-6 sm:pt-20 sm:pb-10 bg-transparent relative overflow-hidden select-none z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 space-y-5 relative z-10">
         
         {/* Back Link */}
         <div className="text-left">
@@ -46,11 +46,16 @@ export default function ProjectDetailClient({ project }: ClientProps) {
           </Link>
         </div>
 
-        {/* 2-Column Responsive Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
+        {/* 2-Column Responsive Layout (Mobile: Gallery FIRST, Desktop: Side-by-Side) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-8 lg:gap-10 items-start">
           
-          {/* LEFT COLUMN: STICKY INFO SIDEBAR */}
-          <div className="md:col-span-4 md:sticky md:top-28 space-y-6">
+          {/* GALLERY COLUMN (FIRST ON MOBILE [order-1], RIGHT ON DESKTOP [md:order-2]) */}
+          <div className="order-1 md:order-2 md:col-span-7 lg:col-span-8 text-left w-full">
+            <MediaGalleryViewer items={galleryItems} projectTitle={project.title} />
+          </div>
+
+          {/* LEFT COLUMN: STICKY INFO SIDEBAR (SECOND ON MOBILE [order-2], LEFT ON DESKTOP [md:order-1]) */}
+          <div className="order-2 md:order-1 md:col-span-5 lg:col-span-4 md:sticky md:top-24 space-y-5 w-full">
             <div 
               style={{
                 backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
@@ -105,11 +110,6 @@ export default function ProjectDetailClient({ project }: ClientProps) {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* RIGHT COLUMN: UNIFIED ANDROID/IPHONE GALLERY VIEWER */}
-          <div className="md:col-span-8 text-left">
-            <MediaGalleryViewer items={galleryItems} projectTitle={project.title} />
           </div>
 
         </div>

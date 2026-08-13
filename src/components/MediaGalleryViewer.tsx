@@ -106,7 +106,7 @@ export default function MediaGalleryViewer({ items, projectTitle }: MediaGallery
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
-        className="relative w-full max-w-xl mx-auto rounded-2xl border border-black/10 dark:border-white/15 bg-black shadow-2xl overflow-hidden group"
+        className="relative w-full max-w-2xl lg:max-w-3xl mx-auto rounded-2xl border border-black/10 dark:border-white/15 bg-black shadow-2xl overflow-hidden group"
       >
         
         {/* Top-Left Counter Badge (Theme Adaptive Light/Dark Glass Pill) */}
@@ -173,7 +173,7 @@ export default function MediaGalleryViewer({ items, projectTitle }: MediaGallery
         )}
 
         {/* Display Container (Image or Video) */}
-        <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-h-[420px] flex items-center justify-center bg-black overflow-hidden">
+        <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-h-[440px] sm:max-h-[480px] md:max-h-[520px] flex items-center justify-center bg-black overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
