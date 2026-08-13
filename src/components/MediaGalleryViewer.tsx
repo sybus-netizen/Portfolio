@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Film, Maximize2 } from "lucide-react";
@@ -25,6 +26,11 @@ export default function MediaGalleryViewer({ items, projectTitle }: MediaGallery
   const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Touch Swipe Gesture State
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -84,6 +90,7 @@ export default function MediaGalleryViewer({ items, projectTitle }: MediaGallery
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "ArrowRight") handleNext();
+      if (e.key === "Escape") setFullscreenImage(null);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -258,36 +265,39 @@ export default function MediaGalleryViewer({ items, projectTitle }: MediaGallery
       </div>
 
       {/* Lightbox Fullscreen Modal */}
-      <AnimatePresence>
-        {fullscreenImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setFullscreenImage(null)}
-            className="fixed inset-0 bg-black/95 z-[99999] flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-xl"
-          >
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setFullscreenImage(null);
-              }}
-              className="absolute top-6 right-6 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full font-sans text-xs font-semibold backdrop-blur-md transition-all shadow-xl z-[100000]"
+      {mounted && createPortal(
+        <AnimatePresence>
+          {fullscreenImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setFullscreenImage(null)}
+              className="fixed inset-0 bg-black/95 z-[99999] flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-xl"
             >
-              Close ✕
-            </button>
-            <motion.img
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-              src={getAssetPath(fullscreenImage)}
-              alt="Expanded View"
-              className="max-h-[85vh] max-w-[90vw] w-auto h-auto object-contain border border-white/20 rounded-2xl shadow-2xl select-none"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFullscreenImage(null);
+                }}
+                className="absolute top-6 right-6 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full font-sans text-xs font-semibold backdrop-blur-md transition-all shadow-xl z-[100000]"
+              >
+                Close ✕
+              </button>
+              <motion.img
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.95 }}
+                onClick={(e) => e.stopPropagation()}
+                src={getAssetPath(fullscreenImage)}
+                alt="Expanded View"
+                className="max-h-[85vh] max-w-[90vw] w-auto h-auto object-contain border border-white/20 rounded-2xl shadow-2xl select-none"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
     </div>
   );
