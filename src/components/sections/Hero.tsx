@@ -307,7 +307,7 @@ export default function Hero() {
           
           {/* CHARACTER SHOWCASE BOX */}
           <motion.div 
-            className="w-full flex flex-col items-center justify-center relative pt-6 pb-8 md:pt-16 md:pb-20 overflow-hidden rounded-3xl min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
+            className="w-full flex flex-col items-center justify-center relative pt-6 pb-8 md:pt-16 md:pb-20 rounded-3xl min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
             ref={avatarRef}
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -320,12 +320,12 @@ export default function Hero() {
 
             {/* Constant Rain of Falling Creative Icons (Gravity Effect) */}
             {[
-              { id: 1, src: "/assets/media_1786616672274.png", size: 20, left: "15%", delay: 0, speed: 6.5 },
-              { id: 2, src: "/assets/media_1786616672275.png", size: 24, left: "75%", delay: 1.5, speed: 7.2 },
-              { id: 3, src: "/assets/media_1786616672277.png", size: 18, left: "30%", delay: 0.8, speed: 5.8 },
-              { id: 4, src: "/assets/media_1786616672294.png", size: 22, left: "60%", delay: 2.2, speed: 6.8 },
-              { id: 5, src: "/assets/media_1786616672274.png", size: 18, left: "85%", delay: 3.1, speed: 6.0 },
-              { id: 6, src: "/assets/media_1786616672275.png", size: 22, left: "10%", delay: 4.0, speed: 7.0 },
+              { id: 1, src: getAssetPath("/assets/media_1786616672274.png"), size: 20, left: "15%", delay: 0, speed: 6.5 },
+              { id: 2, src: getAssetPath("/assets/media_1786616672275.png"), size: 24, left: "75%", delay: 1.5, speed: 7.2 },
+              { id: 3, src: getAssetPath("/assets/media_1786616672277.png"), size: 18, left: "30%", delay: 0.8, speed: 5.8 },
+              { id: 4, src: getAssetPath("/assets/media_1786616672294.png"), size: 22, left: "60%", delay: 2.2, speed: 6.8 },
+              { id: 5, src: getAssetPath("/assets/media_1786616672274.png"), size: 18, left: "85%", delay: 3.1, speed: 6.0 },
+              { id: 6, src: getAssetPath("/assets/media_1786616672275.png"), size: 22, left: "10%", delay: 4.0, speed: 7.0 },
             ].map((item) => (
               <motion.img
                 key={item.id}
@@ -348,37 +348,37 @@ export default function Hero() {
 
             {/* Bobbing Floating Creative Icons (Zero Gravity Effect) */}
             <motion.img
-              src="/assets/media_1786616672274.png"
+              src={getAssetPath("/assets/media_1786616672274.png")}
               alt="Photo"
               className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ top: "18%", left: "8%" }}
+              style={{ top: "18%", left: "4%" }}
               animate={{ y: [0, -8, 0], rotate: [0, 6, -6, 0] }}
               transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
             />
 
             <motion.img
-              src="/assets/media_1786616672275.png"
+              src={getAssetPath("/assets/media_1786616672275.png")}
               alt="Camera"
               className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ top: "15%", right: "8%" }}
+              style={{ top: "15%", right: "4%" }}
               animate={{ y: [0, -10, 0], rotate: [0, -8, 8, 0] }}
               transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             />
 
             <motion.img
-              src="/assets/media_1786616672277.png"
+              src={getAssetPath("/assets/media_1786616672277.png")}
               alt="Design"
               className="absolute w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ bottom: "18%", left: "6%" }}
+              style={{ bottom: "18%", left: "4%" }}
               animate={{ y: [0, -6, 0], rotate: [0, 5, -5, 0] }}
               transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
             />
 
             <motion.img
-              src="/assets/media_1786616672294.png"
+              src={getAssetPath("/assets/media_1786616672294.png")}
               alt="Video"
               className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
-              style={{ bottom: "15%", right: "6%" }}
+              style={{ bottom: "15%", right: "4%" }}
               animate={{ y: [0, -9, 0], rotate: [0, -6, 6, 0] }}
               transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
             />

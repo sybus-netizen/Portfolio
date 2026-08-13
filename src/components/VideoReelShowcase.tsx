@@ -107,7 +107,7 @@ export default function VideoReelShowcase({
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
               <iframe
-                src={videos[prevIndex]}
+                src={getEmbedUrl(videos[prevIndex])}
                 title="Previous Clip"
                 className="w-full h-full pointer-events-none opacity-60"
               />
@@ -150,7 +150,7 @@ export default function VideoReelShowcase({
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
               <iframe
-                src={videos[nextIndex]}
+                src={getEmbedUrl(videos[nextIndex])}
                 title="Next Clip"
                 className="w-full h-full pointer-events-none opacity-60"
               />

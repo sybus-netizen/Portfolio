@@ -6,7 +6,22 @@ export function cn(...inputs: ClassValue[]) {
 }
 export function getAssetPath(path: string): string {
   if (!path) return "";
-  const basePath = process.env.__NEXT_ROUTER_BASEPATH || "";
+  if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("data:")) return path;
+
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  return `${basePath}${cleanPath}`;
+
+  let prefix = "";
+  if (typeof window !== "undefined") {
+    if (window.location.pathname.startsWith("/Portfolio")) {
+      prefix = "/Portfolio";
+    }
+  } else if (process.env.NODE_ENV === "production" || process.env.GITHUB_ACTIONS) {
+    prefix = "/Portfolio";
+  }
+
+  if (prefix && cleanPath.startsWith(prefix)) {
+    return cleanPath;
+  }
+
+  return `${prefix}${cleanPath}`;
 }
