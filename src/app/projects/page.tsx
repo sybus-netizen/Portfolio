@@ -74,7 +74,7 @@ export default function ProjectsPage() {
                 className="h-full flex flex-col"
               >
                 <Link href={`/projects/${project.id}`} className="block h-full cursor-pointer select-none">
-                  <div className="retro-card p-5 bg-[#131130]/90 backdrop-blur-xl border border-white/10 h-full flex flex-col justify-between shadow-2xl rounded-2xl group relative overflow-hidden text-left hover:border-[#C084FC]/50 hover:shadow-[0_0_30px_rgba(192,132,252,0.25)] transition-all duration-300">
+                  <div className="retro-card p-5 h-full flex flex-col justify-between shadow-2xl rounded-2xl group relative overflow-hidden text-left hover:border-[#C084FC]/50 hover:shadow-[0_0_30px_rgba(192,132,252,0.25)] transition-all duration-300">
                     
                     {/* Card Header Category Pill */}
                     <div className="flex justify-between items-center pb-3 mb-4 border-b border-white/10 select-none">

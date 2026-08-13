@@ -84,17 +84,17 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
           <div className="lg:col-span-5 space-y-4">
             <FadeIn direction="up">
-              <span className="inline-block px-3 py-1 bg-[#FF5964] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">THE ARTIST</span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider select-none">THE ARTIST</span>
             </FadeIn>
             <FadeIn direction="up" delay={0.1}>
-              <h1 className="font-retro text-2xl sm:text-3.5xl font-bold tracking-tight text-foreground uppercase leading-tight">
+              <h1 className="font-sans text-2xl sm:text-3.5xl font-extrabold tracking-tight text-foreground uppercase leading-tight">
                 About <br />
                 Shubham Shukla
               </h1>
             </FadeIn>
           </div>
           <div className="lg:col-span-7 pt-4">
-            <FadeIn direction="up" delay={0.2} className="text-gray-700 leading-relaxed font-sans text-sm sm:text-base max-w-xl font-light">
+            <FadeIn direction="up" delay={0.2} className="text-slate-300 leading-relaxed font-sans text-sm sm:text-base max-w-xl font-light">
               <p>
                 I'm a Graphic Designer and Video Editor with over 3.8 years of experience creating branding, social media creatives, YouTube videos, advertisements, promotional content, and educational videos. I combine creativity with strategy to create visuals that are engaging, impactful, and purpose-driven.
               </p>
@@ -106,7 +106,7 @@ export default function AboutPage() {
         <div className="space-y-10 pt-6 text-left">
           <div className="space-y-4">
             <FadeIn direction="up">
-              <span className="inline-block px-3 py-1 bg-[#3A86C8] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">SPECIALIZATION</span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider select-none">SPECIALIZATION</span>
             </FadeIn>
             <FadeIn direction="up" delay={0.1}>
               <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
@@ -118,7 +118,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
             {expertiseItems.map((item, index) => (
               <FadeIn key={index} direction="up" delay={index * 0.04}>
-                <div className="retro-card p-4 bg-[#FFFFFF] border-3 border-black shadow-[3px_3px_0px_#000] flex items-center gap-3 select-none h-full hover:bg-[#FFDE47]/10 transition-colors">
+                <div className="retro-card p-4 flex items-center gap-3 select-none h-full hover:bg-white/10 transition-colors">
                   <span className="text-xl shrink-0">{item.emoji}</span>
                   <span className="font-retro text-[8px] sm:text-[9px] font-bold text-foreground uppercase tracking-wider leading-tight">
                     {item.name}
@@ -133,10 +133,10 @@ export default function AboutPage() {
         <div className="space-y-10 text-left">
           <div className="space-y-4">
             <FadeIn direction="up">
-              <span className="inline-block px-3 py-1 bg-[#3BCEAC] border-2 border-black text-foreground font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">CORE FOCUS</span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider select-none">CORE FOCUS</span>
             </FadeIn>
             <FadeIn direction="up" delay={0.1}>
-              <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
+              <h2 className="font-sans text-xl sm:text-2xl font-extrabold text-foreground uppercase leading-none">
                 Creative Philosophy
               </h2>
             </FadeIn>
@@ -145,16 +145,16 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {philosophies.map((philo, index) => (
               <FadeIn key={index} direction="up" delay={index * 0.08}>
-                <div className="retro-card p-6 bg-[#FFFFFF] border-3 border-black shadow-[4px_4px_0px_#000] h-full flex flex-col justify-between">
+                <div className="retro-card p-6 h-full flex flex-col justify-between">
                   <div className="space-y-5">
-                    <div className="w-11 h-11 rounded-sm border-2 border-black bg-transparent flex items-center justify-center text-xl shadow-[1.5px_1.5px_0px_#000] select-none">
+                    <div className="w-11 h-11 rounded-xl border border-white/20 bg-white/5 flex items-center justify-center text-xl shadow-lg select-none">
                       {philo.emoji}
                     </div>
                     <div className="space-y-2">
-                      <h3 className="font-retro text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-wider">
+                      <h3 className="font-sans text-xs font-bold text-foreground uppercase tracking-wider">
                         {philo.title}
                       </h3>
-                      <p className="text-xs text-gray-600 leading-relaxed font-sans font-light">
+                      <p className="text-xs text-slate-300 leading-relaxed font-sans font-light">
                         {philo.description}
                       </p>
                     </div>
@@ -172,28 +172,28 @@ export default function AboutPage() {
           <div className="space-y-10">
             <div className="space-y-4">
               <FadeIn direction="up">
-                <span className="inline-block px-3 py-1 bg-[#FFE082] border-2 border-black text-[#131130] font-bold font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">EXPERIENCE</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider select-none">EXPERIENCE</span>
               </FadeIn>
-              <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
+              <h2 className="font-sans text-xl sm:text-2xl font-extrabold text-foreground uppercase leading-none">
                 Work History
               </h2>
             </div>
 
-            <div className="border-l-4 border-dashed border-black/20 pl-6 space-y-8">
+            <div className="border-l-2 border-dashed border-white/20 pl-6 space-y-8">
               {experienceItems.map((item, idx) => (
                 <div key={item.id} className="relative space-y-2">
-                  <div className="absolute left-[-32px] top-1.5 w-4 h-4 rounded-full border-2 border-black bg-[#FFDE47]" />
-                  <div className="retro-card p-5 bg-[#FFFFFF] border-3 border-black shadow-[3px_3px_0px_#000]">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b-2 border-black/10 pb-2 mb-3">
-                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-foreground uppercase leading-none">{item.role}</h3>
-                      <span className="font-retro text-[7px] text-[#FF5964] font-bold">[{item.duration}]</span>
+                  <div className="absolute left-[-32px] top-1.5 w-3 h-3 rounded-full border border-white/20 bg-[#C084FC] shadow-[0_0_10px_rgba(192,132,252,0.5)]" />
+                  <div className="retro-card p-5">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-white/10 pb-2 mb-3">
+                      <h3 className="font-sans text-xs font-bold text-foreground uppercase leading-none">{item.role}</h3>
+                      <span className="font-sans text-[10px] text-[#C084FC] font-bold">[{item.duration}]</span>
                     </div>
                     <div className="font-sans text-xs space-y-3">
-                      <div className="flex justify-between items-center text-gray-500 font-bold uppercase text-[9px]">
+                      <div className="flex justify-between items-center text-slate-400 font-bold uppercase text-[9px]">
                         <span>{item.company}</span>
                         <span>{item.location}</span>
                       </div>
-                      <ul className="list-disc pl-3 leading-relaxed text-gray-600 font-light space-y-1 ml-1 marker:text-[#FF5964]">
+                      <ul className="list-disc pl-3 leading-relaxed text-slate-300 font-light space-y-1 ml-1 marker:text-[#C084FC]">
                         {item.description.map((desc, dIdx) => (
                           <li key={dIdx}>{desc}</li>
                         ))}
@@ -209,28 +209,28 @@ export default function AboutPage() {
           <div className="space-y-10">
             <div className="space-y-4">
               <FadeIn direction="up">
-                <span className="inline-block px-3 py-1 bg-[#FF5964] border-2 border-black text-white font-retro text-[8px] uppercase shadow-[2px_2px_0px_#000] select-none rounded-sm">ACADEMIC</span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider select-none">ACADEMIC</span>
               </FadeIn>
-              <h2 className="font-retro text-xl sm:text-2xl font-bold text-foreground uppercase leading-none">
+              <h2 className="font-sans text-xl sm:text-2xl font-extrabold text-foreground uppercase leading-none">
                 Education
               </h2>
             </div>
 
-            <div className="border-l-4 border-dashed border-black/20 pl-6 space-y-8">
+            <div className="border-l-2 border-dashed border-white/20 pl-6 space-y-8">
               {educationItems.map((item, idx) => (
                 <div key={item.id} className="relative space-y-2">
-                  <div className="absolute left-[-32px] top-1.5 w-4 h-4 rounded-full border-2 border-black bg-[#FF5964]" />
-                  <div className="retro-card p-5 bg-[#FFFFFF] border-3 border-black shadow-[3px_3px_0px_#000]">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b-2 border-black/10 pb-2 mb-3">
-                      <h3 className="font-retro text-[9px] sm:text-[10px] font-bold text-foreground uppercase leading-none">{item.role}</h3>
-                      <span className="font-retro text-[7px] text-[#FFDE47] font-bold">[{item.duration}]</span>
+                  <div className="absolute left-[-32px] top-1.5 w-3 h-3 rounded-full border border-white/20 bg-[#C084FC] shadow-[0_0_10px_rgba(192,132,252,0.5)]" />
+                  <div className="retro-card p-5">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-white/10 pb-2 mb-3">
+                      <h3 className="font-sans text-xs font-bold text-foreground uppercase leading-none">{item.role}</h3>
+                      <span className="font-sans text-[10px] text-[#C084FC] font-bold">[{item.duration}]</span>
                     </div>
                     <div className="font-sans text-xs space-y-3">
-                      <div className="flex justify-between items-center text-gray-500 font-bold uppercase text-[9px]">
+                      <div className="flex justify-between items-center text-slate-400 font-bold uppercase text-[9px]">
                         <span>{item.company}</span>
                         <span>{item.location}</span>
                       </div>
-                      <ul className="list-disc pl-3 leading-relaxed text-gray-600 font-light space-y-1 ml-1 marker:text-[#FFDE47]">
+                      <ul className="list-disc pl-3 leading-relaxed text-slate-300 font-light space-y-1 ml-1 marker:text-[#C084FC]">
                         {item.description.map((desc, dIdx) => (
                           <li key={dIdx}>{desc}</li>
                         ))}

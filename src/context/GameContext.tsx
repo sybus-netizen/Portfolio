@@ -69,31 +69,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const playClick = () => {
-    if (!soundOn || !buttonAudioRef.current) return;
-    buttonAudioRef.current.currentTime = 0;
-    buttonAudioRef.current.play().catch(() => {});
-  };
-
-  const playStart = () => {
-    if (!soundOn || !buttonAudioRef.current) return;
-    buttonAudioRef.current.currentTime = 0;
-    buttonAudioRef.current.play().catch(() => {});
-  };
-
-  const playAchievement = () => {
-    if (!soundOn || !buttonAudioRef.current) return;
-    buttonAudioRef.current.currentTime = 0;
-    buttonAudioRef.current.play().catch(() => {});
-  };
-
-  const toggleSound = () => {
-    setSoundOn((prev) => {
-      const next = !prev;
-      localStorage.setItem("sound-pref", String(next));
-      return next;
-    });
-  };
+  const playClick = () => {};
+  const playStart = () => {};
+  const playAchievement = () => {};
+  const toggleSound = () => {};
 
   const deactivateTitle = () => {
     setIsTitleActive(false);

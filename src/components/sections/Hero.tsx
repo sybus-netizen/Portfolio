@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Award } from "lucide-react";
 import { cn, getAssetPath } from "@/lib/utils";
 import { useGameSystem } from "@/context/GameContext";
-import { experienceItems } from "@/data/experience";
 
 interface OrbitTool {
   name: string;
@@ -71,8 +70,11 @@ const briefSegments = [
   { text: ". Passionate about turning ideas into impactful digital content.", highlight: false }
 ];
 
+import { useTheme } from "@/context/ThemeContext";
+
 export default function Hero() {
   const { unlockQuest, unlockAchievement } = useGameSystem();
+  const { theme } = useTheme();
   
   // Interactive dialogue typing
   const [typedLength, setTypedLength] = useState(0);
@@ -97,17 +99,17 @@ export default function Hero() {
 
   const totalCharacters = useMemo(() => briefSegments.reduce((sum, seg) => sum + seg.text.length, 0), []);
 
-  // Typewriter effect on mount (Fast, snappy typing)
+  // Typewriter effect on mount (Snappy typing pace)
   useEffect(() => {
     let current = 0;
     const interval = setInterval(() => {
-      current += 3;
+      current += 1;
       setTypedLength(current);
       if (current >= totalCharacters) {
         setTypedLength(totalCharacters);
         clearInterval(interval);
       }
-    }, 10);
+    }, 20);
     return () => clearInterval(interval);
   }, [totalCharacters]);
 
@@ -221,7 +223,7 @@ export default function Hero() {
         
         {/* LEFT COLUMN: RPG TEXT & STATUS SCREEN */}
         <motion.div
-          className="md:col-span-7 flex flex-col items-start space-y-8 md:space-y-6"
+          className="md:col-span-7 flex flex-col items-start space-y-6 sm:space-y-8 w-full"
           initial="hidden"
           animate="visible"
           variants={{
@@ -229,34 +231,48 @@ export default function Hero() {
             visible: { transition: { staggerChildren: 0.18, delayChildren: 0.3 } }
           }}
         >
-                   {/* Badge indicator */}
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}
-            className="inline-flex items-center justify-center px-4 py-1.5 border border-[#C084FC]/40 bg-[#C084FC]/20 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider rounded-full select-none"
-          >
-            WELCOME TO MY PORTFOLIO
-          </motion.div>
+         
 
           <motion.div className="space-y-3 w-full" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
-            <h1 className="relative font-sans text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase leading-none select-none">
-              <span className="absolute -inset-2 bg-gradient-to-r from-[#C084FC]/25 to-[#FFA5A5]/25 rounded-xl blur-2xl opacity-45 pointer-events-none z-[-1] animate-pulse" />
+            <h1 
+              style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
+              className="relative font-sans text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase leading-none select-none break-words"
+            >
+              <span className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-xl blur-2xl opacity-45 pointer-events-none z-[-1] animate-pulse" />
               SHUBHAM SHUKLA
             </h1>
-            <p className="font-sans text-xs sm:text-sm font-bold text-[#FFA5A5] uppercase tracking-wider leading-none">
+            <p 
+              style={{ color: theme === "light" ? "#1D4ED8" : "#FFA5A5" }}
+              className="font-sans text-[10px] xs:text-xs sm:text-sm font-extrabold uppercase tracking-wider leading-snug"
+            >
               VISUAL CONTENT CREATOR & GRAPHIC DESIGNER
-            </p>
-            <p className="font-sans text-xs text-slate-300 uppercase tracking-widest leading-none mt-1">
-              3.8+ YEARS OF PROFESSIONAL EXPERIENCE • INDIA
             </p>
           </motion.div>
 
           {/* PROFESSIONAL INTRO GLASS BOX */}
-          <motion.div className="w-full retro-card p-5 sm:p-6 bg-[#131130]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl relative" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
-            <div className="absolute top-[-12px] left-6 px-3 py-1 bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider rounded-full select-none">
+          <motion.div 
+            style={{
+              backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
+              borderColor: theme === "light" ? "#CBD5E1" : undefined
+            }}
+            className="w-full max-w-xl retro-card chromatic-glass p-5 sm:p-6 shadow-2xl rounded-2xl relative border text-left" 
+            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}
+          >
+            <div 
+              style={{
+                backgroundColor: theme === "light" ? "#2563EB" : "rgba(192, 132, 252, 0.2)",
+                color: theme === "light" ? "#FFFFFF" : "#C084FC",
+                borderColor: theme === "light" ? "#1D4ED8" : "rgba(192, 132, 252, 0.3)"
+              }}
+              className="absolute top-[-12px] left-6 px-3 py-1 border font-sans text-xs font-extrabold uppercase tracking-wider rounded-full select-none shadow-sm"
+            >
               ABOUT ME
             </div>
             
-            <div className="font-sans text-xs sm:text-sm text-slate-200 leading-relaxed min-h-[70px] select-text whitespace-pre-line pt-1">
+            <div 
+              style={{ color: theme === "light" ? "#0F172A" : "#E2E8F0" }}
+              className="font-sans text-xs sm:text-sm font-medium leading-relaxed min-h-[70px] select-text whitespace-pre-line pt-1 text-left"
+            >
               {(() => {
                 let remaining = typedLength;
                 return briefSegments.map((seg, i) => {
@@ -266,210 +282,198 @@ export default function Hero() {
                   return (
                     <span
                       key={i}
-                      className={seg.highlight ? "text-[#FFA5A5] font-bold" : ""}
+                      style={{
+                        color: seg.highlight
+                          ? theme === "light" ? "#2563EB" : "#FFA5A5"
+                          : undefined,
+                        fontWeight: seg.highlight ? 700 : undefined
+                      }}
                     >
                       {visibleText}
                     </span>
                   );
                 });
               })()}
-              <span className={cn(
-                "inline-block w-2.5 h-4 bg-[#C084FC] ml-1 align-middle",
-                typedLength < totalCharacters ? "animate-pulse" : ""
-              )} />
+              <span 
+                style={{ backgroundColor: theme === "light" ? "#2563EB" : "#C084FC" }}
+                className="inline-block w-2 h-4 ml-1 align-middle animate-pulse rounded-xs" 
+              />
             </div>
           </motion.div>
-
-          {/* WORK EXPERIENCE GLASS CARD */}
-          <motion.div className="w-full retro-card p-5 bg-[#131130]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl relative" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
-            <div className="absolute top-[-12px] left-6 px-3 py-1 bg-[#C084FC]/20 border border-[#C084FC]/30 text-[#C084FC] font-sans text-xs font-bold uppercase tracking-wider rounded-full select-none">
-              WORK EXPERIENCE
-            </div>
-            <div className="space-y-3 pt-2">
-              {experienceItems.map((item) => (
-                <div key={item.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-left border-b border-white/10 pb-2.5 last:border-0 last:pb-0">
-                  <div>
-                    <div className="font-sans text-xs font-bold text-white uppercase leading-tight">
-                      {item.role}
-                    </div>
-                    <div className="text-xs text-slate-400 font-sans font-medium leading-tight mt-0.5">
-                      {item.company}
-                    </div>
-                  </div>
-                  <div className="font-sans text-xs text-[#A7F3D0] font-bold shrink-0 sm:text-right leading-tight">
-                    {item.duration}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
         </motion.div>
 
-        {/* RIGHT COLUMN: PIXEL AVATAR & COLLECTIBLE TOOL SLOTS */}
-        <motion.div 
-          className="md:col-span-5 flex flex-col items-center justify-center relative min-h-[300px] md:min-h-[420px]"
-          ref={avatarRef}
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-        >
-          {/* Pulsing Ambient Glow behind Avatar */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-            <div className="w-[320px] h-[320px] rounded-full bg-[#C084FC]/15 blur-[70px] animate-pulse" />
-          </div>
-
-          {/* Central Interactive Pixel Avatar */}
+        {/* RIGHT COLUMN: PIXEL AVATAR WITH GRAVITY FLOATING/FALLING ICONS & ACTION BUTTONS */}
+        <div className="md:col-span-5 flex flex-col items-center gap-6 w-full pt-0">
+          
+          {/* CHARACTER SHOWCASE BOX */}
           <motion.div 
-            className="relative z-10 cursor-pointer"
-            onClick={triggerCelebrate}
-            animate={
-              isCelebrated 
-                ? { y: [0, -32, 0], rotate: [0, 8, -8, 0] } 
-                : { y: [0, -3, 0] }
-            }
-            transition={
-              isCelebrated 
-                ? { duration: 0.65, ease: "easeOut" } 
-                : { duration: 2.2, repeat: Infinity, ease: "easeInOut" }
-            }
+            className="w-full flex flex-col items-center justify-center relative pt-6 pb-8 md:pt-16 md:pb-20 overflow-hidden rounded-3xl min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
+            ref={avatarRef}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
           >
-            <svg 
-              width="220" 
-              height="220" 
-              viewBox="0 0 32 32" 
-              fill="none" 
-              className="w-full max-w-[240px] md:max-w-[280px] mx-auto select-none" 
-              style={{ imageRendering: "pixelated" }}
-            >
-              <circle cx="16" cy="16" r="15" fill="#FFE45E" stroke="#000000" strokeWidth="1.5" />
-              <circle cx="16" cy="16" r="13" fill="#FFFFFF" stroke="#000000" strokeWidth="1" strokeDasharray="2, 2" />
-              
-              {/* Hair */}
-              <rect x="8" y="5" width="16" height="4" fill="#1A1A1A" />
-              <rect x="6" y="9" width="20" height="3" fill="#1A1A1A" />
-              {/* Skin */}
-              <rect x="8" y="12" width="16" height="11" fill="#FFCDA3" />
-              <rect x="6" y="15" width="2" height="4" fill="#FFCDA3" />
-              <rect x="24" y="15" width="2" height="4" fill="#FFCDA3" />
-              
-              {/* Sunglasses backing (black frame) */}
-              <rect x="8" y="14" width="7" height="4" fill="#000000" />
-              <rect x="17" y="14" width="7" height="4" fill="#000000" />
-              <rect x="15" y="15" width="2" height="2" fill="#000000" />
+            {/* Pulsing Ambient Glow behind Avatar */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+              <div className="w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] rounded-full bg-[#C084FC]/15 blur-[60px] animate-pulse" />
+            </div>
 
-              {/* Eye Pupils shifts based on cursor coordinate calculations */}
-              {!isBlinking ? (
+            {/* Constant Rain of Falling Creative Icons (Gravity Effect) */}
+            {[
+              { id: 1, src: "/assets/media_1786616672274.png", size: 20, left: "15%", delay: 0, speed: 6.5 },
+              { id: 2, src: "/assets/media_1786616672275.png", size: 24, left: "75%", delay: 1.5, speed: 7.2 },
+              { id: 3, src: "/assets/media_1786616672277.png", size: 18, left: "30%", delay: 0.8, speed: 5.8 },
+              { id: 4, src: "/assets/media_1786616672294.png", size: 22, left: "60%", delay: 2.2, speed: 6.8 },
+              { id: 5, src: "/assets/media_1786616672274.png", size: 18, left: "85%", delay: 3.1, speed: 6.0 },
+              { id: 6, src: "/assets/media_1786616672275.png", size: 22, left: "10%", delay: 4.0, speed: 7.0 },
+            ].map((item) => (
+              <motion.img
+                key={item.id}
+                src={item.src}
+                alt=""
+                className="absolute pointer-events-none z-0 opacity-15 dark:opacity-10 blur-[0.5px]"
+                style={{ left: item.left, width: item.size, height: item.size }}
+                animate={{
+                  y: ["-15%", "115%"],
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: item.speed,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: item.delay,
+                }}
+              />
+            ))}
+
+            {/* Bobbing Floating Creative Icons (Zero Gravity Effect) */}
+            <motion.img
+              src="/assets/media_1786616672274.png"
+              alt="Photo"
+              className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
+              style={{ top: "18%", left: "8%" }}
+              animate={{ y: [0, -8, 0], rotate: [0, 6, -6, 0] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            <motion.img
+              src="/assets/media_1786616672275.png"
+              alt="Camera"
+              className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
+              style={{ top: "15%", right: "8%" }}
+              animate={{ y: [0, -10, 0], rotate: [0, -8, 8, 0] }}
+              transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            />
+
+            <motion.img
+              src="/assets/media_1786616672277.png"
+              alt="Design"
+              className="absolute w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
+              style={{ bottom: "18%", left: "6%" }}
+              animate={{ y: [0, -6, 0], rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            />
+
+            <motion.img
+              src="/assets/media_1786616672294.png"
+              alt="Video"
+              className="absolute w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 z-20 pointer-events-none select-none drop-shadow-[0_8px_16px_rgba(0,0,0,0.4)]"
+              style={{ bottom: "15%", right: "6%" }}
+              animate={{ y: [0, -9, 0], rotate: [0, -6, 6, 0] }}
+              transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+            />
+
+            {/* Central Interactive Pixel Avatar */}
+            <motion.div 
+              className="relative z-10 cursor-pointer"
+              onClick={triggerCelebrate}
+              animate={
+                isCelebrated 
+                  ? { y: [0, -32, 0], rotate: [0, 8, -8, 0] } 
+                  : { y: [0, -3, 0] }
+              }
+              transition={
+                isCelebrated 
+                  ? { duration: 0.65, ease: "easeOut" } 
+                  : { duration: 2.2, repeat: Infinity, ease: "easeInOut" }
+              }
+            >
+              <svg 
+                width="220" 
+                height="220" 
+                viewBox="0 0 32 32" 
+                fill="none" 
+                className="w-full max-w-[240px] md:max-w-[280px] mx-auto select-none" 
+                style={{ imageRendering: "pixelated" }}
+              >
+                <circle cx="16" cy="16" r="15" fill="#FFE45E" stroke="#000000" strokeWidth="1.5" />
+                <circle cx="16" cy="16" r="13" fill="#FFFFFF" stroke="#000000" strokeWidth="1" strokeDasharray="2, 2" />
+                
+                {/* Hair */}
+                <rect x="8" y="5" width="16" height="4" fill="#1A1A1A" />
+                <rect x="6" y="9" width="20" height="3" fill="#1A1A1A" />
+                {/* Skin */}
+                <rect x="8" y="12" width="16" height="11" fill="#FFCDA3" />
+                <rect x="6" y="15" width="2" height="4" fill="#FFCDA3" />
+                <rect x="24" y="15" width="2" height="4" fill="#FFCDA3" />
+                
+                {/* Sunglasses backing (black frame) */}
+                <rect x="8" y="14" width="7" height="4" fill="#000000" />
+                <rect x="17" y="14" width="7" height="4" fill="#000000" />
+                <rect x="15" y="15" width="2" height="2" fill="#000000" />
+
+                {/* Eye Pupils shifts based on cursor coordinate calculations */}
+                {!isBlinking ? (
+                  <>
+                    <rect x={10 + mousePos.x} y={15 + mousePos.y} width="2" height="1" fill="#FFFFFF" />
+                    <rect x={19 + mousePos.x} y={15 + mousePos.y} width="2" height="1" fill="#FFFFFF" />
+                  </>
+                ) : (
+                  /* Blink mode horizontal black bar override */
+                  <>
+                    <rect x="8" y="15" width="7" height="2" fill="#1A1A1A" />
+                    <rect x="17" y="15" width="7" height="2" fill="#1A1A1A" />
+                  </>
+                )}
+
+                {/* Mouth */}
+                <rect x="13" y="20" width="6" height="2" fill="#1A1A1A" />
+                <rect x="14" y="21" width="4" height="1" fill="#FF5964" />
+                
+                {/* Waving Arm / Celebration actions */}
+                {isWaving ? (
+                  /* Arm up waving */
+                  <>
+                    <rect x="24" y="16" width="3" height="6" fill="#FF5964" />
+                    <rect x="26" y="12" width="3" height="4" fill="#FFCDA3" />
+                  </>
+                ) : null}
+
+                {/* Shirt & Collar */}
+                <rect x="10" y="23" width="12" height="6" fill="#FF5964" />
+                <rect x="8" y="25" width="16" height="4" fill="#FF5964" />
+                <rect x="13" y="23" width="6" height="2" fill="#FAF6EE" />
+              </svg>
+              
+              {/* Sparkle bursts when celebrating */}
+              {isCelebrated && (
                 <>
-                  <rect x={10 + mousePos.x} y={15 + mousePos.y} width="2" height="1" fill="#FFFFFF" />
-                  <rect x={19 + mousePos.x} y={15 + mousePos.y} width="2" height="1" fill="#FFFFFF" />
-                </>
-              ) : (
-                /* Blink mode horizontal black bar override */
-                <>
-                  <rect x="8" y="15" width="7" height="2" fill="#1A1A1A" />
-                  <rect x="17" y="15" width="7" height="2" fill="#1A1A1A" />
+                  <PixelSparkleMini style={{ top: "-10px", left: "20px" }} />
+                  <PixelSparkleMini style={{ top: "30px", right: "-10px" }} />
+                  <PixelSparkleMini style={{ bottom: "10px", left: "-5px" }} />
                 </>
               )}
-
-              {/* Mouth */}
-              <rect x="13" y="20" width="6" height="2" fill="#1A1A1A" />
-              <rect x="14" y="21" width="4" height="1" fill="#FF5964" />
-              
-              {/* Waving Arm / Celebration actions */}
-              {isWaving ? (
-                /* Arm up waving */
-                <>
-                  <rect x="24" y="16" width="3" height="6" fill="#FF5964" />
-                  <rect x="26" y="12" width="3" height="4" fill="#FFCDA3" />
-                </>
-              ) : null}
-
-              {/* Shirt & Collar */}
-              <rect x="10" y="23" width="12" height="6" fill="#FF5964" />
-              <rect x="8" y="25" width="16" height="4" fill="#FF5964" />
-              <rect x="13" y="23" width="6" height="2" fill="#FAF6EE" />
-            </svg>
-            
-            {/* Sparkle bursts when celebrating */}
-            {isCelebrated && (
-              <>
-                <PixelSparkleMini style={{ top: "-10px", left: "20px" }} />
-                <PixelSparkleMini style={{ top: "30px", right: "-10px" }} />
-                <PixelSparkleMini style={{ bottom: "10px", left: "-5px" }} />
-              </>
-            )}
+            </motion.div>
           </motion.div>
 
-          {/* Software inventory slots */}
-          <div className="grid grid-cols-6 gap-2 w-full max-w-[340px] mt-6 relative z-20 select-none">
-            {orbitTools.map((tool, idx) => {
-              const isHovered = hoveredIcon === idx;
-              return (
-                <motion.div
-                  key={tool.name}
-                  onMouseEnter={() => setHoveredIcon(idx)}
-                  onMouseLeave={() => setHoveredIcon(null)}
-                  whileHover={{ scale: 1.15, rotate: 6, y: -4 }}
-                  className={cn(
-                    "aspect-square rounded-sm border-2 border-black flex items-center justify-center cursor-help bg-card relative transition-all duration-100 shadow-[2px_2px_0px_#000]",
-                    isHovered && "bg-[#FFDE47] shadow-[3.5px_3.5px_0px_#000] border-black"
-                  )}
-                  onClick={() => unlockAchievement(`tool-${tool.name.toLowerCase()}`, `Collected ${tool.name}!`, "🛠")}
-                >
-                  {tool.customIcon ? (
-                    tool.customIcon
-                  ) : (
-                    <Image
-                      src={getAssetPath(tool.iconPath)}
-                      alt={tool.name}
-                      width={20}
-                      height={20}
-                      unoptimized={true}
-                      className="object-contain w-5 h-5"
-                    />
-                  )}
-
-                  {/* Fainted sparkles on hovered slot item */}
-                  {isHovered && (
-                    <>
-                      <PixelSparkleMini style={{ top: "-4px", left: "-4px" }} />
-                      <PixelSparkleMini style={{ bottom: "-4px", right: "-4px" }} />
-                    </>
-                  )}
-                  
-                  {/* Tooltip Overlay */}
-                  <AnimatePresence>
-                    {isHovered && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute bottom-16 left-1/2 -translate-x-1/2 p-3.5 bg-[#131130]/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-xl pointer-events-none min-w-[170px] z-50 text-center flex flex-col items-center gap-1"
-                      >
-                        <div className="font-sans text-xs font-bold text-white uppercase leading-none mb-1">
-                          {tool.name}
-                        </div>
-                        <div className="font-sans text-[11px] text-[#A7F3D0] font-bold leading-none mb-1">
-                          PROFICIENCY: {tool.proficiency}
-                        </div>
-                        <div className="font-sans text-xs text-slate-300 font-normal leading-snug">
-                          {tool.tagline}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* ACTION BUTTONS */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-[340px] mt-6 relative z-20">
+          {/* ACTION BUTTONS (Moved under the character box) */}
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-3 w-full max-w-[420px] pt-1 relative z-20"
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}
+          >
             <button 
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} 
-              className="w-full sm:flex-1"
+              className="w-full sm:flex-1 animate-pulse hover:animate-none"
             >
               <div className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#C084FC] to-[#FFA5A5] text-[#131130] font-sans text-xs font-bold uppercase shadow-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer">
                 <span>🎨</span>
@@ -487,9 +491,9 @@ export default function Hero() {
               <span>📄</span>
               <span>Download Resume</span>
             </a>
-          </div>
+          </motion.div>
 
-        </motion.div>
+        </div>
 
       </div>
     </section>

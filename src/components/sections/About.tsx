@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useGameSystem } from "@/context/GameContext";
+import { useTheme } from "@/context/ThemeContext";
 
 interface Tool {
   name: string;
@@ -25,9 +26,9 @@ const categories: CreativeCategory[] = [
   {
     id: "brand-identity",
     title: "Brand Identity",
-    description: "Distinctive logo marks, corporate branding guides, and cohesive vector systems to define your identity.",
+    description: "",
     image: "/assets/projects/brand_identity_showcase.jpg",
-    deliverables: ["Logos", "Brand Kits", "Visual Identity"],
+    deliverables: ["Logos", "Brand Kits", "Visual Identity", "Vector Systems"],
     tools: [
       { name: "Photoshop", brandColor: "#31A8FF" },
       { name: "Illustrator", brandColor: "#FF9A00" }
@@ -37,9 +38,9 @@ const categories: CreativeCategory[] = [
   {
     id: "social-marketing",
     title: "Social & Marketing",
-    description: "High-impact visual promotional campaigns, template grids, and digital assets optimized for social platforms.",
+    description: "",
     image: "/assets/projects/social_media_showcase.jpg",
-    deliverables: ["Social Media", "Advertisements", "Marketing Creatives"],
+    deliverables: ["Social Media", "Advertisements", "Marketing Creatives", "Ad Templates"],
     tools: [
       { name: "Canva", brandColor: "#00C4CC" },
       { name: "Illustrator", brandColor: "#FF9A00" },
@@ -50,9 +51,9 @@ const categories: CreativeCategory[] = [
   {
     id: "video-motion",
     title: "Video & Motion",
-    description: "High-retention video packaging, multitrack pacing, keyframe visual animations, lighting effects, and particle renders.",
+    description: "",
     image: "/assets/projects/motion_graphics_showcase.jpg",
-    deliverables: ["Video Editing", "Motion Graphics", "YouTube Videos"],
+    deliverables: ["Video Editing", "Motion Graphics", "YouTube Shorts & Reels", "Keyframe Animation"],
     tools: [
       { name: "Premiere Pro", brandColor: "#EA77FF" },
       { name: "After Effects", brandColor: "#9999FF" },
@@ -63,11 +64,13 @@ const categories: CreativeCategory[] = [
 ];
 
 export default function About() {
-  const [selectedIdx, setSelectedIdx] = useState(0);
+  const [selectedIdx, setSelectedIdx] = useState(1); // Default to Social & Marketing
   const { unlockQuest } = useGameSystem();
+  const { theme } = useTheme();
 
   return (
-    <section id="about" className="py-12 md:py-16 border-t border-white/10 bg-transparent relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 md:py-20 border-t border-slate-300 dark:border-white/10 bg-transparent relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 max-w-5xl h-[1.5px] bg-gradient-to-r from-transparent via-slate-400/60 dark:via-white/20 to-transparent" />
       <motion.div
         onViewportEnter={() => unlockQuest("about", "About")}
         viewport={{ once: true, amount: 0.1 }}
@@ -76,15 +79,22 @@ export default function About() {
         
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-8 md:mb-10 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C084FC]/20 text-[#C084FC] border border-[#C084FC]/30 font-sans text-xs font-bold uppercase tracking-wider select-none">
+          <div 
+            style={{
+              backgroundColor: theme === "light" ? "#2563EB" : "rgba(192, 132, 252, 0.2)",
+              color: theme === "light" ? "#FFFFFF" : "#C084FC",
+              borderColor: theme === "light" ? "#1D4ED8" : "rgba(192, 132, 252, 0.3)"
+            }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border font-sans text-xs font-extrabold uppercase tracking-wider select-none shadow-sm"
+          >
             SPECIFICATION
           </div>
-          <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
+          <h2 
+            style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
+            className="font-sans text-3xl sm:text-4xl font-extrabold uppercase tracking-tight"
+          >
             What I Create
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
-            From branding systems to motion graphics, I create visual experiences that help businesses communicate, grow and stand out.
-          </p>
         </div>
 
         {/* INTERACTIVE RPG LAYOUT */}
@@ -100,19 +110,39 @@ export default function About() {
                 <div
                   key={cat.id}
                   onClick={() => setSelectedIdx(idx)}
-                  className={`retro-card p-4 rounded-xl flex items-center justify-between cursor-pointer select-none text-left transition-all duration-300 border ${
+                  style={{
+                    backgroundColor: isSelected
+                      ? theme === "light" ? "#2563EB" : undefined
+                      : theme === "light" ? "#FFFFFF" : undefined,
+                    color: isSelected
+                      ? "#FFFFFF"
+                      : theme === "light" ? "#0F172A" : "#E2E8F0",
+                    borderColor: isSelected
+                      ? theme === "light" ? "#1D4ED8" : "rgba(192,132,252,0.7)"
+                      : theme === "light" ? "#CBD5E1" : "rgba(255,255,255,0.15)"
+                  }}
+                  className={`p-4 rounded-xl flex items-center justify-between cursor-pointer select-none text-left border transition-all duration-300 shadow-md ${
                     isSelected 
-                      ? "bg-gradient-to-r from-[#C084FC]/25 to-[#FFA5A5]/15 border-[#C084FC]/60 text-white shadow-[0_0_25px_rgba(192,132,252,0.25)] translate-x-1" 
-                      : "bg-[#131130]/90 border-white/10 text-slate-300 hover:border-white/20 hover:text-white"
+                      ? theme === "light" 
+                        ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-extrabold shadow-lg scale-[1.02]" 
+                        : "bg-gradient-to-r from-[#C084FC]/30 to-[#FFA5A5]/20 border-[#C084FC]/70 text-white shadow-[0_0_25px_rgba(192,132,252,0.3)] translate-x-1" 
+                      : "hover:scale-[1.01]"
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
                     <span className="text-lg">{cat.statusEmoji}</span>
-                    <span className="font-sans text-xs sm:text-sm font-bold uppercase text-white">
+                    <span className="font-sans text-xs sm:text-sm font-bold uppercase">
                       {cat.title}
                     </span>
                   </div>
-                  <span className={`font-sans text-xs font-bold ${isSelected ? 'text-[#A7F3D0]' : 'text-slate-400'}`}>
+                  <span 
+                    style={{
+                      color: isSelected
+                        ? theme === "light" ? "#FFFFFF" : "#A7F3D0"
+                        : theme === "light" ? "#64748B" : "#94A3B8"
+                    }}
+                    className="font-sans text-xs font-bold"
+                  >
                     {isSelected ? "◀ ACTIVE" : "SELECT"}
                   </span>
                 </div>
@@ -123,63 +153,79 @@ export default function About() {
           {/* RIGHT PANEL: SELECTED DETAIL (STATS SCREEN) */}
           <div className="lg:col-span-7">
             {selectedIdx !== -1 && (
-              <div className="retro-card p-6 sm:p-8 bg-[#131130]/90 backdrop-blur-xl border border-white/10 lg:h-full h-auto flex flex-col justify-between shadow-2xl rounded-2xl relative text-left">
+              <div 
+                style={{
+                  backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
+                  borderColor: theme === "light" ? "#CBD5E1" : undefined
+                }}
+                className="retro-card p-6 sm:p-8 lg:h-full h-auto flex flex-col justify-between shadow-2xl rounded-2xl relative text-left"
+              >
                 
-                {/* Corner tech specs */}
-                <div className="absolute top-4 right-6 font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                  FIELD: {categories[selectedIdx].id.toUpperCase()}
-                </div>
-
                 <div className="space-y-6">
                   {/* Title */}
                   <div className="space-y-2">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{categories[selectedIdx].statusEmoji}</span>
-                      <h3 className="font-sans text-lg sm:text-xl font-bold text-white uppercase leading-none">
+                      <h3 
+                        style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
+                        className="font-sans text-lg sm:text-xl font-bold uppercase leading-none"
+                      >
                         {categories[selectedIdx].title}
                       </h3>
                     </div>
-                    <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
-                      {categories[selectedIdx].description}
-                    </p>
                   </div>
 
                   {/* Deliverables */}
                   <div className="space-y-3">
-                    <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">KEY DELIVERABLES</div>
+                    <div 
+                      style={{ color: theme === "light" ? "#475569" : "#94A3B8" }}
+                      className="font-sans text-[10px] font-bold uppercase tracking-wider"
+                    >
+                      KEY POINTS
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {categories[selectedIdx].deliverables.map((del, i) => (
-                        <span
+                        <div
                           key={i}
-                          className="px-3 py-1.5 bg-white/5 border border-white/10 text-slate-200 font-sans text-xs rounded-xl"
+                          style={{
+                            backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.05)",
+                            color: theme === "light" ? "#0F172A" : "#F1F5F9",
+                            borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.15)"
+                          }}
+                          className="px-3 py-1.5 rounded-lg border font-sans text-xs font-semibold flex items-center gap-1.5 shadow-sm"
                         >
-                          ✦ {del}
-                        </span>
+                          <span style={{ color: theme === "light" ? "#2563EB" : "#C084FC" }}>✦</span>
+                          <span>{del}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Primary Tools */}
-                  <div className="space-y-3">
-                    <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">PRIMARY SOFTWARE</div>
+                  <div className="space-y-3 pt-4 border-t border-black/10 dark:border-white/10">
+                    <div 
+                      style={{ color: theme === "light" ? "#475569" : "#94A3B8" }}
+                      className="font-sans text-[10px] font-bold uppercase tracking-wider"
+                    >
+                      PRIMARY SOFTWARE
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {categories[selectedIdx].tools.map((tool, i) => (
-                        <span
+                        <div
                           key={i}
-                          className="px-3 py-1.5 bg-white/5 border border-white/10 text-white font-sans text-xs font-semibold rounded-xl flex items-center gap-2"
+                          style={{
+                            backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.05)",
+                            color: theme === "light" ? "#0F172A" : "#F1F5F9",
+                            borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.15)"
+                          }}
+                          className="px-3 py-1.5 rounded-lg border font-sans text-xs font-semibold flex items-center gap-2 shadow-sm"
                         >
                           <span className="w-2 h-2 rounded-full" style={{ backgroundColor: tool.brandColor }} />
-                          {tool.name}
-                        </span>
+                          <span>{tool.name}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
-                </div>
-
-                {/* Status bar */}
-                <div className="mt-8 pt-4 border-t border-white/10 flex justify-between items-center text-left">
-                  <div className="font-sans text-xs text-slate-400 font-medium">EXPERIENCE: 3.8+ YEARS</div>
-                  <div className="font-sans text-xs text-[#A7F3D0] font-bold uppercase">EXPLORE WORK ➔</div>
                 </div>
 
               </div>
@@ -199,7 +245,7 @@ export default function About() {
                   className={`retro-card p-4 flex items-center justify-between cursor-pointer select-none text-left border transition-all duration-200 rounded-xl ${
                     isSelected 
                       ? "bg-[#C084FC]/20 border-[#C084FC]/50 text-white" 
-                      : "bg-[#131130]/90 border-white/10 text-slate-300 hover:border-white/20"
+                      : "text-slate-300 hover:text-white"
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
@@ -223,23 +269,15 @@ export default function About() {
                       transition={{ duration: 0.2, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="retro-card p-5 sm:p-6 bg-[#131130]/90 backdrop-blur-xl border border-white/10 rounded-2xl relative text-left space-y-4">
-                        <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                          FIELD: {cat.id.toUpperCase()}
-                        </div>
-
+                      <div className="retro-card p-5 rounded-2xl relative text-left space-y-4">
                         <div className="space-y-4">
-                          <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                            {cat.description}
-                          </p>
-
                           <div className="space-y-2">
-                            <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">KEY DELIVERABLES</div>
+                            <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">KEY POINTS</div>
                             <div className="flex flex-wrap gap-1.5">
                               {cat.deliverables.map((del, i) => (
                                 <span
                                   key={i}
-                                  className="px-2.5 py-1 bg-white/5 border border-white/10 text-slate-200 font-sans text-xs rounded-xl"
+                                  className="px-3 py-1.5 bg-white/5 border border-white/10 text-slate-200 font-sans text-xs font-bold rounded-xl"
                                 >
                                   ✦ {del}
                                 </span>
@@ -253,7 +291,7 @@ export default function About() {
                               {cat.tools.map((tool, i) => (
                                 <span
                                   key={i}
-                                  className="px-2.5 py-1 bg-white/5 border border-white/10 text-white font-sans text-xs font-semibold rounded-xl flex items-center gap-1.5"
+                                  className="px-3 py-1.5 bg-white/5 border border-white/10 text-white font-sans text-xs font-semibold rounded-xl flex items-center gap-1.5"
                                 >
                                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: tool.brandColor }} />
                                   {tool.name}
@@ -261,11 +299,6 @@ export default function About() {
                               ))}
                             </div>
                           </div>
-                        </div>
-
-                        <div className="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-left">
-                          <div className="font-sans text-xs text-slate-400 font-medium">EXPERIENCE: 3.8+ YEARS</div>
-                          <div className="font-sans text-xs text-[#A7F3D0] font-bold uppercase">EXPLORE WORK ➔</div>
                         </div>
 
                       </div>

@@ -6,7 +6,9 @@ import Footer from "@/components/Footer";
 import RetroBackground from "@/components/RetroBackground";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { GameProvider } from "@/context/GameContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import RetroTitleScreen from "@/components/ui/RetroTitleScreen";
+import FloatingThemeToggle from "@/components/FloatingThemeToggle";
 
 const montserrat = Montserrat({
   weight: ["400", "600", "700", "800", "900"],
@@ -57,26 +59,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${montserrat.variable} ${poppins.variable} font-sans bg-background text-foreground antialiased selection:bg-[#C084FC] selection:text-[#131130] overflow-x-hidden`}
       >
-        <GameProvider>
-          {/* Scroll Progress Indicator */}
-          <ScrollProgress />
-          
-          {/* Title Screen Overlay */}
-          <RetroTitleScreen />
-
-          {/* Animated Background Mesh */}
-          <RetroBackground />
-          
-          <div className="relative min-h-screen flex flex-col z-10">
-            <Navbar />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </GameProvider>
+        <ThemeProvider>
+          <GameProvider>
+            {/* Scroll Progress Indicator */}
+            <ScrollProgress />
+            
+            {/* Title Screen Overlay */}
+            <RetroTitleScreen />
+  
+            {/* Animated Background Mesh */}
+            <RetroBackground />
+            
+            <div className="relative min-h-screen flex flex-col z-10">
+              <Navbar />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+            {/* Floating Theme Toggle — always visible bottom-right */}
+            <FloatingThemeToggle />
+          </GameProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
