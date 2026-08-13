@@ -10,11 +10,10 @@ import { useGameSystem } from "@/context/GameContext";
 import { useTheme } from "@/context/ThemeContext";
 
 const navLinks = [
-  { id: "home",     label: "Home",     href: "/#home" },
-  { id: "about",    label: "About",    href: "/#about" },
-  { id: "skills",   label: "Skills",   href: "/#skills" },
-  { id: "projects", label: "Work",     href: "/#projects" },
-  { id: "contact",  label: "Contact",  href: "/#contact" },
+  { id: "home",     label: "Home",           href: "/#home" },
+  { id: "about",    label: "What I Create",  href: "/#about" },
+  { id: "projects", label: "Work",           href: "/#projects" },
+  { id: "contact",  label: "Contact",        href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -30,7 +29,7 @@ export default function Navbar() {
   useEffect(() => {
     if (pathname !== "/") return;
 
-    const sections = ["home", "about", "skills", "projects", "contact"];
+    const sections = ["home", "about", "projects", "contact"];
     const activeObservers = sections.map((id) => {
       const el = document.getElementById(id);
       if (!el) return null;

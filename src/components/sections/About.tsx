@@ -1,70 +1,259 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { motion } from "framer-motion";
 import { useGameSystem } from "@/context/GameContext";
 import { useTheme } from "@/context/ThemeContext";
 
-interface Tool {
+interface SoftwareTool {
   name: string;
   brandColor: string;
 }
 
-interface CreativeCategory {
+interface CategoryCard {
+  number: string;
   id: string;
   title: string;
-  description: string;
-  image: string;
-  deliverables: string[];
-  tools: Tool[];
-  statusEmoji: string;
+  iconEmoji: string;
+  capabilities: string[];
+  tools: SoftwareTool[];
 }
 
-const categories: CreativeCategory[] = [
+const categoryCards: CategoryCard[] = [
   {
-    id: "brand-identity",
-    title: "Brand Identity",
-    description: "",
-    image: "/assets/projects/brand_identity_showcase.jpg",
-    deliverables: ["Logos", "Brand Kits", "Visual Identity", "Vector Systems"],
+    number: "01",
+    id: "brand-graphic-design",
+    title: "BRAND & GRAPHIC DESIGN",
+    iconEmoji: "🎨",
+    capabilities: [
+      "Logo Design",
+      "Brand Identity",
+      "Marketing Graphics",
+      "Social Media Creatives"
+    ],
     tools: [
       { name: "Photoshop", brandColor: "#31A8FF" },
-      { name: "Illustrator", brandColor: "#FF9A00" }
-    ],
-    statusEmoji: "🎨"
-  },
-  {
-    id: "social-marketing",
-    title: "Social & Marketing",
-    description: "",
-    image: "/assets/projects/social_media_showcase.jpg",
-    deliverables: ["Social Media", "Advertisements", "Marketing Creatives", "Ad Templates"],
-    tools: [
-      { name: "Canva", brandColor: "#00C4CC" },
       { name: "Illustrator", brandColor: "#FF9A00" },
-      { name: "Photoshop", brandColor: "#31A8FF" }
-    ],
-    statusEmoji: "📱"
+      { name: "Canva", brandColor: "#00C4CC" }
+    ]
   },
   {
+    number: "02",
     id: "video-motion",
-    title: "Video & Motion",
-    description: "",
-    image: "/assets/projects/motion_graphics_showcase.jpg",
-    deliverables: ["Video Editing", "Motion Graphics", "YouTube Shorts & Reels", "Keyframe Animation"],
+    title: "VIDEO & MOTION",
+    iconEmoji: "🎬",
+    capabilities: [
+      "Video Editing",
+      "Reels & Shorts",
+      "Promotional Videos",
+      "Motion Graphics",
+      "Logo Animation"
+    ],
     tools: [
       { name: "Premiere Pro", brandColor: "#EA77FF" },
       { name: "After Effects", brandColor: "#9999FF" },
-      { name: "Adobe Audition", brandColor: "#00F5D4" }
+      { name: "Audition", brandColor: "#00C896" }
+    ]
+  },
+  {
+    number: "03",
+    id: "web-digital",
+    title: "WEB & DIGITAL",
+    iconEmoji: "🌐",
+    capabilities: [
+      "Website Content",
+      "Digital Graphics",
+      "Marketing Content",
+      "Online Publishing"
     ],
-    statusEmoji: "🎬"
+    tools: [
+      { name: "WordPress", brandColor: "#21759B" },
+      { name: "Adobe Express", brandColor: "#FF3F56" }
+    ]
   }
 ];
 
+function renderToolBadge(name: string) {
+  switch (name) {
+    case "Photoshop":
+      return (
+        <div className="w-5 h-5 rounded border border-[#00C8FF] bg-[#001c3d]/90 flex items-center justify-center font-sans font-extrabold text-[9px] text-[#00C8FF] shadow-[0_0_8px_rgba(0,200,255,0.3)] select-none shrink-0">
+          Ps
+        </div>
+      );
+    case "Illustrator":
+      return (
+        <div className="w-5 h-5 rounded border border-[#FF9F00] bg-[#261300]/90 flex items-center justify-center font-sans font-extrabold text-[9px] text-[#FF9F00] shadow-[0_0_8px_rgba(255,159,0,0.3)] select-none shrink-0">
+          Ai
+        </div>
+      );
+    case "Canva":
+      return (
+        <div className="w-5 h-5 rounded-full bg-[#00c4cc] flex items-center justify-center font-sans italic font-extrabold text-[9px] text-white shadow-[0_0_8px_rgba(0,196,204,0.3)] select-none shrink-0">
+          C
+        </div>
+      );
+    case "Premiere Pro":
+      return (
+        <div className="w-5 h-5 rounded border border-[#E053FF] bg-[#1E0029]/90 flex items-center justify-center font-sans font-extrabold text-[9px] text-[#E053FF] shadow-[0_0_8px_rgba(224,83,255,0.3)] select-none shrink-0">
+          Pr
+        </div>
+      );
+    case "After Effects":
+      return (
+        <div className="w-5 h-5 rounded border border-[#9999FF] bg-[#0D002B]/90 flex items-center justify-center font-sans font-extrabold text-[9px] text-[#9999FF] shadow-[0_0_8px_rgba(153,153,255,0.3)] select-none shrink-0">
+          Ae
+        </div>
+      );
+    case "Audition":
+      return (
+        <div className="w-5 h-5 rounded border border-[#00E5A3] bg-[#001C15]/90 flex items-center justify-center font-sans font-extrabold text-[9px] text-[#00E5A3] shadow-[0_0_8px_rgba(0,229,163,0.3)] select-none shrink-0">
+          Au
+        </div>
+      );
+    case "WordPress":
+      return (
+        <div className="w-5 h-5 rounded-full bg-[#21759B] border border-[#00A0D2]/20 flex items-center justify-center font-sans font-extrabold text-[9px] text-white shadow-[0_0_8px_rgba(33,117,155,0.3)] select-none shrink-0">
+          W
+        </div>
+      );
+    case "Adobe Express":
+      return (
+        <div className="w-5 h-5 rounded border border-[#FF5F72]/30 bg-[#FF3F56] flex items-center justify-center font-sans font-extrabold text-[9px] text-white shadow-[0_0_8px_rgba(255,63,86,0.3)] select-none shrink-0">
+          Ex
+        </div>
+      );
+    default:
+      return (
+        <div className="w-5 h-5 rounded bg-white/10 flex items-center justify-center text-[9px] shrink-0">
+          🛠
+        </div>
+      );
+  }
+}
+
+function CategoryCardItem({ card }: { card: CategoryCard }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useTheme();
+
+  return (
+    <motion.div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      style={{
+        backgroundColor: isHovered
+          ? theme === "light"
+            ? "#FFFFFF"
+            : "rgba(255, 255, 255, 0.04)"
+          : theme === "light"
+          ? "rgba(255, 255, 255, 0.75)"
+          : "rgba(255, 255, 255, 0.02)",
+        borderColor: isHovered
+          ? theme === "light"
+            ? "#2563EB"
+            : "rgba(192, 132, 252, 0.6)"
+          : theme === "light"
+          ? "#CBD5E1"
+          : "rgba(255, 255, 255, 0.12)",
+        boxShadow: isHovered
+          ? theme === "light"
+            ? "0 12px 30px -8px rgba(37, 99, 235, 0.18)"
+            : "0 12px 35px -8px rgba(192, 132, 252, 0.25)"
+          : theme === "light"
+          ? "0 4px 12px rgba(0, 0, 0, 0.04)"
+          : "none"
+      }}
+      className="retro-card p-6 sm:p-7 rounded-2xl border flex flex-col justify-between space-y-6 text-left transition-all duration-200"
+    >
+      <div className="space-y-5">
+        
+        {/* HEADER: ICON + NUMBER + TITLE */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl select-none">{card.iconEmoji}</span>
+              <span 
+                style={{ color: theme === "light" ? "#2563EB" : "#C084FC" }}
+                className="font-sans text-xs font-extrabold tracking-widest uppercase"
+              >
+                {card.number}
+              </span>
+            </div>
+          </div>
+          <h3
+            style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
+            className="font-sans text-base sm:text-lg font-extrabold uppercase tracking-wide leading-tight"
+          >
+            {card.title}
+          </h3>
+        </div>
+
+        {/* DIVIDER 1 */}
+        <div className="border-b border-black/10 dark:border-white/10" />
+
+        {/* WHAT I CREATE SECTION */}
+        <div className="space-y-3">
+          <span
+            style={{ color: theme === "light" ? "#475569" : "#94A3B8" }}
+            className="font-sans text-[10px] font-extrabold uppercase tracking-wider block"
+          >
+            WHAT I CREATE
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {card.capabilities.map((cap, i) => (
+              <span
+                key={i}
+                style={{
+                  backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.06)",
+                  color: theme === "light" ? "#0F172A" : "#F8FAFC",
+                  borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.12)"
+                }}
+                className="px-3 py-1.5 rounded-lg border font-sans text-xs font-bold flex items-center gap-1.5 shadow-xs"
+              >
+                <span style={{ color: theme === "light" ? "#2563EB" : "#C084FC" }}>✦</span>
+                <span>{cap}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* DIVIDER 2 */}
+        <div className="border-b border-black/10 dark:border-white/10" />
+
+        {/* TOOLS I USE SECTION (VISUALLY SECONDARY) */}
+        <div className="space-y-2.5 pt-1">
+          <span
+            style={{ color: theme === "light" ? "#64748B" : "#64748B" }}
+            className="font-sans text-[10px] font-extrabold uppercase tracking-wider block"
+          >
+            TOOLS I USE
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {card.tools.map((tool, i) => (
+              <div
+                key={i}
+                style={{
+                  backgroundColor: theme === "light" ? "rgba(241, 245, 249, 0.8)" : "rgba(255, 255, 255, 0.04)",
+                  color: theme === "light" ? "#334155" : "#CBD5E1",
+                  borderColor: theme === "light" ? "#E2E8F0" : "rgba(255, 255, 255, 0.1)"
+                }}
+                className="px-2.5 py-1 rounded-lg border font-sans text-xs font-semibold flex items-center gap-2 shadow-2xs"
+              >
+                {renderToolBadge(tool.name)}
+                <span className="font-extrabold text-[11px]">{tool.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </motion.div>
+  );
+}
+
 export default function About() {
-  const [selectedIdx, setSelectedIdx] = useState(1); // Default to Social & Marketing
   const { unlockQuest } = useGameSystem();
   const { theme } = useTheme();
 
@@ -78,7 +267,7 @@ export default function About() {
       >
         
         {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-8 md:mb-10 space-y-3">
+        <div className="text-center max-w-xl mx-auto mb-8 md:mb-12 space-y-3">
           <div 
             style={{
               backgroundColor: theme === "light" ? "#2563EB" : "rgba(192, 132, 252, 0.2)",
@@ -93,224 +282,23 @@ export default function About() {
             style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
             className="font-sans text-3xl sm:text-4xl font-extrabold uppercase tracking-tight"
           >
-            What I Create
+            WHAT I CREATE
           </h2>
+          <p 
+            style={{ color: theme === "light" ? "#334155" : "#CBD5E1" }}
+            className="text-xs sm:text-sm font-sans leading-relaxed font-medium"
+          >
+            Creative services, visual content, and the tools I use to bring ideas to life.
+          </p>
         </div>
 
-        {/* INTERACTIVE RPG LAYOUT */}
-        
-        {/* DESKTOP LAYOUT (SPLIT PANEL) */}
-        <div className="hidden lg:grid grid-cols-12 gap-8 items-stretch w-full">
-          
-          {/* LEFT PANEL: CAPABILITIES LIST (QUEST LOG) */}
-          <div className="lg:col-span-5 flex flex-col gap-3">
-            {categories.map((cat, idx) => {
-              const isSelected = selectedIdx === idx;
-              return (
-                <div
-                  key={cat.id}
-                  onClick={() => setSelectedIdx(idx)}
-                  style={{
-                    backgroundColor: isSelected
-                      ? theme === "light" ? "#2563EB" : undefined
-                      : theme === "light" ? "#FFFFFF" : undefined,
-                    color: isSelected
-                      ? "#FFFFFF"
-                      : theme === "light" ? "#0F172A" : "#E2E8F0",
-                    borderColor: isSelected
-                      ? theme === "light" ? "#1D4ED8" : "rgba(192,132,252,0.7)"
-                      : theme === "light" ? "#CBD5E1" : "rgba(255,255,255,0.15)"
-                  }}
-                  className={`p-4 rounded-xl flex items-center justify-between cursor-pointer select-none text-left border transition-all duration-300 shadow-md ${
-                    isSelected 
-                      ? theme === "light" 
-                        ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-extrabold shadow-lg scale-[1.02]" 
-                        : "bg-gradient-to-r from-[#C084FC]/30 to-[#FFA5A5]/20 border-[#C084FC]/70 text-white shadow-[0_0_25px_rgba(192,132,252,0.3)] translate-x-1" 
-                      : "hover:scale-[1.01]"
-                  }`}
-                >
-                  <div className="flex items-center gap-3.5">
-                    <span className="text-lg">{cat.statusEmoji}</span>
-                    <span className="font-sans text-xs sm:text-sm font-bold uppercase">
-                      {cat.title}
-                    </span>
-                  </div>
-                  <span 
-                    style={{
-                      color: isSelected
-                        ? theme === "light" ? "#FFFFFF" : "#A7F3D0"
-                        : theme === "light" ? "#64748B" : "#94A3B8"
-                    }}
-                    className="font-sans text-xs font-bold"
-                  >
-                    {isSelected ? "◀ ACTIVE" : "SELECT"}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* RIGHT PANEL: SELECTED DETAIL (STATS SCREEN) */}
-          <div className="lg:col-span-7">
-            {selectedIdx !== -1 && (
-              <div 
-                style={{
-                  backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
-                  borderColor: theme === "light" ? "#CBD5E1" : undefined
-                }}
-                className="retro-card p-6 sm:p-8 lg:h-full h-auto flex flex-col justify-between shadow-2xl rounded-2xl relative text-left"
-              >
-                
-                <div className="space-y-6">
-                  {/* Title */}
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{categories[selectedIdx].statusEmoji}</span>
-                      <h3 
-                        style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
-                        className="font-sans text-lg sm:text-xl font-bold uppercase leading-none"
-                      >
-                        {categories[selectedIdx].title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Deliverables */}
-                  <div className="space-y-3">
-                    <div 
-                      style={{ color: theme === "light" ? "#475569" : "#94A3B8" }}
-                      className="font-sans text-[10px] font-bold uppercase tracking-wider"
-                    >
-                      KEY POINTS
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {categories[selectedIdx].deliverables.map((del, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.05)",
-                            color: theme === "light" ? "#0F172A" : "#F1F5F9",
-                            borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.15)"
-                          }}
-                          className="px-3 py-1.5 rounded-lg border font-sans text-xs font-semibold flex items-center gap-1.5 shadow-sm"
-                        >
-                          <span style={{ color: theme === "light" ? "#2563EB" : "#C084FC" }}>✦</span>
-                          <span>{del}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Primary Tools */}
-                  <div className="space-y-3 pt-4 border-t border-black/10 dark:border-white/10">
-                    <div 
-                      style={{ color: theme === "light" ? "#475569" : "#94A3B8" }}
-                      className="font-sans text-[10px] font-bold uppercase tracking-wider"
-                    >
-                      PRIMARY SOFTWARE
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {categories[selectedIdx].tools.map((tool, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.05)",
-                            color: theme === "light" ? "#0F172A" : "#F1F5F9",
-                            borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.15)"
-                          }}
-                          className="px-3 py-1.5 rounded-lg border font-sans text-xs font-semibold flex items-center gap-2 shadow-sm"
-                        >
-                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: tool.brandColor }} />
-                          <span>{tool.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            )}
-          </div>
+        {/* 3 Interactive Category Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full items-stretch">
+          {categoryCards.map((card) => (
+            <CategoryCardItem key={card.id} card={card} />
+          ))}
         </div>
 
-        {/* MOBILE LAYOUT (ACCORDION) */}
-        <div className="flex flex-col gap-3 lg:hidden w-full text-left">
-          {categories.map((cat, idx) => {
-            const isSelected = selectedIdx === idx;
-            return (
-              <div key={cat.id} className="flex flex-col gap-2">
-                {/* Category Row Item */}
-                <div
-                  onClick={() => setSelectedIdx(isSelected ? -1 : idx)}
-                  className={`retro-card p-4 flex items-center justify-between cursor-pointer select-none text-left border transition-all duration-200 rounded-xl ${
-                    isSelected 
-                      ? "bg-[#C084FC]/20 border-[#C084FC]/50 text-white" 
-                      : "text-slate-300 hover:text-white"
-                  }`}
-                >
-                  <div className="flex items-center gap-3.5">
-                    <span className="text-lg">{cat.statusEmoji}</span>
-                    <span className="font-sans text-xs uppercase font-bold text-white">
-                      {cat.title}
-                    </span>
-                  </div>
-                  <span className="font-sans text-xs font-bold text-slate-400">
-                    {isSelected ? "▲ CLOSE" : "▼ SELECT"}
-                  </span>
-                </div>
-
-                {/* Details Accordion Panel */}
-                <AnimatePresence initial={false}>
-                  {isSelected && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                      animate={{ height: "auto", opacity: 1, marginTop: 4 }}
-                      exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                      transition={{ duration: 0.2, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="retro-card p-5 rounded-2xl relative text-left space-y-4">
-                        <div className="space-y-4">
-                          <div className="space-y-2">
-                            <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">KEY POINTS</div>
-                            <div className="flex flex-wrap gap-1.5">
-                              {cat.deliverables.map((del, i) => (
-                                <span
-                                  key={i}
-                                  className="px-3 py-1.5 bg-white/5 border border-white/10 text-slate-200 font-sans text-xs font-bold rounded-xl"
-                                >
-                                  ✦ {del}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="space-y-2">
-                            <div className="font-sans text-[10px] text-slate-400 font-bold uppercase tracking-wider">PRIMARY SOFTWARE</div>
-                            <div className="flex flex-wrap gap-1.5">
-                              {cat.tools.map((tool, i) => (
-                                <span
-                                  key={i}
-                                  className="px-3 py-1.5 bg-white/5 border border-white/10 text-white font-sans text-xs font-semibold rounded-xl flex items-center gap-1.5"
-                                >
-                                  <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: tool.brandColor }} />
-                                  {tool.name}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-              </div>
-            );
-          })}
-
-        </div>
       </motion.div>
     </section>
   );
