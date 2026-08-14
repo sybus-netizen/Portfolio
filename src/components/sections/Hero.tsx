@@ -59,7 +59,7 @@ const PixelSparkleMini = ({ style }: { style?: React.CSSProperties }) => (
 );
 
 const briefSegments = [
-  { text: "Visual Content Creator, Graphic Designer, and Trainer with 3.8 years of experience in ", highlight: false },
+  { text: "Visual Content Creator with 3.8 years of experience crafting engaging visual experiences through ", highlight: false },
   { text: "Graphic Design", highlight: true },
   { text: ", ", highlight: false },
   { text: "Branding", highlight: true },
@@ -67,7 +67,7 @@ const briefSegments = [
   { text: "Video Editing", highlight: true },
   { text: ", and ", highlight: false },
   { text: "Motion Graphics", highlight: true },
-  { text: ". Skilled in creating digital content and training students in professional design and video production workflows.", highlight: false }
+  { text: ". Passionate about turning ideas into impactful digital content.", highlight: false }
 ];
 
 interface FloatingIconConfig {
@@ -355,7 +355,11 @@ export default function Hero() {
 
           {/* PROFESSIONAL INTRO GLASS BOX */}
           <motion.div 
-            className="w-full retro-card chromatic-glass p-5 sm:p-6 rounded-2xl relative text-left" 
+            style={{
+              backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
+              borderColor: theme === "light" ? "#CBD5E1" : undefined
+            }}
+            className="w-full retro-card chromatic-glass p-5 sm:p-6 shadow-2xl rounded-2xl relative border text-left" 
             variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}
           >
             <div 

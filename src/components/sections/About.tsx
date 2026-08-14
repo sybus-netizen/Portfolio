@@ -133,13 +133,39 @@ function renderToolBadge(name: string) {
 }
 
 function CategoryCardItem({ card }: { card: CategoryCard }) {
+  const [isHovered, setIsHovered] = useState(false);
   const { theme } = useTheme();
 
   return (
     <motion.div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className="retro-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between space-y-6 text-left cursor-pointer"
+      style={{
+        backgroundColor: isHovered
+          ? theme === "light"
+            ? "#FFFFFF"
+            : "rgba(255, 255, 255, 0.04)"
+          : theme === "light"
+          ? "rgba(255, 255, 255, 0.75)"
+          : "rgba(255, 255, 255, 0.02)",
+        borderColor: isHovered
+          ? theme === "light"
+            ? "#2563EB"
+            : "rgba(192, 132, 252, 0.6)"
+          : theme === "light"
+          ? "#CBD5E1"
+          : "rgba(255, 255, 255, 0.12)",
+        boxShadow: isHovered
+          ? theme === "light"
+            ? "0 12px 30px -8px rgba(37, 99, 235, 0.18)"
+            : "0 12px 35px -8px rgba(192, 132, 252, 0.25)"
+          : theme === "light"
+          ? "0 4px 12px rgba(0, 0, 0, 0.04)"
+          : "none"
+      }}
+      className="retro-card p-6 sm:p-7 rounded-2xl border flex flex-col justify-between space-y-6 text-left transition-all duration-200"
     >
       <div className="space-y-5">
         

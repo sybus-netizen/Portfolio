@@ -57,7 +57,11 @@ export default function ProjectDetailClient({ project }: ClientProps) {
           {/* LEFT COLUMN: STICKY INFO SIDEBAR (SECOND ON MOBILE [order-2], LEFT ON DESKTOP [md:order-1]) */}
           <div className="order-2 md:order-1 md:col-span-5 lg:col-span-4 md:sticky md:top-24 space-y-5 w-full">
             <div 
-              className="retro-card p-5 sm:p-6 rounded-2xl space-y-4 text-left"
+              style={{
+                backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
+                borderColor: theme === "light" ? "#CBD5E1" : undefined
+              }}
+              className="retro-card p-5 sm:p-6 shadow-2xl rounded-2xl space-y-4 text-left border"
             >
               <div className="space-y-3">
                 <div 
