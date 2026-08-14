@@ -37,22 +37,21 @@
   --blob5: rgba(147, 51, 234, 0.08);
 
   /* Glassmorphism Styles - deep space frosted dark glass */
-  --glass-bg: linear-gradient(135deg, rgba(8, 7, 20, 0.6) 0%, rgba(15, 12, 30, 0.4) 100%);
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --glass-border-top: rgba(255, 255, 255, 0.14);
-  --glass-border-left: rgba(255, 255, 255, 0.09);
+  --glass-bg: linear-gradient(135deg, rgba(14, 13, 24, 0.72) 0%, rgba(20, 18, 36, 0.5) 100%);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-top: rgba(255, 255, 255, 0.18);
+  --glass-border-left: rgba(255, 255, 255, 0.14);
   --glass-shadow: 
-    0 16px 48px -8px rgba(0, 0, 0, 0.75), 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08), 
-    0 0 1px 1px rgba(255, 255, 255, 0.02);
+    0 12px 32px -6px rgba(0, 0, 0, 0.4), 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
   
-  --glass-hover-bg: linear-gradient(135deg, rgba(12, 10, 28, 0.7) 0%, rgba(22, 18, 42, 0.5) 100%);
-  --glass-hover-border: rgba(255, 255, 255, 0.12);
-  --glass-hover-border-top: rgba(255, 255, 255, 0.2);
+  --glass-hover-bg: linear-gradient(135deg, rgba(18, 16, 32, 0.82) 0%, rgba(28, 24, 50, 0.7) 100%);
+  --glass-hover-border: rgba(192, 132, 252, 0.4);
+  --glass-hover-border-top: rgba(255, 255, 255, 0.28);
   --glass-hover-shadow: 
-    0 20px 56px -8px rgba(0, 0, 0, 0.85), 
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.12), 
-    0 0 12px rgba(217, 70, 239, 0.08);
+    0 16px 44px -8px rgba(0, 0, 0, 0.5), 
+    0 0 16px rgba(192, 132, 252, 0.15),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 html[data-theme="light"] {
@@ -77,22 +76,22 @@ html[data-theme="light"] {
   --blob4: transparent;
   --blob5: transparent;
 
-  /* Glassmorphism Styles - crisp white cards on soft off-white background */
-  --glass-bg: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
-  --glass-border: rgba(15, 23, 42, 0.14);
-  --glass-border-top: #FFFFFF;
-  --glass-border-left: #FFFFFF;
+  /* Glassmorphism Styles - crisp frosted glass sitting above off-white background */
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 250, 252, 0.78) 100%);
+  --glass-border: rgba(203, 213, 225, 0.75);
+  --glass-border-top: rgba(255, 255, 255, 0.95);
+  --glass-border-left: rgba(255, 255, 255, 0.9);
   --glass-shadow: 
-    0 10px 30px -4px rgba(15, 23, 42, 0.08), 
-    0 4px 12px 0 rgba(37, 99, 235, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+    0 8px 30px -4px rgba(15, 23, 42, 0.06), 
+    0 2px 8px 0 rgba(37, 99, 235, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   
-  --glass-hover-bg: #FFFFFF;
-  --glass-hover-border: rgba(37, 99, 235, 0.5);
+  --glass-hover-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 245, 249, 0.9) 100%);
+  --glass-hover-border: rgba(37, 99, 235, 0.45);
   --glass-hover-border-top: #FFFFFF;
   --glass-hover-shadow: 
-    0 18px 42px -6px rgba(15, 23, 42, 0.14), 
-    0 6px 20px 0 rgba(37, 99, 235, 0.14);
+    0 14px 36px -6px rgba(15, 23, 42, 0.1), 
+    0 4px 16px 0 rgba(37, 99, 235, 0.1);
 }
 
 @keyframes subtleRgbMesh {

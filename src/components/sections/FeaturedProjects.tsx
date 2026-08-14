@@ -90,13 +90,9 @@ export default function FeaturedProjects() {
               >
                 {/* Modern Glass Project Card */}
                 <motion.div
-                  whileHover={{ y: -6, scale: 1.015 }}
+                  whileHover={{ y: -4 }}
                   whileTap={{ y: 2, scale: 0.985 }}
-                  style={{
-                    backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
-                    borderColor: theme === "light" ? "#CBD5E1" : undefined
-                  }}
-                  className="retro-card p-5 h-full flex flex-col justify-between shadow-2xl rounded-2xl group relative overflow-hidden text-left hover:border-blue-500/50 hover:shadow-xl transition-all duration-300 border"
+                  className="retro-card p-5 sm:p-6 h-full flex flex-col justify-between rounded-2xl group relative overflow-hidden text-left cursor-pointer"
                 >
                   {/* Card Header Category Pill */}
                   <div className="flex justify-between items-center pb-3 mb-4 border-b border-black/10 dark:border-white/10 select-none">

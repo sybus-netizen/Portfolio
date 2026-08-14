@@ -77,11 +77,7 @@ export default function Contact() {
 
         {/* MODERN GLASS CONTACT PANEL */}
         <div 
-          style={{
-            backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
-            borderColor: theme === "light" ? "#CBD5E1" : undefined
-          }}
-          className="retro-card p-4 sm:p-5 w-full max-w-md shadow-2xl rounded-2xl space-y-4 relative text-left border"
+          className="retro-card p-5 sm:p-6 w-full max-w-md rounded-2xl space-y-4 relative text-left"
         >
           
           {/* DIRECT CONTACT LIST */}
