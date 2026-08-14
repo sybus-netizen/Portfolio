@@ -216,6 +216,42 @@ html[data-theme="light"] .chromatic-glass {
   box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
 }
 
+/* ── ULTRA-CLEAN PREMIUM FROSTED GLASS PILL UTILITIES ── */
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-top-color: rgba(255, 255, 255, 0.22) !important;
+  color: #F8FAFC !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(192, 132, 252, 0.45) !important;
+  transform: translateY(-1px) !important;
+}
+
+html[data-theme="light"] .glass-pill {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(203, 213, 225, 0.75) !important;
+  border-top-color: rgba(255, 255, 255, 0.95) !important;
+  color: #0F172A !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+html[data-theme="light"] .glass-pill:hover {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(37, 99, 235, 0.45) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  transform: translateY(-1px) !important;
+}
+
 @supports not (backdrop-filter: blur(1px)) {
   .retro-card {
     background: rgba(14, 13, 24, 0.95) !important;

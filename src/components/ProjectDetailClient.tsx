@@ -92,12 +92,7 @@ export default function ProjectDetailClient({ project }: ClientProps) {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        style={{
-                          backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.1)",
-                          color: theme === "light" ? "#0F172A" : "#F8FAFC",
-                          borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.15)"
-                        }}
-                        className="px-2.5 py-1 rounded-lg border text-[11px] font-sans font-bold shadow-sm"
+                        className="glass-pill px-2.5 py-1 rounded-lg text-[11px] font-sans font-bold select-none"
                       >
                         {tech}
                       </span>
