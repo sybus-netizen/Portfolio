@@ -37,7 +37,7 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="py-12 sm:py-16 md:py-20 border-t border-slate-300 dark:border-white/10 bg-transparent relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 border-t border-slate-200 dark:border-white/5 bg-slate-100/50 dark:bg-[#111827]/40 relative overflow-hidden"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 max-w-5xl h-[1.5px] bg-gradient-to-r from-transparent via-slate-400/60 dark:via-white/20 to-transparent" />
       <motion.div
