@@ -342,6 +342,7 @@ export default function Hero() {
               style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
               className="relative font-sans text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase leading-none select-none break-words"
             >
+              <span className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-xl blur-2xl opacity-45 pointer-events-none z-[-1] animate-pulse" />
               SHUBHAM SHUKLA
             </h1>
             <p 

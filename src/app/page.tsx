@@ -7,7 +7,7 @@ import { SectionReveal } from "@/components/ui/SectionReveal";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full bg-transparent">
+    <div className="flex flex-col w-full bg-background">
       {/* Hero: fills viewport */}
       <SectionReveal distance={0} exitScale>
         <Hero />

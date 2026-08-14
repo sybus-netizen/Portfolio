@@ -179,7 +179,12 @@ function CategoryCardItem({ card }: { card: CategoryCard }) {
             {card.capabilities.map((cap, i) => (
               <span
                 key={i}
-                className="glass-pill px-3 py-1.5 rounded-xl font-sans text-xs font-bold flex items-center gap-1.5 select-none"
+                style={{
+                  backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.06)",
+                  color: theme === "light" ? "#0F172A" : "#F8FAFC",
+                  borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.12)"
+                }}
+                className="px-3 py-1.5 rounded-lg border font-sans text-xs font-bold flex items-center gap-1.5 shadow-xs"
               >
                 <span style={{ color: theme === "light" ? "#2563EB" : "#C084FC" }}>✦</span>
                 <span>{cap}</span>
@@ -203,7 +208,12 @@ function CategoryCardItem({ card }: { card: CategoryCard }) {
             {card.tools.map((tool, i) => (
               <div
                 key={i}
-                className="glass-pill px-2.5 py-1 rounded-xl font-sans text-xs font-semibold flex items-center gap-2 select-none"
+                style={{
+                  backgroundColor: theme === "light" ? "rgba(241, 245, 249, 0.8)" : "rgba(255, 255, 255, 0.04)",
+                  color: theme === "light" ? "#334155" : "#CBD5E1",
+                  borderColor: theme === "light" ? "#E2E8F0" : "rgba(255, 255, 255, 0.1)"
+                }}
+                className="px-2.5 py-1 rounded-lg border font-sans text-xs font-semibold flex items-center gap-2 shadow-2xs"
               >
                 {renderToolBadge(tool.name)}
                 <span className="font-extrabold text-[11px]">{tool.name}</span>
@@ -222,7 +232,7 @@ export default function About() {
   const { theme } = useTheme();
 
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 border-t border-slate-200/80 dark:border-white/5 bg-[#E5E7EB]/40 dark:bg-[#1B1E24]/40 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 md:py-20 border-t border-slate-300 dark:border-white/10 bg-transparent relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 max-w-5xl h-[1.5px] bg-gradient-to-r from-transparent via-slate-400/60 dark:via-white/20 to-transparent" />
       <motion.div
         onViewportEnter={() => unlockQuest("about", "About")}

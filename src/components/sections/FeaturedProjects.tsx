@@ -140,7 +140,12 @@ export default function FeaturedProjects() {
                       {project.technologies.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="glass-pill px-2.5 py-1 rounded-lg text-[10px] font-sans font-bold select-none"
+                          style={{
+                            backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.08)",
+                            color: theme === "light" ? "#0F172A" : "#E2E8F0",
+                            borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.15)"
+                          }}
+                          className="px-2 py-0.5 rounded-md border text-[10px] font-sans font-bold shadow-sm"
                         >
                           {tech}
                         </span>
