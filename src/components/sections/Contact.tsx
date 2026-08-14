@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { Copy } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useGameSystem } from "@/context/GameContext";
-
 import { useTheme } from "@/context/ThemeContext";
 
 export default function Contact() {
@@ -37,7 +36,7 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="py-12 sm:py-16 md:py-20 border-t border-slate-300 dark:border-white/10 bg-transparent relative overflow-hidden"
+      className="py-8 sm:py-12 md:py-16 border-t border-slate-300 dark:border-white/10 bg-transparent relative overflow-hidden"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 max-w-5xl h-[1.5px] bg-gradient-to-r from-transparent via-slate-400/60 dark:via-white/20 to-transparent" />
       <motion.div
@@ -46,11 +45,11 @@ export default function Contact() {
           unlockAchievement("explored-portfolio", "Explored Portfolio!", "🗺");
         }}
         viewport={{ once: true, amount: 0.15 }}
-        className="max-w-4xl mx-auto px-6 relative z-10 w-full text-center flex flex-col items-center"
+        className="max-w-4xl mx-auto px-5 sm:px-6 relative z-10 w-full text-center flex flex-col items-center"
       >
         
         {/* Section Header */}
-        <div className="text-center space-y-3 mb-8 md:mb-10 max-w-xl mx-auto select-none">
+        <div className="text-center space-y-2.5 mb-5 sm:mb-8 max-w-xl mx-auto select-none">
           <div 
             style={{
               backgroundColor: theme === "light" ? "#DBEAFE" : "rgba(192, 132, 252, 0.2)",
@@ -85,7 +84,7 @@ export default function Contact() {
         >
           
           {/* DIRECT CONTACT LIST */}
-          <div className="space-y-4">
+          <div className="space-y-3.5">
             <div className="flex items-center justify-between font-sans text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider border-b border-black/10 dark:border-white/10 pb-2.5">
               <span style={{ color: theme === "light" ? "#475569" : "#94A3B8" }}>DIRECT CONTACT</span>
               <span 
@@ -101,8 +100,8 @@ export default function Contact() {
             </div>
 
             {/* EMAIL ACTION LINE */}
-            <div className="flex items-center justify-between gap-3 flex-wrap w-full pt-0.5">
-              <div className="text-left space-y-0.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 w-full pt-0.5">
+              <div className="text-left space-y-0.5 min-w-0 flex-1">
                 <span 
                   style={{ color: theme === "light" ? "#64748B" : "#94A3B8" }}
                   className="font-sans text-[9px] font-bold uppercase tracking-wider block"
@@ -111,12 +110,13 @@ export default function Contact() {
                 </span>
                 <span 
                   style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
-                  className="font-sans text-xs font-bold"
+                  className="font-sans text-xs font-bold block truncate"
+                  title="shubhamshukla327@gmail.com"
                 >
                   shubhamshukla327@gmail.com
                 </span>
               </div>
-              <div className="flex gap-1.5 items-center shrink-0">
+              <div className="flex gap-1.5 items-center shrink-0 self-start sm:self-auto">
                 <button
                   onClick={() => copyToClipboard("shubhamshukla327@gmail.com", "Email copied!")}
                   style={{
@@ -124,7 +124,7 @@ export default function Contact() {
                     borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.1)",
                     color: theme === "light" ? "#0F172A" : "#FFFFFF"
                   }}
-                  className="p-1.5 rounded-lg border transition-all hover:scale-105"
+                  className="p-2 sm:p-1.5 rounded-lg border transition-all hover:scale-105 active:scale-95 cursor-pointer"
                   title="Copy Email"
                 >
                   <Copy className="w-3.5 h-3.5" />
@@ -137,7 +137,7 @@ export default function Contact() {
                     color: "#FFFFFF",
                     borderColor: theme === "light" ? "#1D4ED8" : "rgba(192, 132, 252, 0.4)"
                   }}
-                  className="px-3 py-1.5 rounded-lg border font-sans text-xs font-bold uppercase transition-all shadow-md hover:scale-105 inline-flex items-center gap-1 cursor-pointer"
+                  className="px-3.5 py-1.5 rounded-lg border font-sans text-xs font-bold uppercase transition-all shadow-md hover:scale-105 active:scale-95 inline-flex items-center gap-1 cursor-pointer"
                 >
                   SEND EMAIL ✉
                 </a>
@@ -145,8 +145,8 @@ export default function Contact() {
             </div>
 
             {/* PHONE ACTION LINE */}
-            <div className="flex items-center justify-between gap-3 flex-wrap w-full pt-3 border-t border-black/10 dark:border-white/10">
-              <div className="text-left space-y-0.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 w-full pt-3 border-t border-black/10 dark:border-white/10">
+              <div className="text-left space-y-0.5 min-w-0 flex-1">
                 <span 
                   style={{ color: theme === "light" ? "#64748B" : "#94A3B8" }}
                   className="font-sans text-[9px] font-bold uppercase tracking-wider block"
@@ -155,12 +155,12 @@ export default function Contact() {
                 </span>
                 <span 
                   style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
-                  className="font-sans text-xs font-bold"
+                  className="font-sans text-xs font-bold block"
                 >
                   +91 74777 27544
                 </span>
               </div>
-              <div className="flex gap-1.5 items-center shrink-0">
+              <div className="flex gap-1.5 items-center shrink-0 self-start sm:self-auto">
                 <button
                   onClick={() => copyToClipboard("+91 74777 27544", "Phone number copied!")}
                   style={{
@@ -168,7 +168,7 @@ export default function Contact() {
                     borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.1)",
                     color: theme === "light" ? "#0F172A" : "#FFFFFF"
                   }}
-                  className="p-1.5 rounded-lg border transition-all hover:scale-105"
+                  className="p-2 sm:p-1.5 rounded-lg border transition-all hover:scale-105 active:scale-95 cursor-pointer"
                   title="Copy Phone"
                 >
                   <Copy className="w-3.5 h-3.5" />
@@ -180,7 +180,7 @@ export default function Contact() {
                     color: "#FFFFFF",
                     borderColor: theme === "light" ? "#1D4ED8" : "rgba(192, 132, 252, 0.4)"
                   }}
-                  className="px-3 py-1.5 rounded-lg border font-sans text-xs font-bold uppercase transition-all shadow-md hover:scale-105 inline-flex items-center gap-1 cursor-pointer"
+                  className="px-3.5 py-1.5 rounded-lg border font-sans text-xs font-bold uppercase transition-all shadow-md hover:scale-105 active:scale-95 inline-flex items-center gap-1 cursor-pointer"
                 >
                   CALL NOW 📞
                 </button>
@@ -191,7 +191,7 @@ export default function Contact() {
         </div>
 
         {/* Signature */}
-        <div className="text-center select-none pt-6">
+        <div className="text-center select-none pt-4 sm:pt-6">
           <p className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">
             THANK YOU FOR VISITING!
           </p>
