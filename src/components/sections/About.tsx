@@ -284,12 +284,6 @@ export default function About() {
           >
             WHAT I CREATE
           </h2>
-          <p 
-            style={{ color: theme === "light" ? "#334155" : "#CBD5E1" }}
-            className="text-xs sm:text-sm font-sans leading-relaxed font-medium max-w-2xl mx-auto"
-          >
-            Visual Content Creator, Graphic Designer, and Trainer with 3.8 years of experience in Graphic Design, Branding, Video Editing, and Motion Graphics. Skilled in creating engaging digital content and training students in professional design and video production workflows.
-          </p>
         </div>
 
         {/* 3 Interactive Category Cards Grid */}

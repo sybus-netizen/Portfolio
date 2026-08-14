@@ -321,13 +321,13 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen pt-24 pb-12 sm:pt-28 sm:pb-14 flex items-center relative overflow-hidden bg-transparent"
+      className="min-h-[calc(100vh-80px)] pt-20 pb-12 md:pt-24 md:pb-16 flex items-center justify-center relative overflow-hidden bg-transparent"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10 w-full">
         
         {/* LEFT COLUMN: RPG TEXT & STATUS SCREEN */}
         <motion.div
-          className="md:col-span-7 flex flex-col items-start space-y-6 sm:space-y-8 w-full"
+          className="md:col-span-7 flex flex-col items-start justify-center space-y-6 sm:space-y-8 w-full text-left"
           initial="hidden"
           animate="visible"
           variants={{
@@ -359,7 +359,7 @@ export default function Hero() {
               backgroundColor: theme === "light" ? "#FFFFFF" : undefined,
               borderColor: theme === "light" ? "#CBD5E1" : undefined
             }}
-            className="w-full max-w-xl retro-card chromatic-glass p-5 sm:p-6 shadow-2xl rounded-2xl relative border text-left" 
+            className="w-full retro-card chromatic-glass p-5 sm:p-6 shadow-2xl rounded-2xl relative border text-left" 
             variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}
           >
             <div 
@@ -407,11 +407,11 @@ export default function Hero() {
         </motion.div>
 
         {/* RIGHT COLUMN: PIXEL AVATAR WITH GRAVITY FLOATING/FALLING ICONS & ACTION BUTTONS */}
-        <div className="md:col-span-5 flex flex-col items-center gap-6 w-full pt-0">
+        <div className="md:col-span-5 flex flex-col items-center justify-center gap-6 w-full pt-0">
           
           {/* CHARACTER SHOWCASE BOX */}
           <motion.div 
-            className="w-full flex flex-col items-center justify-center relative pt-6 pb-8 md:pt-16 md:pb-20 rounded-3xl min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
+            className="w-full max-w-md flex flex-col items-center justify-center relative pt-4 pb-6 md:pt-10 md:pb-14 rounded-3xl min-h-[300px] sm:min-h-[360px] md:min-h-[420px]"
             ref={avatarRef}
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
