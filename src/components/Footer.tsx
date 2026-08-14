@@ -37,7 +37,7 @@ export default function Footer() {
           </Link>
           <p 
             style={{ color: theme === "light" ? "#475569" : "#94A3B8" }}
-            className="text-xs font-sans font-medium tracking-wide"
+            className="text-xs font-sans font-medium tracking-wide px-4 max-w-sm sm:max-w-md mx-auto leading-relaxed"
           >
             Visual Content Creator • Graphic Designer • Video Editor
           </p>

@@ -54,7 +54,7 @@ export default function FeaturedProjects() {
               style={{ color: theme === "light" ? "#334155" : "#CBD5E1" }}
               className="text-xs sm:text-sm font-sans leading-relaxed font-medium"
             >
-              A handpicked selection of my latest commercial video edits, graphic designs, and motion assets.
+              A selection of my recent graphic designs, video edits, and motion work.
             </p>
           </FadeIn>
           <FadeIn direction="right" className="shrink-0">

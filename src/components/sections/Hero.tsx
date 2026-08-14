@@ -59,7 +59,7 @@ const PixelSparkleMini = ({ style }: { style?: React.CSSProperties }) => (
 );
 
 const briefSegments = [
-  { text: "Visual Content Creator with 3.8 years of experience crafting engaging visual experiences through ", highlight: false },
+  { text: "Visual Content Creator, Graphic Designer, and Trainer with 3.8 years of experience in ", highlight: false },
   { text: "Graphic Design", highlight: true },
   { text: ", ", highlight: false },
   { text: "Branding", highlight: true },
@@ -67,7 +67,7 @@ const briefSegments = [
   { text: "Video Editing", highlight: true },
   { text: ", and ", highlight: false },
   { text: "Motion Graphics", highlight: true },
-  { text: ". Passionate about turning ideas into impactful digital content.", highlight: false }
+  { text: ". Skilled in creating digital content and training students in professional design and video production workflows.", highlight: false }
 ];
 
 interface FloatingIconConfig {
@@ -90,10 +90,10 @@ const floatingCreativeIcons: FloatingIconConfig[] = [
     id: "photo",
     name: "Photo Icon",
     src: "/assets/media_1786616672274.png",
-    sizeClass: "w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14",
-    position: { top: "8%", left: "10%" },
-    xKeyframes: [0, 14, -8, 6, 0],
-    yKeyframes: [0, -16, -4, -20, 0],
+    sizeClass: "w-7 h-7 sm:w-11 sm:h-11 md:w-13 md:h-13",
+    position: { top: "6%", left: "6%" },
+    xKeyframes: [0, 10, -6, 4, 0],
+    yKeyframes: [0, -12, -4, -15, 0],
     rotateKeyframes: [0, 7, -6, 8, 0],
     opacityKeyframes: [0.85, 1, 0.9, 0.98, 0.85],
     duration: 11.5,
@@ -104,10 +104,10 @@ const floatingCreativeIcons: FloatingIconConfig[] = [
     id: "camera",
     name: "Camera Icon",
     src: "/assets/media_1786616672275.png",
-    sizeClass: "w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14",
-    position: { top: "16%", right: "3%" },
-    xKeyframes: [0, -12, 8, -10, 0],
-    yKeyframes: [0, -20, -7, -22, 0],
+    sizeClass: "w-7 h-7 sm:w-11 sm:h-11 md:w-13 md:h-13",
+    position: { top: "12%", right: "2%" },
+    xKeyframes: [0, -8, 6, -8, 0],
+    yKeyframes: [0, -15, -5, -18, 0],
     rotateKeyframes: [0, -9, 8, -7, 0],
     opacityKeyframes: [0.9, 1, 0.88, 1, 0.9],
     duration: 9.2,
@@ -118,10 +118,10 @@ const floatingCreativeIcons: FloatingIconConfig[] = [
     id: "pen-tool",
     name: "Pen Tool Vector Icon",
     src: "/assets/media_1786661521951.png",
-    sizeClass: "w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13",
-    position: { top: "50%", left: "1%" },
-    xKeyframes: [0, 16, -6, 12, 0],
-    yKeyframes: [0, -14, -24, -10, 0],
+    sizeClass: "w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12",
+    position: { top: "48%", left: "1%" },
+    xKeyframes: [0, 12, -4, 8, 0],
+    yKeyframes: [0, -10, -18, -8, 0],
     rotateKeyframes: [0, -12, 9, -6, 0],
     opacityKeyframes: [0.88, 0.98, 1, 0.92, 0.88],
     duration: 13.8,
@@ -132,10 +132,10 @@ const floatingCreativeIcons: FloatingIconConfig[] = [
     id: "filmstrip",
     name: "Filmstrip Reel Icon",
     src: "/assets/media_1786661521932.png",
-    sizeClass: "w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13",
-    position: { top: "36%", right: "11%" },
-    xKeyframes: [0, -14, 10, -8, 0],
-    yKeyframes: [0, -18, -8, -16, 0],
+    sizeClass: "w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12",
+    position: { top: "38%", right: "8%" },
+    xKeyframes: [0, -10, 8, -6, 0],
+    yKeyframes: [0, -14, -6, -12, 0],
     rotateKeyframes: [0, 10, -9, 7, 0],
     opacityKeyframes: [0.92, 1, 0.85, 0.98, 0.92],
     duration: 7.8,
@@ -146,10 +146,10 @@ const floatingCreativeIcons: FloatingIconConfig[] = [
     id: "design",
     name: "Design Palette Icon",
     src: "/assets/media_1786616672277.png",
-    sizeClass: "w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12",
-    position: { bottom: "8%", left: "14%" },
-    xKeyframes: [0, -10, 14, -6, 0],
-    yKeyframes: [0, -18, -6, -14, 0],
+    sizeClass: "w-6 h-6 sm:w-9 sm:h-9 md:w-11 md:h-11",
+    position: { bottom: "10%", left: "10%" },
+    xKeyframes: [0, -8, 10, -4, 0],
+    yKeyframes: [0, -14, -4, -10, 0],
     rotateKeyframes: [0, 6, -8, 6, 0],
     opacityKeyframes: [0.86, 0.96, 1, 0.9, 0.86],
     duration: 12.2,
@@ -160,10 +160,10 @@ const floatingCreativeIcons: FloatingIconConfig[] = [
     id: "video-cam",
     name: "Video Camera Icon",
     src: "/assets/media_1786616672294.png",
-    sizeClass: "w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14",
-    position: { bottom: "18%", right: "5%" },
-    xKeyframes: [0, 12, -14, 8, 0],
-    yKeyframes: [0, -22, -10, -18, 0],
+    sizeClass: "w-7 h-7 sm:w-11 sm:h-11 md:w-13 md:h-13",
+    position: { bottom: "16%", right: "4%" },
+    xKeyframes: [0, 8, -10, 6, 0],
+    yKeyframes: [0, -16, -8, -14, 0],
     rotateKeyframes: [0, -8, 11, -6, 0],
     opacityKeyframes: [0.9, 1, 0.92, 0.98, 0.9],
     duration: 10.4,
@@ -321,13 +321,13 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-[calc(100vh-80px)] pt-20 pb-12 md:pt-24 md:pb-16 flex items-center justify-center relative overflow-hidden bg-transparent"
+      className="min-h-[calc(100vh-80px)] pt-14 pb-8 md:pt-24 md:pb-16 flex items-center justify-center relative overflow-hidden bg-transparent"
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10 w-full">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center relative z-10 w-full">
         
         {/* LEFT COLUMN: RPG TEXT & STATUS SCREEN */}
         <motion.div
-          className="md:col-span-7 flex flex-col items-start justify-center space-y-6 sm:space-y-8 w-full text-left"
+          className="md:col-span-7 flex flex-col items-start justify-center space-y-4 sm:space-y-8 w-full text-left"
           initial="hidden"
           animate="visible"
           variants={{
@@ -337,7 +337,7 @@ export default function Hero() {
         >
          
 
-          <motion.div className="space-y-3 w-full" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
+          <motion.div className="space-y-2.5 sm:space-y-3 w-full" variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}>
             <h1 
               style={{ color: theme === "light" ? "#0F172A" : "#FFFFFF" }}
               className="relative font-sans text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase leading-none select-none break-words"
@@ -407,11 +407,11 @@ export default function Hero() {
         </motion.div>
 
         {/* RIGHT COLUMN: PIXEL AVATAR WITH GRAVITY FLOATING/FALLING ICONS & ACTION BUTTONS */}
-        <div className="md:col-span-5 flex flex-col items-center justify-center gap-6 w-full pt-0">
+        <div className="md:col-span-5 flex flex-col items-center justify-center gap-4 sm:gap-6 w-full pt-0">
           
           {/* CHARACTER SHOWCASE BOX */}
           <motion.div 
-            className="w-full max-w-md flex flex-col items-center justify-center relative pt-4 pb-6 md:pt-10 md:pb-14 rounded-3xl min-h-[300px] sm:min-h-[360px] md:min-h-[420px]"
+            className="w-full max-w-md flex flex-col items-center justify-center relative pt-2 pb-4 md:pt-10 md:pb-14 rounded-3xl min-h-[250px] sm:min-h-[320px] md:min-h-[420px]"
             ref={avatarRef}
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}

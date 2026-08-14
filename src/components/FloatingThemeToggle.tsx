@@ -14,7 +14,7 @@ export default function FloatingThemeToggle() {
         playClick();
         toggleTheme();
       }}
-      className="fixed bottom-6 right-6 z-[60] w-12 h-12 rounded-full flex items-center justify-center cursor-pointer select-none shadow-[0_4px_24px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.1)] backdrop-blur-xl border border-white/15 bg-[#1a1636]/80 hover:bg-[#2a2256]/90 dark:bg-[#1a1636]/80 dark:hover:bg-[#2a2256]/90 transition-all duration-300 hover:scale-110 active:scale-95 hover:shadow-[0_4px_30px_rgba(192,132,252,0.4),0_0_0_1px_rgba(192,132,252,0.3)]"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[60] w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center cursor-pointer select-none shadow-[0_4px_24px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.1)] backdrop-blur-xl border border-white/15 bg-[#1a1636]/80 hover:bg-[#2a2256]/90 dark:bg-[#1a1636]/80 dark:hover:bg-[#2a2256]/90 transition-all duration-300 hover:scale-110 active:scale-95 hover:shadow-[0_4px_30px_rgba(192,132,252,0.4),0_0_0_1px_rgba(192,132,252,0.3)]"
       title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
       aria-label={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
       initial={{ opacity: 0, scale: 0, y: 20 }}
