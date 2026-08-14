@@ -37,21 +37,21 @@
   --blob5: rgba(147, 51, 234, 0.08);
 
   /* Glassmorphism Styles - deep space frosted dark glass */
-  --glass-bg: linear-gradient(135deg, rgba(14, 13, 24, 0.72) 0%, rgba(20, 18, 36, 0.5) 100%);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-border-top: rgba(255, 255, 255, 0.18);
-  --glass-border-left: rgba(255, 255, 255, 0.14);
+  --glass-bg: linear-gradient(135deg, rgba(14, 13, 24, 0.65) 0%, rgba(20, 18, 36, 0.48) 100%);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-top: rgba(255, 255, 255, 0.22);
+  --glass-border-left: rgba(255, 255, 255, 0.16);
   --glass-shadow: 
     0 12px 32px -6px rgba(0, 0, 0, 0.4), 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
   
-  --glass-hover-bg: linear-gradient(135deg, rgba(18, 16, 32, 0.82) 0%, rgba(28, 24, 50, 0.7) 100%);
-  --glass-hover-border: rgba(192, 132, 252, 0.4);
-  --glass-hover-border-top: rgba(255, 255, 255, 0.28);
+  --glass-hover-bg: linear-gradient(135deg, rgba(18, 16, 32, 0.78) 0%, rgba(28, 24, 50, 0.62) 100%);
+  --glass-hover-border: rgba(192, 132, 252, 0.45);
+  --glass-hover-border-top: rgba(255, 255, 255, 0.32);
   --glass-hover-shadow: 
     0 16px 44px -8px rgba(0, 0, 0, 0.5), 
-    0 0 16px rgba(192, 132, 252, 0.15),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
+    0 0 16px rgba(192, 132, 252, 0.18),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 html[data-theme="light"] {
@@ -69,29 +69,29 @@ html[data-theme="light"] {
   --surface: #E2E8F0;
   --card: #FFFFFF;
 
-  /* Radial Blob colors - subtle ice blue/indigo theme */
-  --blob1: rgba(37, 99, 235, 0.06);
-  --blob2: rgba(79, 70, 229, 0.05);
-  --blob3: rgba(124, 58, 237, 0.04);
-  --blob4: transparent;
-  --blob5: transparent;
+  /* Radial Blob colors - soft blue/purple/indigo ambient glows for glass sample */
+  --blob1: rgba(37, 99, 235, 0.12);
+  --blob2: rgba(192, 132, 252, 0.14);
+  --blob3: rgba(79, 70, 229, 0.10);
+  --blob4: rgba(37, 99, 235, 0.08);
+  --blob5: rgba(147, 51, 234, 0.06);
 
-  /* Glassmorphism Styles - crisp frosted glass sitting above off-white background */
-  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 250, 252, 0.78) 100%);
-  --glass-border: rgba(203, 213, 225, 0.75);
+  /* Glassmorphism Styles - crisp translucent frosted glass sitting above background */
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.62) 0%, rgba(245, 247, 250, 0.52) 100%);
+  --glass-border: rgba(203, 213, 225, 0.8);
   --glass-border-top: rgba(255, 255, 255, 0.95);
   --glass-border-left: rgba(255, 255, 255, 0.9);
   --glass-shadow: 
-    0 8px 30px -4px rgba(15, 23, 42, 0.06), 
-    0 2px 8px 0 rgba(37, 99, 235, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 10px 30px -4px rgba(15, 23, 42, 0.08), 
+    0 2px 8px 0 rgba(37, 99, 235, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
   
-  --glass-hover-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 245, 249, 0.9) 100%);
-  --glass-hover-border: rgba(37, 99, 235, 0.45);
+  --glass-hover-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.76) 0%, rgba(241, 245, 249, 0.66) 100%);
+  --glass-hover-border: rgba(37, 99, 235, 0.5);
   --glass-hover-border-top: #FFFFFF;
   --glass-hover-shadow: 
-    0 14px 36px -6px rgba(15, 23, 42, 0.1), 
-    0 4px 16px 0 rgba(37, 99, 235, 0.1);
+    0 16px 40px -6px rgba(15, 23, 42, 0.12), 
+    0 4px 18px 0 rgba(37, 99, 235, 0.12);
 }
 
 @keyframes subtleRgbMesh {
@@ -175,21 +175,21 @@ html {
 
 .retro-card {
   background: var(--glass-bg) !important;
-  backdrop-filter: blur(28px) saturate(220%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(220%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   border: 1px solid var(--glass-border) !important;
   border-top: 1px solid var(--glass-border-top) !important;
   border-left: 1px solid var(--glass-border-left) !important;
   box-shadow: var(--glass-shadow) !important;
   border-radius: 24px;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .retro-card:hover {
   background: var(--glass-hover-bg) !important;
   border-color: var(--glass-hover-border) !important;
   border-top-color: var(--glass-hover-border-top) !important;
   box-shadow: var(--glass-hover-shadow) !important;
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 .retro-card-interactive:active {
   transform: translateY(1px);
@@ -197,19 +197,32 @@ html {
 }
 
 .chromatic-glass {
-  background: linear-gradient(135deg, rgba(147, 51, 234, 0.15) 0%, rgba(37, 99, 235, 0.15) 50%, rgba(8, 7, 20, 0.6) 100%) !important;
-  border: 1px solid rgba(147, 51, 234, 0.22) !important;
-  border-top-color: rgba(255, 255, 255, 0.25) !important;
-  border-left-color: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 0 20px rgba(147, 51, 234, 0.15) !important;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.18) 0%, rgba(37, 99, 235, 0.16) 50%, rgba(14, 13, 24, 0.58) 100%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(192, 132, 252, 0.25) !important;
+  border-top-color: rgba(255, 255, 255, 0.3) !important;
+  border-left-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
 }
 
 html[data-theme="light"] .chromatic-glass {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(147, 51, 234, 0.1) 50%, rgba(255, 255, 255, 0.65) 100%) !important;
-  border: 1px solid rgba(37, 99, 235, 0.2) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(238, 242, 255, 0.58) 100%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(37, 99, 235, 0.25) !important;
   border-top-color: rgba(255, 255, 255, 0.95) !important;
-  border-left-color: rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 0 15px rgba(37, 99, 235, 0.1) !important;
+  border-left-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .retro-card {
+    background: rgba(14, 13, 24, 0.95) !important;
+  }
+  html[data-theme="light"] .retro-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
 }
 
 /* ── LIGHT MODE HIGH CONTRAST & READABILITY OVERRIDES ── */
