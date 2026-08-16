@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Mail, ArrowUp } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/CustomIcons";
+import { LinkedinIcon } from "@/components/ui/CustomIcons";
 
 import { useTheme } from "@/context/ThemeContext";
 
@@ -76,21 +76,6 @@ export default function Footer() {
             <LinkedinIcon className="w-4 h-4 shrink-0" />
           </a>
 
-          {/* GitHub Icon */}
-          <a
-            href="https://github.com/shubham-shukla"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              backgroundColor: theme === "light" ? "#F1F5F9" : "rgba(255, 255, 255, 0.1)",
-              color: theme === "light" ? "#0F172A" : "#FFFFFF",
-              borderColor: theme === "light" ? "#CBD5E1" : "rgba(255, 255, 255, 0.2)"
-            }}
-            className="w-9 h-9 border flex items-center justify-center transition-all rounded-xl cursor-pointer shadow-sm hover:scale-105"
-            aria-label="GitHub"
-          >
-            <GithubIcon className="w-4 h-4 shrink-0" />
-          </a>
 
           {/* Back to Top */}
           <button
